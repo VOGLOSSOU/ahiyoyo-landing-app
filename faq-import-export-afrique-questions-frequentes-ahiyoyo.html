@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAQ — Ahiyoyo | Import, Export, Logistique & Commerce international</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:      '#111827',
+          paper:    '#F9FAFB',
+          paperAlt: '#FFFFFF',
+          navy:     '#171717',
+          amber:    '#fdc354',
+          amberDeep:'#fdc354',
+          postal:   '#C2410C',
+          slate:    '#6B7280',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          sans:    ['Inter', 'sans-serif'],
+          mono:    ['"IBM Plex Mono"', 'monospace'],
+        },
+      },
+    },
+  }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: #F9FAFB; }
+  h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono-tag { font-family: 'IBM Plex Mono', monospace; letter-spacing: .08em; }
+
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: .5em;
+    border: 1.5px dashed rgba(20,22,31,.55);
+    border-radius: 999px;
+    padding: .4rem 1.1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--stamp-color, #111827);
+    transform: rotate(-1.6deg);
+  }
+  .stamp-amber { background: rgba(232,163,60,.14); border-color: rgba(20,22,31,.4); }
+  .stamp-ghost { border-color: rgba(255,255,255,.35); color: #fff; }
+  .stamp-dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; flex-shrink: 0; }
+
+  .waybill {
+    background: #FFFFFF;
+    border-radius: 22px;
+    box-shadow: 0 30px 70px -25px rgba(20,22,31,.28);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sep-soft-dark {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.12) 25%, rgba(255,255,255,.12) 75%, transparent 100%);
+  }
+
+  .grain {
+    position: absolute; inset: 0; pointer-events: none; opacity: .035; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .reveal-stagger.in-view > * { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal-stagger.in-view > *:nth-child(n) { transition-delay: calc(var(--i, 0) * 0.05s); }
+
+  .btn-primary { transition: transform .25s ease, filter .25s ease; }
+  .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.04); }
+  .btn-ghost { transition: transform .25s ease, background-color .25s ease; }
+  .btn-ghost:hover { transform: translateY(-2px); }
+
+  .chip { transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .chip:hover { background: rgba(17,24,39,.06); }
+
+  /* ---------- FAQ accordion ---------- */
+  .faq-item summary { list-style: none; cursor: pointer; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item .chevron { transition: transform .3s ease; }
+  .faq-item[open] .chevron { transform: rotate(180deg); }
+  .faq-item .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .35s ease;
+  }
+  .faq-item[open] .faq-answer { grid-template-rows: 1fr; }
+  .faq-answer-inner { overflow: hidden; }
+  .faq-item[open] summary { border-bottom: 1px dashed rgba(20,22,31,.14); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .faq-item .faq-answer { transition: none; }
+  }
+</style>
+</head>
+
+<body class="text-ink bg-paper antialiased">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-paper/90 backdrop-blur-sm" style="box-shadow: 0 1px 0 rgba(20,22,31,.08);">
+  <div class="max-w-6xl mx-auto px-5 md:px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center">
+      <img src="ahiyoyo.png" alt="Ahiyoyo" class="h-8 w-auto" />
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate">
+      <a href="index.html#fonctionnalites" class="hover:text-ink transition-colors">Services</a>
+      <a href="index.html#suivi" class="hover:text-ink transition-colors">Suivi</a>
+      <a href="index.html#tarifs" class="hover:text-ink transition-colors">Tarifs</a>
+      <a href="faq.html" class="text-ink font-semibold">FAQ</a>
+    </div>
+
+    <a href="index.html#suivi" class="btn-primary bg-ink text-white text-sm font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full whitespace-nowrap">
+      Suivre un colis
+    </a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="pt-16 overflow-hidden relative">
+  <div class="grain"></div>
+  <div class="max-w-4xl mx-auto px-5 md:px-6 py-14 md:py-20 text-center relative reveal in-view">
+    <span class="stamp stamp-amber mb-6"><span class="stamp-dot"></span>Import • Export • Logistique • Commerce international</span>
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] mb-5">FAQ — Ahiyoyo</h1>
+    <p class="text-slate text-base md:text-lg max-w-xl mx-auto">
+      Toutes les réponses à vos questions sur nos services, nos tarifs, le suivi et la sécurité de vos expéditions.
+    </p>
+  </div>
+</section>
+
+<!-- ================= TABLE DES MATIÈRES ================= -->
+<section class="pb-8 md:pb-10 bg-paper">
+  <div class="max-w-4xl mx-auto px-5 md:px-6 reveal in-view">
+    <div class="flex items-center justify-center gap-2.5 flex-wrap">
+      <a href="#presentation" class="chip font-mono-tag text-[11px] font-semibold uppercase border border-ink/15 rounded-full px-4 py-2">Présentation</a>
+      <a href="#transport" class="chip font-mono-tag text-[11px] font-semibold uppercase border border-ink/15 rounded-full px-4 py-2">Transport</a>
+      <a href="#tarifs-paiements" class="chip font-mono-tag text-[11px] font-semibold uppercase border border-ink/15 rounded-full px-4 py-2">Tarifs & Paiements</a>
+      <a href="#suivi-securite" class="chip font-mono-tag text-[11px] font-semibold uppercase border border-ink/15 rounded-full px-4 py-2">Suivi & Sécurité</a>
+      <a href="#douane" class="chip font-mono-tag text-[11px] font-semibold uppercase border border-ink/15 rounded-full px-4 py-2">Douane</a>
+      <a href="#export" class="chip font-mono-tag text-[11px] font-semibold uppercase border border-ink/15 rounded-full px-4 py-2">Export</a>
+      <a href="#compte" class="chip font-mono-tag text-[11px] font-semibold uppercase border border-ink/15 rounded-full px-4 py-2">Compte & Assistance</a>
+      <a href="#frequentes" class="chip font-mono-tag text-[11px] font-semibold uppercase border border-ink/15 rounded-full px-4 py-2">Questions fréquentes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRÉSENTATION GÉNÉRALE ================= -->
+<section id="presentation" class="py-10 md:py-14 scroll-mt-20">
+  <div class="max-w-3xl mx-auto px-5 md:px-6">
+    <div class="mb-8 reveal in-view">
+      <span class="stamp mb-4">01 — Présentation générale</span>
+    </div>
+
+    <div class="waybill divide-y divide-ink/5 reveal-stagger in-view">
+
+      <details class="faq-item group" style="--i:0">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Qu'est-ce que Ahiyoyo ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Ahiyoyo est une plateforme digitale spécialisée dans la logistique et le commerce international,
+              conçue pour aider les particuliers, entrepreneurs et entreprises africaines à importer, exporter et
+              vendre à l'international de manière simple, sécurisée et professionnelle.
+              <br /><br />
+              Ahiyoyo combine solutions logistiques, accompagnement opérationnel, appui commercial et digital pour
+              fluidifier les échanges entre l'Afrique et le reste du monde.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:1">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">À qui s'adresse Ahiyoyo ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <div class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              <p class="mb-3">Ahiyoyo s'adresse notamment à :</p>
+              <ul class="space-y-1.5 mb-3">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Entrepreneurs et e-commerçants</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>PME, commerçants et grossistes</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Artisans et producteurs locaux</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Exportateurs agroalimentaires ou industriels</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Importateurs débutants ou expérimentés</li>
+              </ul>
+              <p>Nos services s'adaptent aux opérations ponctuelles comme aux flux commerciaux récurrents.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:2">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Dans quelles zones Ahiyoyo opère-t-il ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Ahiyoyo opère principalement en Afrique de l'Ouest et connecte la région avec la Chine, l'Europe et
+              d'autres pays africains. Les corridors sont étendus progressivement selon les besoins clients.
+            </p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRANSPORT & EXPÉDITION ================= -->
+<section id="transport" class="py-10 md:py-14 bg-paperAlt scroll-mt-20">
+  <div class="max-w-3xl mx-auto px-5 md:px-6">
+    <div class="mb-8 reveal in-view">
+      <span class="stamp stamp-amber mb-4">02 — Transport & Expédition</span>
+    </div>
+
+    <div class="waybill divide-y divide-ink/5 reveal-stagger in-view">
+
+      <details class="faq-item group" style="--i:0">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Quels types de transport propose Ahiyoyo ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <div class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              <p class="mb-3">Ahiyoyo propose une offre logistique multimodale :</p>
+              <ul class="space-y-2 mb-3">
+                <li>🚢 <strong class="text-ink">Maritime</strong> — volumes moyens à importants (groupage ou conteneur), optimisation des coûts.</li>
+                <li>✈️ <strong class="text-ink">Aérien</strong> — expéditions urgentes, sensibles ou à faible volume.</li>
+                <li>🚚 <strong class="text-ink">Terrestre</strong> — acheminement régional, cross-border, trajets ports–entrepôts–clients.</li>
+              </ul>
+              <p>Ces solutions peuvent être combinées pour une logistique intégrée.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:1">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Puis-je expédier de petites quantités ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Oui. Grâce au groupage (consolidation), Ahiyoyo permet d'expédier même de petites quantités à des
+              tarifs accessibles.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:2">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Quels types de marchandises sont acceptés ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <div class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              <p class="mb-3">Ahiyoyo prend en charge la majorité des marchandises commerciales légales, notamment :</p>
+              <ul class="space-y-1.5 mb-3">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Textiles et habillement</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Électronique et accessoires</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Articles ménagers et biens de consommation</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Produits industriels et équipements</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Produits agroalimentaires secs (selon réglementation)</li>
+              </ul>
+              <p class="text-postal">⚠️ Certains produits peuvent être soumis à restrictions ou autorisations spécifiques.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:3">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Les articles personnels sont-ils acceptés ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Non. Ahiyoyo est orienté exclusivement vers les marchandises commerciales, afin de garantir la
+              conformité et la fluidité des opérations.
+            </p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= TARIFS & PAIEMENTS ================= -->
+<section id="tarifs-paiements" class="py-10 md:py-14 scroll-mt-20">
+  <div class="max-w-3xl mx-auto px-5 md:px-6">
+    <div class="mb-8 reveal in-view">
+      <span class="stamp mb-4">03 — Tarifs & Paiements</span>
+    </div>
+
+    <div class="waybill divide-y divide-ink/5 reveal-stagger in-view">
+
+      <details class="faq-item group" style="--i:0">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Comment sont calculés les tarifs ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <div class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              <p class="mb-3">Les tarifs sont déterminés en fonction :</p>
+              <ul class="space-y-1.5 mb-3">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>du volume (CBM) ou du poids</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>du mode de transport (mer, air, terre)</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>de l'origine et de la destination</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>des services inclus (douane, livraison, stockage, accompagnement)</li>
+              </ul>
+              <p>Chaque devis est clair, détaillé et validé avant expédition.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:1">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Y a-t-il des frais cachés ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Non. Ahiyoyo applique une tarification transparente. Tous les coûts sont communiqués à l'avance.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:2">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Quels moyens de paiement sont acceptés ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <div class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              <p class="mb-2">Ahiyoyo accepte :</p>
+              <ul class="space-y-1.5">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Paiements mobiles (selon le pays)</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Virements bancaires</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Autres moyens de paiement locaux sécurisés</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SUIVI & SÉCURITÉ ================= -->
+<section id="suivi-securite" class="py-10 md:py-14 bg-paperAlt scroll-mt-20">
+  <div class="max-w-3xl mx-auto px-5 md:px-6">
+    <div class="mb-8 reveal in-view">
+      <span class="stamp stamp-amber mb-4">04 — Suivi & Sécurité</span>
+    </div>
+
+    <div class="waybill divide-y divide-ink/5 reveal-stagger in-view">
+
+      <details class="faq-item group" style="--i:0">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Puis-je suivre mon expédition ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Oui. Chaque expédition bénéficie d'un suivi en temps réel, accessible via votre espace client.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:1">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Mes marchandises sont-elles sécurisées ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Oui. Les marchandises sont identifiées et étiquetées, contrôlées et suivies à chaque étape du
+              processus logistique.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:2">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Que se passe-t-il en cas de retard ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              En cas de retard exceptionnel, Ahiyoyo informe le client, explique la situation et accompagne
+              jusqu'à la résolution.
+            </p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= DOUANE & CONFORMITÉ ================= -->
+<section id="douane" class="py-10 md:py-14 scroll-mt-20">
+  <div class="max-w-3xl mx-auto px-5 md:px-6">
+    <div class="mb-8 reveal in-view">
+      <span class="stamp mb-4">05 — Douane & Conformité</span>
+    </div>
+
+    <div class="waybill divide-y divide-ink/5 reveal-stagger in-view">
+
+      <details class="faq-item group" style="--i:0">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Ahiyoyo s'occupe-t-il du dédouanement ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Oui. Ahiyoyo accompagne ses clients sur les formalités douanières, la conformité documentaire et la
+              coordination avec les acteurs locaux.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:1">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Quels documents dois-je fournir ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <div class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              <p class="mb-3">Selon la marchandise, il peut être demandé :</p>
+              <ul class="space-y-1.5">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Une facture commerciale</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Une description précise des produits</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>Des photos claires hors carton</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amberDeep text-[5px] mt-2.5 flex-shrink-0"></i>D'autres documents réglementaires spécifiques</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPORT & VENTE À L'INTERNATIONAL ================= -->
+<section id="export" class="py-10 md:py-14 bg-paperAlt scroll-mt-20">
+  <div class="max-w-3xl mx-auto px-5 md:px-6">
+    <div class="mb-8 reveal in-view">
+      <span class="stamp stamp-amber mb-4">06 — Export & Vente à l'international</span>
+    </div>
+
+    <div class="waybill divide-y divide-ink/5 reveal-stagger in-view">
+
+      <details class="faq-item group" style="--i:0">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Comment Ahiyoyo accompagne-t-il les exportateurs ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <div class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              <p class="mb-3">Ahiyoyo propose un accompagnement export global :</p>
+              <ul class="space-y-2">
+                <li>🌍 <strong class="text-ink">Marketplaces internationales</strong> — structuration des offres et logistique e-commerce.</li>
+                <li>📦 <strong class="text-ink">Expéditions B2C et B2B</strong> — vers clients finaux ou acheteurs pro.</li>
+                <li>🤝 <strong class="text-ink">Représentation B2B</strong> — prospection, mise en relation acheteurs.</li>
+                <li>📑 <strong class="text-ink">Contrats B2B</strong> — volumes, délais, conditions logistiques.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:1">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Ahiyoyo se limite-t-il uniquement à la logistique ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Non. Ahiyoyo agit comme un facilitateur de commerce international, combinant logistique,
+              accompagnement commercial et structuration export.
+            </p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPTE & ASSISTANCE ================= -->
+<section id="compte" class="py-10 md:py-14 scroll-mt-20">
+  <div class="max-w-3xl mx-auto px-5 md:px-6">
+    <div class="mb-8 reveal in-view">
+      <span class="stamp mb-4">07 — Compte & Assistance</span>
+    </div>
+
+    <div class="waybill divide-y divide-ink/5 reveal-stagger in-view">
+
+      <details class="faq-item group" style="--i:0">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Dois-je créer un compte pour expédier ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Oui. Le compte Ahiyoyo permet le suivi des expéditions, l'historique des opérations et un
+              accompagnement personnalisé.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:1">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Comment contacter le support Ahiyoyo ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Le support Ahiyoyo est accessible via WhatsApp, email et le site web Ahiyoyo.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:2">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Le support est-il réactif ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Oui. Ahiyoyo propose un support humain, professionnel et orienté solutions.
+            </p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUESTIONS FRÉQUENTES ================= -->
+<section id="frequentes" class="py-10 md:py-14 bg-paperAlt scroll-mt-20">
+  <div class="max-w-3xl mx-auto px-5 md:px-6">
+    <div class="mb-8 reveal in-view">
+      <span class="stamp stamp-amber mb-4">08 — Questions fréquentes</span>
+    </div>
+
+    <div class="waybill divide-y divide-ink/5 reveal-stagger in-view">
+
+      <details class="faq-item group" style="--i:0">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Puis-je importer et exporter en même temps ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Oui. Ahiyoyo gère les opérations d'import et d'export, en B2C comme en B2B.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:1">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Ahiyoyo est-il adapté aux débutants ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <p class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7">
+              Oui. Ahiyoyo est conçu pour être accessible, guidé et structuré, même sans expérience préalable.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item group" style="--i:2">
+        <summary class="flex items-center justify-between gap-4 p-6 md:p-7">
+          <span class="font-display font-semibold text-base md:text-lg">Pourquoi choisir Ahiyoyo ?</span>
+          <i class="fa-solid fa-chevron-down chevron text-amberDeep flex-shrink-0"></i>
+        </summary>
+        <div class="faq-answer">
+          <div class="faq-answer-inner px-6 md:px-7">
+            <ul class="text-slate text-sm md:text-base leading-relaxed pb-6 md:pb-7 space-y-2">
+              <li>✔ Solutions multimodales (mer, air, terre)</li>
+              <li>✔ Import & export B2C / B2B</li>
+              <li>✔ Suivi en temps réel</li>
+              <li>✔ Accompagnement logistique, commercial et digital</li>
+              <li>✔ Expertise Afrique – international</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA CONTACT ================= -->
+<section class="py-16 md:py-24 bg-navy text-white relative overflow-hidden">
+  <div class="grain"></div>
+  <div class="max-w-3xl mx-auto px-5 md:px-6 text-center relative reveal in-view">
+    <span class="stamp stamp-ghost mb-7">Besoin d'aide ?</span>
+    <h2 class="text-2xl md:text-4xl font-display font-bold mb-5">Notre équipe répond rapidement et vous guide étape par étape.</h2>
+    <div class="flex items-center justify-center gap-4 flex-wrap mt-9">
+      <a href="mailto:support@ahiyoyo.com" class="btn-primary bg-amber text-ink font-semibold px-8 py-4 rounded-full text-sm md:text-base">
+        Nous contacter
+      </a>
+      <a href="index.html#suivi" class="btn-ghost border border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 text-sm md:text-base">
+        Suivre un colis
+      </a>
+    </div>
+    <div class="mt-12 flex items-center justify-center gap-8 md:gap-12 text-sm text-white/60 flex-wrap font-mono-tag text-xs">
+      <div><i class="fa-solid fa-phone text-amber mr-2"></i>+229 01 91 08 41 41</div>
+      <div><i class="fa-solid fa-envelope text-amber mr-2"></i>support@ahiyoyo.com</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-navy text-white py-14 md:py-20">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+
+    <div class="grid grid-cols-1 md:grid-cols-[1.3fr_1.3fr_1fr] gap-10 md:gap-8">
+
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <img src="ahiyoyo.png" alt="Ahiyoyo" class="h-8 w-auto" />
+        </div>
+        <p class="text-white/45 text-sm leading-relaxed max-w-xs mb-6">
+          Votre partenaire pour acheter, vendre et expédier entre l'Afrique et l'international. Rapide, sûr et transparent.
+        </p>
+        <h4 class="font-mono-tag text-[11px] font-semibold text-white/70 mb-3">Service client</h4>
+        <ul class="space-y-2 text-sm text-white/60 font-mono-tag text-xs">
+          <li><i class="fa-solid fa-phone text-amber mr-2"></i>+229 01 91 08 41 41</li>
+          <li><i class="fa-solid fa-envelope text-amber mr-2"></i>support@ahiyoyo.com</li>
+          <li><i class="fa-solid fa-envelope text-amber mr-2"></i>contactahiyoyo@gmail.com</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-mono-tag text-[11px] font-semibold text-white/70 mb-4">Nos agences</h4>
+        <ul class="space-y-5 text-sm text-white/60">
+          <li>
+            <p class="font-display font-semibold text-white/85 mb-1">🇧🇯 Bénin</p>
+            <p class="leading-relaxed">Gbégamey, avant dernier von avant le carrefour Kossi en prenant le trafic local en quittant l'étoile Rouge, Cotonou</p>
+            <p class="mt-1 font-mono-tag text-xs">+229 01 91 08 41 41</p>
+          </li>
+          <li>
+            <p class="font-display font-semibold text-white/85 mb-1">🇹🇬 Togo</p>
+            <p class="leading-relaxed">Zone administrative, Tokouin, Lomé</p>
+            <p class="mt-1 font-mono-tag text-xs">+228 71 53 18 42</p>
+          </li>
+          <li>
+            <p class="font-display font-semibold text-white/85 mb-1">🇨🇮 Côte d'Ivoire</p>
+            <p class="leading-relaxed">Gbagba Lot 50, Quartier Savane, Bingerville, Abidjan</p>
+            <p class="mt-1 font-mono-tag text-xs">+225 07 13 59 37 75</p>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-mono-tag text-[11px] font-semibold text-white/70 mb-4">Liens utiles</h4>
+        <ul class="space-y-3 text-sm text-white/60">
+          <li><a href="https://ahiyoyo.com/comment-ca-marche/" class="hover:text-white transition">Comment ça marche</a></li>
+          <li><a href="faq.html" class="hover:text-white transition">Foire aux questions (FAQ)</a></li>
+          <li><a href="https://ahiyoyo.com/cgu-logistique/" class="hover:text-white transition">Conditions d'utilisation logistique</a></li>
+          <li><a href="https://ahiyoyo.com/confidentialite/" class="hover:text-white transition">Politique de confidentialité</a></li>
+          <li><a href="https://ahiyoyo.com/cga" class="hover:text-white transition">Conditions générales d'achat</a></li>
+          <li><a href="https://ahiyoyo.com/mentions-legales/" class="hover:text-white transition">Mentions légales</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="sep-soft-dark mt-12 md:mt-16"></div>
+    <div class="pt-6 md:pt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <p class="text-white/40 text-sm">
+        © 2025 <a href="https://ahiyoyo.com/confidentialite/" class="hover:text-white transition">NEW MARKETS TECHNOLOGIES</a>. Tous droits réservés.
+      </p>
+      <div class="flex gap-5">
+        <a href="#" class="text-white/40 hover:text-white transition"><i class="fa-brands fa-instagram text-lg"></i></a>
+        <a href="#" class="text-white/40 hover:text-white transition"><i class="fa-brands fa-facebook text-lg"></i></a>
+        <a href="#" class="text-white/40 hover:text-white transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
+        <a href="#" class="text-white/40 hover:text-white transition"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+  // Ferme les autres questions ouvertes dans le même bloc pour un accordéon plus propre
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('toggle', () => {
+      if (item.open) {
+        const container = item.closest('.waybill');
+        container.querySelectorAll('.faq-item').forEach(other => {
+          if (other !== item) other.open = false;
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
