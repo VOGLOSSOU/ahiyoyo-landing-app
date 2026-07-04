@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ahiyoyo — Vos colis, livrés d'Afrique vers le monde</title>
+<title>Ahiyoyo — Achetez, vendez et expédiez à l'international depuis l'Afrique</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -140,6 +140,9 @@
     position: absolute; inset: 0; pointer-events: none; opacity: .035; mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+
+  .price-row { display: flex; align-items: baseline; justify-content: space-between; }
+  .price-row + .price-row { margin-top: .85rem; padding-top: .85rem; border-top: 1px dashed rgba(20,22,31,.14); }
 </style>
 </head>
 
@@ -155,11 +158,11 @@
     <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate">
       <a href="#fonctionnalites" class="hover:text-ink transition-colors">Services</a>
       <a href="#suivi" class="hover:text-ink transition-colors">Suivi</a>
-      <a href="#temoignages" class="hover:text-ink transition-colors">Témoignages</a>
       <a href="#tarifs" class="hover:text-ink transition-colors">Tarifs</a>
+      <a href="#temoignages" class="hover:text-ink transition-colors">Témoignages</a>
     </div>
 
-    <a href="#contact" class="btn-primary bg-ink text-white text-sm font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full whitespace-nowrap">
+    <a href="#suivi" class="btn-primary bg-ink text-white text-sm font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full whitespace-nowrap">
       Suivre un colis
     </a>
   </div>
@@ -172,14 +175,14 @@
     <div class="flex flex-col gap-12 md:flex-row md:items-center md:gap-14">
 
       <div class="flex-1 reveal in-view">
-        <span class="stamp stamp-amber mb-6"><span class="stamp-dot"></span>Achat & vente à l'international</span>
+        <span class="stamp stamp-amber mb-6"><span class="stamp-dot"></span>Achat, sourcing & expédition</span>
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.08] mb-6">
-          Achetez et vendez<br />
-          <span class="text-amberDeep">à l'international<br />depuis l'Afrique.</span>
+          Achetez, vendez<br />
+          <span class="text-amberDeep">et expédiez<br />depuis l'Afrique.</span>
         </h1>
         <p class="text-slate text-base md:text-lg leading-relaxed mb-9 max-w-md">
-          Importez, exportez et suivez vos colis entre l'Afrique de l'Ouest et l'international,
-          avec un tarif clair dès le départ et un suivi qui ne vous laisse jamais dans le flou.
+          Sourcing en Chine, vérification produit, paiement fournisseur et transport groupé :
+          Ahiyoyo s'occupe de tout, du premier devis jusqu'à la livraison, avec des tarifs clairs dès le départ.
         </p>
         <div class="flex gap-3 flex-wrap">
           <a href="#suivi" class="btn-primary bg-amber text-ink font-semibold px-7 py-3.5 rounded-full text-sm">
@@ -192,11 +195,12 @@
 
         <div class="flex items-center gap-3 mt-9 text-sm text-slate">
           <div class="flex -space-x-2">
-            <div class="w-8 h-8 rounded-full bg-white border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇨🇮</div>
             <div class="w-8 h-8 rounded-full bg-white border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇧🇯</div>
             <div class="w-8 h-8 rounded-full bg-white border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇹🇬</div>
+            <div class="w-8 h-8 rounded-full bg-white border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇨🇮</div>
+            <div class="w-8 h-8 rounded-full bg-white border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇨🇳</div>
           </div>
-          <span>Actif en Côte d'Ivoire, Bénin, Togo</span>
+          <span>Agences au Bénin, Togo, Côte d'Ivoire — sourcing en Chine</span>
         </div>
       </div>
 
@@ -251,16 +255,16 @@
   </div>
 </section>
 
-<!-- ================= TRUST BAR ================= -->
+<!-- ================= CORRIDORS ================= -->
 <section class="py-10 md:py-14 bg-paperAlt" style="box-shadow: 0 -1px 0 rgba(20,22,31,.07), 0 1px 0 rgba(20,22,31,.07);">
   <div class="max-w-6xl mx-auto px-5 md:px-6 text-center reveal">
-    <p class="font-mono-tag text-[11px] font-semibold text-slate mb-7">NOUS LIVRONS VOS COLIS VERS</p>
+    <p class="font-mono-tag text-[11px] font-semibold text-slate mb-7">NOS CORRIDORS ACTIFS</p>
     <div class="flex items-center justify-center gap-8 md:gap-16 flex-wrap">
-      <span class="text-ink font-semibold text-lg font-display"><i class="fa-solid fa-location-dot text-amberDeep mr-2 text-base"></i>France</span>
       <span class="text-ink font-semibold text-lg font-display"><i class="fa-solid fa-location-dot text-amberDeep mr-2 text-base"></i>Chine</span>
-      <span class="text-ink font-semibold text-lg font-display"><i class="fa-solid fa-location-dot text-amberDeep mr-2 text-base"></i>États-Unis</span>
-      <span class="text-ink font-semibold text-lg font-display hidden sm:inline"><i class="fa-solid fa-location-dot text-amberDeep mr-2 text-base"></i>Canada</span>
-      <span class="text-ink font-semibold text-lg font-display hidden md:inline"><i class="fa-solid fa-location-dot text-amberDeep mr-2 text-base"></i>Japon</span>
+      <span class="text-ink font-semibold text-lg font-display"><i class="fa-solid fa-location-dot text-amberDeep mr-2 text-base"></i>France</span>
+      <span class="text-ink font-semibold text-lg font-display"><i class="fa-solid fa-location-dot text-amberDeep mr-2 text-base"></i>Bénin</span>
+      <span class="text-ink font-semibold text-lg font-display hidden sm:inline"><i class="fa-solid fa-location-dot text-amberDeep mr-2 text-base"></i>Togo</span>
+      <span class="text-ink font-semibold text-lg font-display hidden md:inline"><i class="fa-solid fa-location-dot text-amberDeep mr-2 text-base"></i>Côte d'Ivoire</span>
     </div>
   </div>
 </section>
@@ -275,14 +279,14 @@
         <p class="text-slate text-xs mt-1">Côte d'Ivoire, Bénin, Togo</p>
       </div>
       <div class="text-center">
-        <p class="font-display font-bold text-3xl md:text-4xl text-ink mb-1">5+</p>
-        <p class="font-mono-tag text-[11px] font-semibold text-slate uppercase tracking-wider">Pays desservis</p>
-        <p class="text-slate text-xs mt-1">Europe, Asie, Amérique</p>
+        <p class="font-display font-bold text-3xl md:text-4xl text-ink mb-1">2</p>
+        <p class="font-mono-tag text-[11px] font-semibold text-slate uppercase tracking-wider">Corridors internationaux</p>
+        <p class="text-slate text-xs mt-1">Chine et France</p>
       </div>
       <div class="text-center">
         <p class="font-display font-bold text-3xl md:text-4xl text-amberDeep mb-1">100%</p>
         <p class="font-mono-tag text-[11px] font-semibold text-slate uppercase tracking-wider">Suivi en ligne</p>
-        <p class="text-slate text-xs mt-1">Transparence totale</p>
+        <p class="text-slate text-xs mt-1">Depuis votre espace client</p>
       </div>
       <div class="text-center">
         <p class="font-display font-bold text-3xl md:text-4xl text-ink mb-1">24/7</p>
@@ -301,8 +305,8 @@
       <div class="flex-1 reveal">
         <span class="stamp mb-7">Le constat</span>
         <h2 class="text-2xl md:text-3xl font-display font-semibold leading-snug">
-          Envoyer un colis international depuis l'Afrique reste un parcours du combattant :
-          tarifs opaques, suivi incertain, pertes et retards.
+          Acheter et faire venir sa marchandise depuis l'international reste un parcours du combattant :
+          fournisseurs peu fiables, tarifs opaques, suivi incertain.
         </h2>
       </div>
 
@@ -311,11 +315,20 @@
           <div class="space-y-6">
             <div class="flex items-start gap-4">
               <div class="w-10 h-10 rounded-full bg-postal/10 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-user-slash text-postal"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-semibold mb-1">Fournisseurs peu fiables</h3>
+                <p class="text-slate text-sm">Difficile de vérifier la qualité et le sérieux d'un fournisseur à distance.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-postal/10 flex items-center justify-center flex-shrink-0">
                 <i class="fa-solid fa-clipboard-question text-postal"></i>
               </div>
               <div>
                 <h3 class="font-display font-semibold mb-1">Tarifs non clairs</h3>
-                <p class="text-slate text-sm">Prix qui changent, frais cachés, pas de devis en ligne.</p>
+                <p class="text-slate text-sm">Prix qui changent, frais cachés, pas de devis clair dès le départ.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
@@ -324,16 +337,7 @@
               </div>
               <div>
                 <h3 class="font-display font-semibold mb-1">Suivi incertain</h3>
-                <p class="text-slate text-sm">Plusieurs jours sans nouvelles de votre colis.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full bg-postal/10 flex items-center justify-center flex-shrink-0">
-                <i class="fa-solid fa-box-open text-postal"></i>
-              </div>
-              <div>
-                <h3 class="font-display font-semibold mb-1">Risque de perte</h3>
-                <p class="text-slate text-sm">Colis égarés ou endommagés sans compensation.</p>
+                <p class="text-slate text-sm">Plusieurs jours sans nouvelles de sa commande ou de son colis.</p>
               </div>
             </div>
           </div>
@@ -360,51 +364,57 @@
   <div class="max-w-6xl mx-auto px-5 md:px-6">
 
     <div class="text-center mb-14 md:mb-16 reveal">
-      <span class="stamp stamp-amber mb-6">Fonctionnement</span>
+      <span class="stamp stamp-amber mb-6">Comment ça marche</span>
       <p class="text-slate text-base md:text-lg max-w-xl mx-auto">
-        Envoyer un colis avec Ahiyoyo, c'est simple et sécurisé, en trois étapes.
+        Envoyez-nous vos besoins, notre équipe vous guide jusqu'à la livraison finale.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 reveal-stagger">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-4 reveal-stagger">
 
-      <div class="waybill p-7 md:p-8 lift">
-        <span class="font-mono-tag text-amberDeep text-xs font-semibold mb-5 block">N° 01</span>
-        <h3 class="font-display font-semibold text-lg mb-3">Réservez votre envoi</h3>
-        <p class="text-slate text-sm leading-relaxed">
-          Choisissez un mode d'expédition, indiquez le poids et la destination. Obtenez un devis clair instantanément.
-        </p>
+      <div class="waybill p-6 md:p-6 lift">
+        <span class="font-mono-tag text-amberDeep text-xs font-semibold mb-4 block">N° 01</span>
+        <h3 class="font-display font-semibold text-base mb-2">Demande</h3>
+        <p class="text-slate text-sm leading-relaxed">Vous envoyez le lien, la photo, la quantité ou les détails du produit.</p>
       </div>
 
-      <div class="waybill p-7 md:p-8 lift">
-        <span class="font-mono-tag text-amberDeep text-xs font-semibold mb-5 block">N° 02</span>
-        <h3 class="font-display font-semibold text-lg mb-3">Déposez votre colis</h3>
-        <p class="text-slate text-sm leading-relaxed">
-          Déposez-le dans un de nos points relais. Nous prenons en charge l'emballage, l'étiquetage et le transport.
-        </p>
+      <div class="waybill p-6 md:p-6 lift">
+        <span class="font-mono-tag text-amberDeep text-xs font-semibold mb-4 block">N° 02</span>
+        <h3 class="font-display font-semibold text-base mb-2">Devis</h3>
+        <p class="text-slate text-sm leading-relaxed">Ahiyoyo estime les coûts d'achat, le transport, les délais et les conditions.</p>
       </div>
 
-      <div class="waybill p-7 md:p-8 lift">
-        <span class="font-mono-tag text-amberDeep text-xs font-semibold mb-5 block">N° 03</span>
-        <h3 class="font-display font-semibold text-lg mb-3">Suivez en temps réel</h3>
-        <p class="text-slate text-sm leading-relaxed">
-          Suivez votre colis en direct sur le tableau de bord. Vous êtes notifié à chaque étape jusqu'à la livraison.
-        </p>
+      <div class="waybill p-6 md:p-6 lift">
+        <span class="font-mono-tag text-amberDeep text-xs font-semibold mb-4 block">N° 03</span>
+        <h3 class="font-display font-semibold text-base mb-2">Paiement</h3>
+        <p class="text-slate text-sm leading-relaxed">Vous validez, puis la commande est lancée auprès des fournisseurs.</p>
+      </div>
+
+      <div class="waybill p-6 md:p-6 lift">
+        <span class="font-mono-tag text-amberDeep text-xs font-semibold mb-4 block">N° 04</span>
+        <h3 class="font-display font-semibold text-base mb-2">Préparation</h3>
+        <p class="text-slate text-sm leading-relaxed">Réception, consolidation, emballage, documentation et expédition.</p>
+      </div>
+
+      <div class="waybill p-6 md:p-6 lift">
+        <span class="font-mono-tag text-amberDeep text-xs font-semibold mb-4 block">N° 05</span>
+        <h3 class="font-display font-semibold text-base mb-2">Livraison</h3>
+        <p class="text-slate text-sm leading-relaxed">Suivi jusqu'au retrait ou à la livraison finale.</p>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ================= FONCTIONNALITÉS ================= -->
+<!-- ================= NOS SERVICES ================= -->
 <section id="fonctionnalites" class="py-16 md:py-28 bg-paperAlt">
   <div class="max-w-6xl mx-auto px-5 md:px-6">
 
     <div class="text-center mb-14 md:mb-16 reveal">
-      <span class="stamp mb-6">Fonctionnalités</span>
-      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Tout pour vos envois</h2>
+      <span class="stamp mb-6">Nos services</span>
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Ce que vous pouvez faire avec Ahiyoyo</h2>
       <p class="text-slate text-base md:text-lg max-w-xl mx-auto">
-        Une plateforme complète pour expédier, suivre et gérer vos colis.
+        Un accompagnement complet, du sourcing jusqu'à la livraison finale.
       </p>
     </div>
 
@@ -414,45 +424,111 @@
         <div class="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
           <i class="fa-solid fa-magnifying-glass text-amber"></i>
         </div>
-        <h3 class="font-display font-semibold mb-2">Suivi en temps réel</h3>
-        <p class="text-slate text-sm leading-relaxed">Suivez votre colis à chaque étape avec une carte interactive et des notifications.</p>
+        <h3 class="font-display font-semibold mb-2">Achat & sourcing</h3>
+        <p class="text-slate text-sm leading-relaxed">Recherche de fournisseurs, devis, négociation et assistance achat.</p>
       </div>
 
       <div class="bg-paper rounded-2xl p-6 lift">
         <div class="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
-          <i class="fa-solid fa-calculator text-amber"></i>
+          <i class="fa-solid fa-clipboard-check text-amber"></i>
+        </div>
+        <h3 class="font-display font-semibold mb-2">Vérification produit</h3>
+        <p class="text-slate text-sm leading-relaxed">Contrôle qualité, prise et transmission des photos, préparation à l'expédition.</p>
+      </div>
+
+      <div class="bg-paper rounded-2xl p-6 lift">
+        <div class="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-money-check-dollar text-amber"></i>
+        </div>
+        <h3 class="font-display font-semibold mb-2">Paiement fournisseur</h3>
+        <p class="text-slate text-sm leading-relaxed">Facilitation du paiement et suivi jusqu'à réception de la marchandise.</p>
+      </div>
+
+      <div class="bg-paper rounded-2xl p-6 lift">
+        <div class="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-plane-departure text-amber"></i>
+        </div>
+        <h3 class="font-display font-semibold mb-2">Fret aérien & maritime</h3>
+        <p class="text-slate text-sm leading-relaxed">Groupage, transport international, suivi et livraison selon vos délais.</p>
+      </div>
+
+      <div class="bg-paper rounded-2xl p-6 lift">
+        <div class="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-box-open text-amber"></i>
+        </div>
+        <h3 class="font-display font-semibold mb-2">Export & livraison</h3>
+        <p class="text-slate text-sm leading-relaxed">Envois depuis l'Afrique vers l'Europe et la Chine selon les corridors actifs.</p>
+      </div>
+
+      <div class="bg-paper rounded-2xl p-6 lift">
+        <div class="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-briefcase text-amber"></i>
+        </div>
+        <h3 class="font-display font-semibold mb-2">Voyage d'affaires</h3>
+        <p class="text-slate text-sm leading-relaxed">Accompagnement pour vos voyages professionnels en Chine.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= ESPACE CLIENT (outils numériques) ================= -->
+<section id="espace-client" class="py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+
+    <div class="text-center mb-14 md:mb-16 reveal">
+      <span class="stamp stamp-amber mb-6">Votre espace client</span>
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Tout piloter en ligne, en toute simplicité</h2>
+      <p class="text-slate text-base md:text-lg max-w-xl mx-auto">
+        Un espace client pensé pour suivre, payer et gérer vos commandes sans effort.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 reveal-stagger">
+
+      <div class="waybill rounded-2xl p-6 lift">
+        <div class="w-11 h-11 bg-amber/15 border border-amber/40 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-magnifying-glass text-amberDeep"></i>
+        </div>
+        <h3 class="font-display font-semibold mb-2">Suivi en temps réel</h3>
+        <p class="text-slate text-sm leading-relaxed">Suivez votre colis à chaque étape depuis votre tableau de bord.</p>
+      </div>
+
+      <div class="waybill rounded-2xl p-6 lift">
+        <div class="w-11 h-11 bg-amber/15 border border-amber/40 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-calculator text-amberDeep"></i>
         </div>
         <h3 class="font-display font-semibold mb-2">Calculateur de tarifs</h3>
-        <p class="text-slate text-sm leading-relaxed">Estimez le coût de votre envoi selon le poids, la destination et le mode.</p>
+        <p class="text-slate text-sm leading-relaxed">Estimez le coût de votre envoi selon le poids, le volume et la destination.</p>
       </div>
 
-      <div class="bg-paper rounded-2xl p-6 lift">
-        <div class="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
-          <i class="fa-solid fa-file-invoice text-amber"></i>
+      <div class="waybill rounded-2xl p-6 lift">
+        <div class="w-11 h-11 bg-amber/15 border border-amber/40 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-file-invoice text-amberDeep"></i>
         </div>
         <h3 class="font-display font-semibold mb-2">Facturation proforma</h3>
         <p class="text-slate text-sm leading-relaxed">Générez vos devis et factures en ligne avec validation par lien sécurisé.</p>
       </div>
 
-      <div class="bg-paper rounded-2xl p-6 lift">
-        <div class="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
-          <i class="fa-solid fa-credit-card text-amber"></i>
+      <div class="waybill rounded-2xl p-6 lift">
+        <div class="w-11 h-11 bg-amber/15 border border-amber/40 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-credit-card text-amberDeep"></i>
         </div>
         <h3 class="font-display font-semibold mb-2">Paiement en ligne</h3>
         <p class="text-slate text-sm leading-relaxed">Payez vos commandes via KkiaPay, Mobile Money ou carte bancaire.</p>
       </div>
 
-      <div class="bg-paper rounded-2xl p-6 lift">
-        <div class="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
-          <i class="fa-solid fa-bell text-amber"></i>
+      <div class="waybill rounded-2xl p-6 lift">
+        <div class="w-11 h-11 bg-amber/15 border border-amber/40 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-bell text-amberDeep"></i>
         </div>
         <h3 class="font-display font-semibold mb-2">Notifications</h3>
         <p class="text-slate text-sm leading-relaxed">Recevez des alertes par email et SMS à chaque changement de statut.</p>
       </div>
 
-      <div class="bg-paper rounded-2xl p-6 lift">
-        <div class="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
-          <i class="fa-solid fa-file-export text-amber"></i>
+      <div class="waybill rounded-2xl p-6 lift">
+        <div class="w-11 h-11 bg-amber/15 border border-amber/40 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-file-export text-amberDeep"></i>
         </div>
         <h3 class="font-display font-semibold mb-2">Export Excel / PDF</h3>
         <p class="text-slate text-sm leading-relaxed">Exportez vos bordereaux, factures et historiques en un clic.</p>
@@ -463,14 +539,15 @@
 </section>
 
 <!-- ================= SUIVI ================= -->
-<section id="suivi" class="py-16 md:py-24">
+<section id="suivi" class="py-16 md:py-24 bg-paperAlt">
   <div class="max-w-4xl mx-auto px-5 md:px-6">
 
     <div class="text-center mb-10 md:mb-12 reveal">
-      <span class="stamp stamp-amber mb-6">Suivi de colis</span>
+      <span class="stamp stamp-amber mb-6">Suivi de commande</span>
       <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Suivez votre envoi en direct</h2>
       <p class="text-slate text-base md:text-lg max-w-xl mx-auto">
-        Entrez votre numéro de suivi pour consulter le statut et l'historique de votre colis.
+        Entrez votre numéro de suivi pour consulter le statut et l'historique de votre commande,
+        de la validation du devis jusqu'à la livraison.
       </p>
     </div>
 
@@ -486,8 +563,86 @@
   </div>
 </section>
 
+<!-- ================= TARIFS ================= -->
+<section id="tarifs" class="py-16 md:py-24">
+  <div class="max-w-5xl mx-auto px-5 md:px-6">
+
+    <div class="text-center mb-14 md:mb-16 reveal">
+      <span class="stamp mb-6">Tarifs</span>
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Des tarifs clairs, sans surprise</h2>
+      <p class="text-slate text-base md:text-lg max-w-xl mx-auto">
+        Les kilos et volumes facturés sont confirmés après pesée. Les restrictions produit peuvent varier selon la catégorie.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 reveal-stagger mb-8">
+
+      <!-- Fret Aérien -->
+      <div class="waybill p-7 md:p-8">
+        <span class="stamp stamp-amber !py-1.5 !px-3 !text-[10px] mb-6 inline-block"><i class="fa-solid fa-plane text-[10px] mr-1"></i>Fret aérien — Chine → Afrique</span>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold">Standard</p>
+            <p class="text-slate text-xs mt-0.5">10 à 20 jours</p>
+          </div>
+          <p class="font-mono-tag font-bold text-lg">15 000 F<span class="text-xs text-slate font-normal">/kg</span></p>
+        </div>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold">Électroniques</p>
+            <p class="text-slate text-xs mt-0.5">environ 3 semaines</p>
+          </div>
+          <p class="font-mono-tag font-bold text-lg">17 000 F<span class="text-xs text-slate font-normal">/kg</span></p>
+        </div>
+        <p class="text-slate text-xs mt-6 leading-relaxed">Recommandé pour les colis urgents, les produits légers et les commandes de test.</p>
+      </div>
+
+      <!-- Fret Maritime -->
+      <div class="waybill p-7 md:p-8">
+        <span class="stamp stamp-amber !py-1.5 !px-3 !text-[10px] mb-6 inline-block"><i class="fa-solid fa-ship text-[10px] mr-1"></i>Fret maritime — Chine → Afrique</span>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold">1 à 9,99 CBM</p>
+            <p class="text-slate text-xs mt-0.5">≈ 90 jours</p>
+          </div>
+          <p class="font-mono-tag font-bold text-lg">250 000 F<span class="text-xs text-slate font-normal">/CBM</span></p>
+        </div>
+        <div class="price-row">
+          <div>
+            <p class="font-display font-semibold">À partir de 10 CBM</p>
+            <p class="text-slate text-xs mt-0.5">≈ 90 jours</p>
+          </div>
+          <p class="font-mono-tag font-bold text-lg">230 000 F<span class="text-xs text-slate font-normal">/CBM</span></p>
+        </div>
+        <p class="text-slate text-xs mt-6 leading-relaxed">Adapté aux produits volumineux. Minimum conseillé : 1 CBM selon le type de marchandise.</p>
+      </div>
+
+    </div>
+
+    <div class="text-center mb-8 reveal">
+      <span class="font-mono-tag text-[11px] font-semibold text-slate uppercase tracking-wider">Export depuis l'Afrique</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 reveal-stagger">
+      <div class="bg-paperAlt rounded-2xl p-6 border border-ink/8">
+        <h3 class="font-display font-semibold mb-1.5">Bénin ↔ Togo ↔ Côte d'Ivoire</h3>
+        <p class="text-slate text-sm leading-relaxed">Colis et marchandises sur le corridor Ouest Africain.</p>
+      </div>
+      <div class="bg-paperAlt rounded-2xl p-6 border border-ink/8">
+        <h3 class="font-display font-semibold mb-1.5">Afrique → Chine</h3>
+        <p class="text-slate text-sm leading-relaxed">Envois aériens indicatifs à partir de 10 000 F/kg.</p>
+      </div>
+      <div class="bg-paperAlt rounded-2xl p-6 border border-ink/8">
+        <h3 class="font-display font-semibold mb-1.5">Afrique → Paris</h3>
+        <p class="text-slate text-sm leading-relaxed">Envois aériens à partir de 10 000 F/kg.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ================= AVANTAGES ================= -->
-<section id="tarifs" class="py-16 md:py-24 bg-paperAlt">
+<section id="avantages" class="py-16 md:py-24 bg-paperAlt">
   <div class="max-w-5xl mx-auto px-5 md:px-6">
 
     <div class="text-center mb-14 md:mb-16 reveal">
@@ -502,8 +657,8 @@
           <i class="fa-solid fa-globe text-amberDeep text-lg"></i>
         </div>
         <div>
-          <h3 class="font-display font-semibold mb-1.5">Réseau international</h3>
-          <p class="text-slate text-sm leading-relaxed">Livraison vers la France, la Chine, et bien d'autres destinations.</p>
+          <h3 class="font-display font-semibold mb-1.5">Corridors actifs</h3>
+          <p class="text-slate text-sm leading-relaxed">Sourcing en Chine, livraison vers la France, et distribution entre le Bénin, le Togo et la Côte d'Ivoire.</p>
         </div>
       </div>
 
@@ -513,17 +668,17 @@
         </div>
         <div>
           <h3 class="font-display font-semibold mb-1.5">Tarifs transparents</h3>
-          <p class="text-slate text-sm leading-relaxed">Pas de frais cachés. Obtenez un devis en ligne en quelques secondes.</p>
+          <p class="text-slate text-sm leading-relaxed">Pas de frais cachés. Nos tarifs sont publiés et confirmés après pesée ou mesure du volume.</p>
         </div>
       </div>
 
       <div class="flex items-start gap-5">
         <div class="w-[52px] h-[52px] bg-amber/15 border border-amber/40 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <i class="fa-solid fa-shield-halved text-amberDeep text-lg"></i>
+          <i class="fa-solid fa-clipboard-check text-amberDeep text-lg"></i>
         </div>
         <div>
-          <h3 class="font-display font-semibold mb-1.5">Assurance incluse</h3>
-          <p class="text-slate text-sm leading-relaxed">Tous vos envois sont protégés contre la perte et les dommages.</p>
+          <h3 class="font-display font-semibold mb-1.5">Contrôle qualité systématique</h3>
+          <p class="text-slate text-sm leading-relaxed">Chaque commande est vérifiée avant expédition : photos, quantités et conformité.</p>
         </div>
       </div>
 
@@ -533,7 +688,7 @@
         </div>
         <div>
           <h3 class="font-display font-semibold mb-1.5">Multi-modes d'expédition</h3>
-          <p class="text-slate text-sm leading-relaxed">Aérien, maritime ou terrestre selon la destination et vos urgences.</p>
+          <p class="text-slate text-sm leading-relaxed">Aérien ou maritime selon la destination, le volume et vos urgences.</p>
         </div>
       </div>
 
@@ -553,7 +708,7 @@
         </div>
         <div>
           <h3 class="font-display font-semibold mb-1.5">Gestion administrative</h3>
-          <p class="text-slate text-sm leading-relaxed">Devis, commandes et factures automatiques. Exportez vos documents.</p>
+          <p class="text-slate text-sm leading-relaxed">Devis, commandes et factures automatiques. Exportez vos documents en un clic.</p>
         </div>
       </div>
 
@@ -563,7 +718,7 @@
 
 <!-- ================= TÉMOIGNAGES ================= -->
 <section id="temoignages" class="py-16 md:py-28">
-  <div class="max-w-6xl mx-auto px-5 md:px-6">
+  <div class="max-w-4xl mx-auto px-5 md:px-6">
 
     <div class="text-center mb-14 md:mb-20 reveal">
       <span class="stamp stamp-amber mb-6">Ils nous font confiance</span>
@@ -574,52 +729,28 @@
 
       <div class="waybill p-6 md:p-8 flex flex-col justify-between lift">
         <p class="text-ink/85 text-sm md:text-base leading-relaxed mb-6">
-          J'utilise Ahiyoyo pour envoyer mes marchandises vers la France. Les tarifs sont clairs, le suivi est précis et le service client est réactif. Je recommande vivement.
+          Grâce à Ahiyoyo, j'ai pu lister mes produits sur Jumia et Yango CI sans stress.
+          L'équipe gère la logistique, les paiements et les livraisons — moi je me concentre sur la production !
         </p>
         <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-ink flex items-center justify-center flex-shrink-0 text-amber font-display font-bold text-sm">KD</div>
+          <div class="w-11 h-11 rounded-full bg-ink flex items-center justify-center flex-shrink-0 text-amber font-display font-bold text-sm">DB</div>
           <div>
-            <p class="font-display font-semibold text-sm">Kouassi D.</p>
-            <p class="text-slate text-xs">Commerçant, Abidjan</p>
+            <p class="font-display font-semibold text-sm">Doris Bide</p>
+            <p class="text-slate text-xs">Fondatrice de BISKUITI, Cotonou, Bénin</p>
           </div>
         </div>
       </div>
 
       <div class="waybill p-6 md:p-8 flex flex-col justify-between lift">
         <p class="text-ink/85 text-sm md:text-base leading-relaxed mb-6">
-          Avant j'utilisais plusieurs prestataires, aujourd'hui tout est centralisé sur Ahiyoyo. Le tableau de bord est super pratique et la facturation est automatique.
-        </p>
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-ink flex items-center justify-center flex-shrink-0 text-amber font-display font-bold text-sm">AM</div>
-          <div>
-            <p class="font-display font-semibold text-sm">Aminata M.</p>
-            <p class="text-slate text-xs">E-commerce, Cotonou</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="waybill p-6 md:p-8 flex flex-col justify-between lift">
-        <p class="text-ink/85 text-sm md:text-base leading-relaxed mb-6">
-          La transparence du calculateur de tarifs est un vrai plus. Je sais exactement combien je vais payer avant d'expédier, sans surprise.
-        </p>
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-ink flex items-center justify-center flex-shrink-0 text-amber font-display font-bold text-sm">YS</div>
-          <div>
-            <p class="font-display font-semibold text-sm">Yao S.</p>
-            <p class="text-slate text-xs">Entrepreneur, Lomé</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="waybill p-6 md:p-8 flex flex-col justify-between lift">
-        <p class="text-ink/85 text-sm md:text-base leading-relaxed mb-6">
-          Le paiement en ligne est un gain de temps énorme. Je peux payer mes factures depuis mon bureau en quelques clics, tout est tracé.
+          Je m'approvisionne depuis la Chine grâce à Ahiyoyo. Les vérifications avant expédition
+          et la logistique abordable ont rendu mes importations beaucoup plus simples et rapides.
         </p>
         <div class="flex items-center gap-3">
           <div class="w-11 h-11 rounded-full bg-ink flex items-center justify-center flex-shrink-0 text-amber font-display font-bold text-sm">FB</div>
           <div>
-            <p class="font-display font-semibold text-sm">Fatou B.</p>
-            <p class="text-slate text-xs">Gestionnaire, Porto-Novo</p>
+            <p class="font-display font-semibold text-sm">Faizath Bouanra</p>
+            <p class="text-slate text-xs">Gérante de ROYAL SHOP, Cotonou, Bénin</p>
           </div>
         </div>
       </div>
@@ -634,10 +765,10 @@
   <div class="grain"></div>
   <div class="max-w-4xl mx-auto px-5 md:px-6 text-center relative reveal">
     <span class="stamp stamp-ghost mb-7">Contact</span>
-    <h2 class="text-3xl md:text-5xl font-display font-bold mb-5">Prêt à expédier ?</h2>
+    <h2 class="text-3xl md:text-5xl font-display font-bold mb-5">Prêt à lancer votre prochaine commande ?</h2>
     <p class="text-white/60 text-base md:text-lg mb-11 max-w-xl mx-auto">
-      Créez votre compte gratuitement et commencez à envoyer vos colis dès aujourd'hui.
-      Ou contactez-nous pour toute question.
+      Envoyez-nous vos besoins, notre équipe vous guide jusqu'à la livraison finale.
+      Créez votre compte gratuitement ou contactez-nous pour toute question.
     </p>
     <div class="flex items-center justify-center gap-4 flex-wrap">
       <a href="#" class="btn-primary bg-amber text-ink font-semibold px-8 py-4 rounded-full text-sm md:text-base">
