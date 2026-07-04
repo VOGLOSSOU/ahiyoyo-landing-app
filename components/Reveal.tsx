@@ -15,6 +15,9 @@ export default function Reveal({ children, stagger = false, className, delay = 0
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -27,11 +30,16 @@ export default function Reveal({ children, stagger = false, className, delay = 0
       { threshold: stagger ? 0.15 : 0.1, rootMargin: stagger ? "0px 0px -60px 0px" : "0px 0px -40px 0px" }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(node);
 
-    return () => observer.disconnect();
+    const fallbackTimer = window.setTimeout(() => {
+      setInView(true);
+    }, 180);
+
+    return () => {
+      window.clearTimeout(fallbackTimer);
+      observer.disconnect();
+    };
   }, [stagger]);
 
   return (
