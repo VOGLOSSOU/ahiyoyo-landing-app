@@ -1,109 +1,134 @@
 import Stamp from "./Stamp";
-import Waybill from "./Waybill";
 import Reveal from "./Reveal";
 
 export default function Pricing() {
   return (
-    <section id="tarifs" className="py-10 md:py-16">
-      <div className="max-w-5xl mx-auto px-5 md:px-6">
-        <div className="text-center mb-7 md:mb-8">
-          <Stamp className="mb-6">Tarifs</Stamp>
-          <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">Des tarifs clairs, sans surprise</h2>
-          <p className="text-slate text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Vous obtenez un accompagnement transparent, avec des estimations de coûts claires avant toute expédition.
-            Les tarifs peuvent varier selon le poids, le volume, le mode de transport et la nature du produit.
-          </p>
-        </div>
+    <section id="tarifs" className="py-12 md:py-20 bg-gradient-to-b from-paper to-paperAlt">
+      <div className="max-w-6xl mx-auto px-5 md:px-6">
+        {/* Header */}
+        <Reveal>
+          <div className="text-center mb-12 md:mb-14">
+            <Stamp className="mb-6">Tarifs</Stamp>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-5">Tarifs simples et transparents</h2>
+            <p className="text-slate text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+              Chaque devis est validé avant l'expédition. Pas de frais cachés, juste des prix justes et clairs.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 md:mb-7">
-          <div className="bg-paperAlt rounded-2xl p-5 border border-ink/8">
-            <p className="font-display font-semibold mb-1">Devis rapides</p>
-            <p className="text-slate text-sm">Obtenez une estimation avant de valider votre commande.</p>
+        {/* 3 points clés - Clean */}
+        <Reveal stagger>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mb-14 md:mb-16">
+            <div className="text-center">
+              <div className="w-12 h-12 rounded-full bg-amber/15 border border-amber/30 flex items-center justify-center mx-auto mb-4">
+                <i className="fa-solid fa-bolt text-amber text-lg" />
+              </div>
+              <h3 className="font-display font-semibold mb-2">Devis rapides</h3>
+              <p className="text-slate text-sm leading-relaxed">Estimation en quelques heures, avant de valider votre commande.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 rounded-full bg-amber/15 border border-amber/30 flex items-center justify-center mx-auto mb-4">
+                <i className="fa-solid fa-eye text-amber text-lg" />
+              </div>
+              <h3 className="font-display font-semibold mb-2">Transparence totale</h3>
+              <p className="text-slate text-sm leading-relaxed">Chaque coût est détaillé et expliqué. Zéro surprise.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 rounded-full bg-amber/15 border border-amber/30 flex items-center justify-center mx-auto mb-4">
+                <i className="fa-solid fa-handshake text-amber text-lg" />
+              </div>
+              <h3 className="font-display font-semibold mb-2">Support pro</h3>
+              <p className="text-slate text-sm leading-relaxed">Équipe réactive de la demande à la livraison.</p>
+            </div>
           </div>
-          <div className="bg-paperAlt rounded-2xl p-5 border border-ink/8">
-            <p className="font-display font-semibold mb-1">Prix transparents</p>
-            <p className="text-slate text-sm">Aucune surprise : chaque coût est expliqué avant expédition.</p>
-          </div>
-          <div className="bg-paperAlt rounded-2xl p-5 border border-ink/8">
-            <p className="font-display font-semibold mb-1">Support humain</p>
-            <p className="text-slate text-sm">Notre équipe vous guide jusqu’à la livraison finale.</p>
-          </div>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 mb-4 md:mb-5">
+        {/* Tarifs principaux - 2 colonnes épurées */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 mb-14 md:mb-16">
           {/* Fret Aérien */}
-          <Waybill className="p-7 md:p-8 bg-white">
-            <Stamp variant="amber" className="!py-1.5 !px-3 !text-[10px] mb-6 inline-block">
-              <i className="fa-solid fa-plane text-xs mr-1" />Fret aérien — Chine → Afrique
-            </Stamp>
-            <div className="rounded-2xl border border-ink/10 bg-paper p-4 mb-4">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="font-display font-semibold">Standard</p>
-                  <p className="text-slate text-xs mt-0.5">10 à 20 jours</p>
+          <Reveal>
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-amber/10 flex items-center justify-center">
+                  <i className="fa-solid fa-plane text-amber" />
                 </div>
-                <p className="font-mono-tag font-bold text-lg">15 000 F<span className="text-xs text-slate font-normal">/kg</span></p>
+                <h3 className="text-2xl font-display font-bold">Fret aérien</h3>
+              </div>
+              <p className="text-slate text-sm mb-6 leading-relaxed">Chine → Afrique. Parfait pour les colis urgents, produits légers et tests de marché.</p>
+              
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
+                  <div>
+                    <p className="font-display font-semibold">Standard</p>
+                    <p className="text-slate text-xs mt-1">10 à 20 jours</p>
+                  </div>
+                  <p className="font-mono-tag font-bold text-xl text-amber">15 000 F<span className="text-sm text-slate font-normal ml-1">/kg</span></p>
+                </div>
+                <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
+                  <div>
+                    <p className="font-display font-semibold">Électroniques</p>
+                    <p className="text-slate text-xs mt-1">≈ 3 semaines</p>
+                  </div>
+                  <p className="font-mono-tag font-bold text-xl text-amber">17 000 F<span className="text-sm text-slate font-normal ml-1">/kg</span></p>
+                </div>
               </div>
             </div>
-            <div className="rounded-2xl border border-ink/10 bg-paper p-4 mb-4">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="font-display font-semibold">Électroniques</p>
-                  <p className="text-slate text-xs mt-0.5">environ 3 semaines</p>
-                </div>
-                <p className="font-mono-tag font-bold text-lg">17 000 F<span className="text-xs text-slate font-normal">/kg</span></p>
-              </div>
-            </div>
-            <p className="text-slate text-sm mt-5 leading-relaxed">Recommandé pour les colis urgents, les produits légers et les commandes de test.</p>
-          </Waybill>
+          </Reveal>
 
           {/* Fret Maritime */}
-          <Waybill className="p-7 md:p-8 bg-white">
-            <Stamp variant="amber" className="!py-1.5 !px-3 !text-[10px] mb-6 inline-block">
-              <i className="fa-solid fa-ship text-xs mr-1" />Fret maritime — Chine → Afrique
-            </Stamp>
-            <div className="rounded-2xl border border-ink/10 bg-paper p-4 mb-4">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="font-display font-semibold">1 à 9,99 CBM</p>
-                  <p className="text-slate text-xs mt-0.5">≈ 90 jours</p>
+          <Reveal delay={100}>
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-amber/10 flex items-center justify-center">
+                  <i className="fa-solid fa-ship text-amber" />
                 </div>
-                <p className="font-mono-tag font-bold text-lg">250 000 F<span className="text-xs text-slate font-normal">/CBM</span></p>
+                <h3 className="text-2xl font-display font-bold">Fret maritime</h3>
+              </div>
+              <p className="text-slate text-sm mb-6 leading-relaxed">Chine → Afrique. Idéal pour les envois volumineux et marchandises lourdes.</p>
+              
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
+                  <div>
+                    <p className="font-display font-semibold">1 à 9,99 CBM</p>
+                    <p className="text-slate text-xs mt-1">≈ 90 jours</p>
+                  </div>
+                  <p className="font-mono-tag font-bold text-xl text-amber">250 000 F<span className="text-sm text-slate font-normal ml-1">/CBM</span></p>
+                </div>
+                <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
+                  <div>
+                    <p className="font-display font-semibold">À partir de 10 CBM</p>
+                    <p className="text-slate text-xs mt-1">≈ 90 jours</p>
+                  </div>
+                  <p className="font-mono-tag font-bold text-xl text-amber">230 000 F<span className="text-sm text-slate font-normal ml-1">/CBM</span></p>
+                </div>
               </div>
             </div>
-            <div className="rounded-2xl border border-ink/10 bg-paper p-4 mb-4">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="font-display font-semibold">À partir de 10 CBM</p>
-                  <p className="text-slate text-xs mt-0.5">≈ 90 jours</p>
-                </div>
-                <p className="font-mono-tag font-bold text-lg">230 000 F<span className="text-xs text-slate font-normal">/CBM</span></p>
-              </div>
+          </Reveal>
+        </div>
+
+        {/* Corridors */}
+        <Reveal>
+          <div className="mb-8">
+            <h3 className="font-display font-bold text-lg mb-6">Nos corridors actifs</h3>
+          </div>
+        </Reveal>
+
+        <Reveal stagger>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="p-5 rounded-xl border border-ink/8 bg-white hover:border-amber/40 transition-colors">
+              <h4 className="font-display font-semibold mb-2">Bénin ↔ Togo ↔ Côte d'Ivoire</h4>
+              <p className="text-slate text-sm">Corridor Ouest Africain. Colis et marchandises.</p>
             </div>
-            <p className="text-slate text-sm mt-5 leading-relaxed">Adapté aux produits volumineux. Minimum conseillé : 1 CBM selon le type de marchandise.</p>
-          </Waybill>
-        </div>
-
-        <div className="text-center mb-4 md:mb-5 pt-1">
-          <span className="inline-flex items-center rounded-full border border-ink/10 bg-paperAlt px-3 py-1.5 font-mono-tag text-[11px] font-semibold text-slate uppercase tracking-wider">
-            Export depuis l&apos;Afrique
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-          <div className="bg-paperAlt rounded-2xl p-6 border border-ink/8 shadow-sm">
-            <h3 className="font-display font-semibold mb-1.5">Bénin ↔ Togo ↔ Côte d&apos;Ivoire</h3>
-            <p className="text-slate text-sm leading-relaxed">Colis et marchandises sur le corridor Ouest Africain.</p>
+            <div className="p-5 rounded-xl border border-ink/8 bg-white hover:border-amber/40 transition-colors">
+              <h4 className="font-display font-semibold mb-2">Afrique → Chine</h4>
+              <p className="text-slate text-sm">Envois aériens à partir de 10 000 F/kg.</p>
+            </div>
+            <div className="p-5 rounded-xl border border-ink/8 bg-white hover:border-amber/40 transition-colors">
+              <h4 className="font-display font-semibold mb-2">Afrique → Paris</h4>
+              <p className="text-slate text-sm">Envois aériens à partir de 10 000 F/kg.</p>
+            </div>
           </div>
-          <div className="bg-paperAlt rounded-2xl p-6 border border-ink/8 shadow-sm">
-            <h3 className="font-display font-semibold mb-1.5">Afrique → Chine</h3>
-            <p className="text-slate text-sm leading-relaxed">Envois aériens indicatifs à partir de 10 000 F/kg.</p>
-          </div>
-          <div className="bg-paperAlt rounded-2xl p-6 border border-ink/8 shadow-sm">
-            <h3 className="font-display font-semibold mb-1.5">Afrique → Paris</h3>
-            <p className="text-slate text-sm leading-relaxed">Envois aériens à partir de 10 000 F/kg.</p>
-          </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
