@@ -7,8 +7,12 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [legalOpen, setLegalOpen] = useState(false);
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setLegalOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-paper/90 backdrop-blur-sm" style={{ boxShadow: "0 1px 0 rgba(20,22,31,.08)" }}>
@@ -21,10 +25,24 @@ export default function Navbar() {
           <Link href="/suivi" className="hover:text-ink transition-colors">Suivi</Link>
           <Link href="/tarifs" className="hover:text-ink transition-colors">Adresses et tarifs</Link>
           <Link href="/faq" className="hover:text-ink transition-colors">FAQ</Link>
+          <div className="relative">
+            <button type="button" onClick={() => setLegalOpen((open) => !open)} className="flex items-center gap-2 hover:text-ink transition-colors" aria-expanded={legalOpen} aria-haspopup="menu">
+              Légal <i className={`fa-solid fa-chevron-down text-[9px] transition-transform ${legalOpen ? "rotate-180" : ""}`} />
+            </button>
+            {legalOpen && (
+              <div className="absolute top-full right-0 mt-4 w-64 waybill border border-ink/10 !rounded-xl !shadow-lg p-2" role="menu">
+                <Link href="/cgu" onClick={closeMenu} className="flex items-start gap-3 rounded-lg px-3 py-3 hover:bg-amber/10 transition" role="menuitem"><i className="fa-solid fa-file-contract text-amber mt-0.5" /><span><span className="block text-sm font-semibold text-ink">Conditions générales</span><span className="block text-[11px] text-slate mt-0.5">Utilisation et services</span></span></Link>
+                <Link href="/confidentialite" onClick={closeMenu} className="flex items-start gap-3 rounded-lg px-3 py-3 hover:bg-amber/10 transition" role="menuitem"><i className="fa-solid fa-shield-halved text-amber mt-0.5" /><span><span className="block text-sm font-semibold text-ink">Confidentialité</span><span className="block text-[11px] text-slate mt-0.5">Protection des données</span></span></Link>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
+          <a href="https://app.ahiyoyo.com" aria-label="Mon compte Ahiyoyo" className="btn-primary bg-navy text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 md:px-5 py-2.5 rounded-full whitespace-nowrap">
+            <i className="fa-solid fa-user sm:mr-2" /><span className="hidden sm:inline">Mon compte</span>
+          </a>
           <button
             type="button"
             className="md:hidden w-10 h-10 rounded-full border border-ink/15 flex items-center justify-center"
@@ -44,6 +62,12 @@ export default function Navbar() {
             <Link href="/suivi" className="py-3 hover:text-ink" onClick={closeMenu}>Suivi</Link>
             <Link href="/tarifs" className="py-3 hover:text-ink" onClick={closeMenu}>Adresses et tarifs</Link>
             <Link href="/faq" className="py-3 hover:text-ink" onClick={closeMenu}>FAQ</Link>
+            <div className="border-t border-ink/8 mt-2 pt-2">
+              <p className="font-mono-tag text-[9px] text-slate px-1 py-2">LÉGAL</p>
+              <Link href="/cgu" className="flex items-center gap-3 py-3 hover:text-ink" onClick={closeMenu}><i className="fa-solid fa-file-contract text-amber w-4" />Conditions générales</Link>
+              <Link href="/confidentialite" className="flex items-center gap-3 py-3 hover:text-ink" onClick={closeMenu}><i className="fa-solid fa-shield-halved text-amber w-4" />Politique de confidentialité</Link>
+            </div>
+            <a href="https://app.ahiyoyo.com" className="flex items-center justify-center gap-2 mt-4 bg-navy text-white rounded-full px-5 py-3 font-semibold" onClick={closeMenu}><i className="fa-solid fa-user" />Mon compte</a>
           </div>
         </div>
       )}
