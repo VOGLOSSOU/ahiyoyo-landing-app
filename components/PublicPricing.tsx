@@ -143,14 +143,14 @@ export default function PublicPricing() {
     <div className="bg-paper min-h-screen">
       <section className="relative overflow-hidden border-b border-ink/5">
         <div className="grain" />
-        <div className="relative max-w-6xl mx-auto px-5 md:px-6 py-14 md:py-20">
+        <div className="relative max-w-6xl mx-auto px-5 md:px-6 py-14 md:py-20 text-center">
           <Stamp variant="amber" dot className="mb-6">Routes publiques Ahiyoyo</Stamp>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-7">
-            <div className="max-w-3xl">
+          <div className="flex flex-col items-center gap-7">
+            <div className="max-w-3xl mx-auto">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-5"><i className="fa-solid fa-truck-fast text-amber text-[.75em] mr-3" />Nos adresses &amp; tarifs d’envoi</h1>
               <p className="text-slate text-base md:text-lg leading-relaxed">Adresses de nos entrepôts, tarifs de transport et instructions d’envoi pour chaque route disponible.</p>
             </div>
-            {!loading && !error && lines.length > 0 && <div className="font-mono-tag text-[10px] text-slate border border-ink/10 rounded-full px-4 py-2 w-fit">{lines.length} {lines.length > 1 ? "LIGNES DISPONIBLES" : "LIGNE DISPONIBLE"}</div>}
+            {!loading && !error && lines.length > 0 && <div className="font-mono-tag text-[10px] text-slate border border-ink/10 rounded-full px-4 py-2 w-fit mx-auto">{lines.length} {lines.length > 1 ? "LIGNES DISPONIBLES" : "LIGNE DISPONIBLE"}</div>}
           </div>
         </div>
       </section>
