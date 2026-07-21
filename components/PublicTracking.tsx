@@ -295,7 +295,7 @@ export default function PublicTracking() {
           <p className="text-slate max-w-2xl mx-auto leading-relaxed">Consultez son statut, son trajet et ses dernières mises à jour avec votre référence Ahiyoyo.</p>
 
           <div className="mt-9 max-w-2xl mx-auto waybill p-4 sm:p-6 text-left">
-            <div className="inline-flex rounded-full bg-paper p-1 mb-4" role="group" aria-label="Type de référence">
+            <div className="flex w-fit mx-auto rounded-full bg-paper p-1 mb-4" role="group" aria-label="Type de référence">
               {(["colis", "commande"] as SearchKind[]).map((option) => (
                 <button key={option} type="button" onClick={() => setKind(option)} className={`px-5 py-2 rounded-full text-sm font-semibold capitalize transition ${kind === option ? "bg-amber text-[#111827] shadow-sm" : "text-slate hover:text-ink"}`} aria-pressed={kind === option}>{option}</button>
               ))}
