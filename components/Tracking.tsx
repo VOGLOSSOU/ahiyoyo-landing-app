@@ -1,9 +1,20 @@
 "use client";
 
+import { FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import Stamp from "./Stamp";
 import Waybill from "./Waybill";
 
 export default function Tracking() {
+  const router = useRouter();
+
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const reference = String(formData.get("trackingNumber") || "").trim();
+    router.push(reference ? `/suivi?q=${encodeURIComponent(reference)}` : "/suivi");
+  };
+
   return (
     <section id="suivi" className="py-16 md:py-24 bg-paperAlt">
       <div className="max-w-4xl mx-auto px-5 md:px-6">
@@ -17,7 +28,7 @@ export default function Tracking() {
         </div>
 
         <Waybill className="p-6 md:p-8">
-          <form onSubmit={(e) => { e.preventDefault(); alert("Intégration avec le backend de suivi Ahiyoyo"); }} className="flex flex-col sm:flex-row gap-3">
+          <form onSubmit={submit} className="flex flex-col sm:flex-row gap-3">
             <label htmlFor="tracking-number" className="sr-only">Numéro de suivi</label>
             <input
               id="tracking-number"
