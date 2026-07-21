@@ -109,6 +109,13 @@ function formatFCFA(value: string | null): string {
   return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "XOF", maximumFractionDigits: 0 }).format(amount);
 }
 
+function estimatedDelivery(data: TrackingRecord): string {
+  const days = first(data, "delaiJours", "estimatedDeliveryDays", "nombreJoursEstime", "delaiEstimatif");
+  if (days && Number.isFinite(Number(days))) return `${days} jour${Number(days) > 1 ? "s" : ""}`;
+  const date = first(data, "estimatedDeliveryAt", "dateLivraisonEstimee", "estimatedDeliveryDate");
+  return date ? formatDate(date) : "À confirmer";
+}
+
 function buildFileUrl(path?: string | null): string | null {
   if (!path) return null;
   if (/^https?:\/\//i.test(path)) return path;
@@ -331,25 +338,37 @@ function PackageResult({ data, onReset, onPreview }: { data: TrackingRecord; onR
   const statusCode = first(data, "statut", "status");
   const status = humanizeStatus(statusCode, "colis");
   const currentIndex = statusCode === "ANNULE" ? -1 : PACKAGE_STEPS.indexOf(status);
-  const mode = first(data, "modeExpedition", "modeTransport", "mode");
-  const origin = first(data, "origine", "origin", "villeDepart", "paysDepart");
-  const destination = first(data, "destination", "villeDestination", "paysDestination");
+  const mode = first(data, "shippingMode", "modeExpedition", "modeTransport", "mode");
+  const originParts = [first(data, "originCountry", "paysDepart"), first(data, "originCity", "villeDepart")].filter(Boolean);
+  const destinationParts = [first(data, "destinationCountry", "paysDestination"), first(data, "destinationCity", "villeDestination")].filter(Boolean);
+  const origin = first(data, "origine", "origin") || (originParts.length ? originParts.join(", ") : null);
+  const destination = first(data, "destination") || (destinationParts.length ? destinationParts.join(", ") : null);
   const history = arrayValue<HistoryEntry>(data, "historique", "history");
+  const statusHistory = arrayValue<TrackingRecord>(data, "statusHistory", "historiqueStatuts");
   const items = arrayValue<TrackingRecord>(data, "articles", "items");
-  const documentUrl = buildFileUrl(first(data, "documentUrl", "document", "fichierUrl"));
+  const documentUrl = buildFileUrl(first(data, "documentsUrl", "documentUrl", "document", "fichierUrl"));
   const documentName = first(data, "documentNom", "fichierNom") || "Document joint";
-  const dates = Object.fromEntries(history.map((entry) => [humanizeStatus(entry.statut || null, "colis"), entry.date || ""]));
+  const dates = Object.fromEntries([
+    ...statusHistory.map((entry) => [humanizeStatus(first(entry, "status", "statut"), "colis"), first(entry, "createdAt", "date") || ""]),
+    ...history.map((entry) => [humanizeStatus(entry.statut || null, "colis"), entry.date || ""]),
+  ]);
+  const totalAmount = formatFCFA(first(data, "totalAmount", "montantTotal"));
+  const deliveryEstimate = estimatedDelivery(data);
+  const volumeValue = first(data, "volumeValue", "volumeFacture", "volume");
+  const volumeUnit = first(data, "volumeUnit");
+  const ownerName = [first(data, "ownerFirstName"), first(data, "ownerLastName")].filter(Boolean).join(" ") || first(data, "proprietaire", "destinataire", "recipient");
+  const carrier = first(data, "carrierName") === "AUTRES" ? first(data, "otherCarrierName", "carrierName") : first(data, "carrierName", "transporteur", "transporter", "carrier");
   const details = [
-    ["Livraison estimée", first(data, "dateLivraisonEstimee", "estimatedDeliveryDate"), "fa-calendar-check"],
-    ["Transporteur", first(data, "transporteur", "carrier"), "fa-building"],
-    ["Suivi transporteur", first(data, "numeroSuiviTransporteur", "carrierTrackingNumber"), "fa-barcode"],
-    ["Type de colis", first(data, "typeColis", "packageType"), "fa-box"],
-    ["Poids réel", first(data, "poidsReel", "poids", "weight"), "fa-weight-hanging"],
-    ["Volume facturé", first(data, "volumeFacture", "volume"), "fa-cube"],
-    ["Nombre de cartons", first(data, "nombreCartons", "cartons"), "fa-boxes-stacked"],
-    ["Frais de magasinage", first(data, "fraisMagasinage"), "fa-warehouse"],
-    ["Montant total", first(data, "montantTotal", "totalAmount"), "fa-wallet"],
-    ["Destinataire", first(data, "proprietaire", "destinataire", "recipient"), "fa-user"],
+    ["Transporteur", carrier, "fa-building"],
+    ["Suivi transporteur", first(data, "carrierTrackingNumber", "numeroSuiviTransporteur"), "fa-barcode"],
+    ["Type de colis", first(data, "type", "typeColis", "packageType"), "fa-box"],
+    ["Poids réel", first(data, "weightKg", "poidsReel", "poids", "weight") ? `${first(data, "weightKg", "poidsReel", "poids", "weight")} kg` : null, "fa-weight-hanging"],
+    ["Volume déclaré", volumeValue ? `${volumeValue}${volumeUnit ? ` ${volumeUnit}` : ""}` : null, "fa-cube"],
+    ["Nombre de cartons", first(data, "cartonsCount", "nombreCartons", "cartons"), "fa-boxes-stacked"],
+    ["Frais de magasinage", formatFCFA(first(data, "storageFee", "fraisMagasinage")), "fa-warehouse"],
+    ["Destinataire", ownerName, "fa-user"],
+    ["Téléphone", first(data, "ownerPhone"), "fa-phone"],
+    ["Adresse", first(data, "ownerAddress"), "fa-location-dot"],
   ] as const;
 
   return (
@@ -358,6 +377,17 @@ function PackageResult({ data, onReset, onPreview }: { data: TrackingRecord; onR
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
           <div><p className="font-mono-tag text-[10px] text-slate mb-2">NUMÉRO DE SUIVI</p><h2 className="font-display text-2xl md:text-3xl font-bold break-all">{first(data, "trackingNumber", "numeroSuivi", "reference") || "—"}</h2><div className="flex flex-wrap gap-2 mt-4"><span className="stamp stamp-amber !rotate-0 !normal-case">{status}</span>{mode && <span className="stamp !rotate-0 !normal-case"><i className={`fa-solid ${modeIcon(mode)}`} />{mode}</span>}</div><p className="text-sm text-slate mt-4">Créé le {formatDate(first(data, "createdAt", "dateCreation"))}</p></div>
           <button type="button" onClick={onReset} className="btn-ghost border border-ink/20 rounded-full px-5 py-2.5 text-sm font-semibold self-start"><i className="fa-solid fa-arrow-rotate-left mr-2" />Nouvelle recherche</button>
+        </div>
+      </section>
+
+      <section className="grid sm:grid-cols-2 gap-4">
+        <div className="waybill p-5 md:p-6 border border-amber/25">
+          <p className="font-mono-tag text-[10px] text-slate mb-2"><i className="fa-solid fa-wallet text-amber mr-2" />MONTANT À PAYER</p>
+          <p className="font-display text-2xl md:text-3xl font-bold text-amber">{totalAmount}</p>
+        </div>
+        <div className="waybill p-5 md:p-6 border border-ink/8">
+          <p className="font-mono-tag text-[10px] text-slate mb-2"><i className="fa-solid fa-calendar-check text-amber mr-2" />LIVRAISON ESTIMÉE</p>
+          <p className="font-display text-2xl md:text-3xl font-bold">{deliveryEstimate}</p>
         </div>
       </section>
 
@@ -385,6 +415,8 @@ function OrderResult({ data, onReset, onPreview }: { data: TrackingRecord; onRes
   const destination = line ? [first(line, "paysDestination"), first(line, "villeDestination")].filter(Boolean).join(", ") : null;
   const mode = first(line, "modeTransport");
   const history = arrayValue<HistoryEntry>(data, "historique", "history");
+  const orderAmount = formatFCFA(first(invoice, "montantTotal") || first(data, "totalAmount", "montantTotal"));
+  const orderDelay = first(invoice, "delaiEstimatif") || first(data, "delaiEstimatif", "delaiJours") || "À confirmer";
 
   return (
     <div className="max-w-5xl mx-auto px-5 md:px-6 py-12 md:py-16 space-y-6 animate-result-in">
@@ -395,7 +427,12 @@ function OrderResult({ data, onReset, onPreview }: { data: TrackingRecord; onRes
         </div>
       </section>
 
-      {invoice && <section className="waybill p-5 md:p-7"><h2 className="font-display font-bold text-xl mb-5">Détails de la commande</h2><div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3"><InfoItem label="Facture" value={first(invoice, "numero")} icon="fa-file-invoice" /><InfoItem label="Article" value={first(invoice, "nomArticle")} icon="fa-box-open" /><InfoItem label="Montant total" value={formatFCFA(first(invoice, "montantTotal"))} icon="fa-wallet" /><InfoItem label="Délai estimatif" value={first(invoice, "delaiEstimatif")} icon="fa-clock" /></div></section>}
+      <section className="grid sm:grid-cols-2 gap-4">
+        <div className="waybill p-5 md:p-6 border border-amber/25"><p className="font-mono-tag text-[10px] text-slate mb-2"><i className="fa-solid fa-wallet text-amber mr-2" />MONTANT DE LA COMMANDE</p><p className="font-display text-2xl md:text-3xl font-bold text-amber">{orderAmount}</p></div>
+        <div className="waybill p-5 md:p-6 border border-ink/8"><p className="font-mono-tag text-[10px] text-slate mb-2"><i className="fa-solid fa-clock text-amber mr-2" />DÉLAI ESTIMATIF</p><p className="font-display text-2xl md:text-3xl font-bold">{orderDelay}</p></div>
+      </section>
+
+      {invoice && <section className="waybill p-5 md:p-7"><h2 className="font-display font-bold text-xl mb-5">Détails de la commande</h2><div className="grid sm:grid-cols-2 gap-3"><InfoItem label="Facture" value={first(invoice, "numero")} icon="fa-file-invoice" /><InfoItem label="Article" value={first(invoice, "nomArticle")} icon="fa-box-open" /></div></section>}
       {(origin || destination) && <RouteCard origin={origin || null} destination={destination || null} mode={mode} />}
       <Updates history={history} kind="commande" onPreview={onPreview} />
       <section className="waybill p-5 md:p-7"><h2 className="font-display font-bold text-xl mb-7">Progression de la commande</h2><Timeline steps={ORDER_STEPS.map((step) => step.label)} currentIndex={currentIndex} /></section>
@@ -408,5 +445,5 @@ function RouteCard({ origin, destination, mode }: { origin: string | null; desti
 }
 
 function Items({ items, onPreview }: { items: TrackingRecord[]; onPreview: (url: string) => void }) {
-  return <section className="waybill p-5 md:p-7"><h2 className="font-display font-bold text-xl mb-5">Articles</h2><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">{items.map((item, index) => { const imageUrl = buildFileUrl(first(item, "image", "imageUrl", "photo")); return <article key={first(item, "id") || index} className="rounded-xl border border-ink/10 bg-paper p-3 flex items-center gap-4">{imageUrl ? <button type="button" onClick={() => onPreview(imageUrl)} className="w-16 h-16 rounded-lg bg-cover bg-center flex-shrink-0" style={{ backgroundImage: `url(${JSON.stringify(imageUrl)})` }} aria-label="Agrandir l’image de l’article" /> : <div className="w-16 h-16 rounded-lg bg-amber/10 flex items-center justify-center text-amber"><i className="fa-solid fa-box" /></div>}<div className="min-w-0"><h3 className="font-display font-semibold text-sm break-words">{first(item, "nom", "name", "designation") || `Article ${index + 1}`}</h3>{first(item, "quantite", "quantity") && <p className="text-xs text-slate mt-1">Quantité : {first(item, "quantite", "quantity")}</p>}</div></article>; })}</div></section>;
+  return <section className="waybill p-5 md:p-7"><h2 className="font-display font-bold text-xl mb-5">Articles</h2><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">{items.map((item, index) => { const imageUrl = buildFileUrl(first(item, "image", "imageUrl", "photo")); const itemTotal = formatFCFA(first(item, "totalPrice", "montantTotal")); return <article key={first(item, "id") || index} className="rounded-xl border border-ink/10 bg-paper p-3 flex items-center gap-4">{imageUrl ? <button type="button" onClick={() => onPreview(imageUrl)} className="w-16 h-16 rounded-lg bg-cover bg-center flex-shrink-0" style={{ backgroundImage: `url(${JSON.stringify(imageUrl)})` }} aria-label="Agrandir l’image de l’article" /> : <div className="w-16 h-16 rounded-lg bg-amber/10 flex items-center justify-center text-amber"><i className="fa-solid fa-box" /></div>}<div className="min-w-0"><h3 className="font-display font-semibold text-sm break-words">{first(item, "description", "nom", "name", "designation") || `Article ${index + 1}`}</h3>{first(item, "quantity", "quantite") && <p className="text-xs text-slate mt-1">Quantité : {first(item, "quantity", "quantite")}</p>}{itemTotal && <p className="text-xs font-semibold text-amber mt-1">{itemTotal}</p>}</div></article>; })}</div></section>;
 }
