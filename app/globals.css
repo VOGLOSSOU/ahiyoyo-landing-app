@@ -136,6 +136,28 @@ html.dark {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes partners-scroll {
+  to { transform: translateX(-50%); }
+}
+
+.partners-track {
+  animation: partners-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.partners-marquee:hover .partners-track,
+.partners-marquee:focus-within .partners-track {
+  animation-play-state: paused;
+}
+
+.partners-fade-left {
+  background: linear-gradient(90deg, var(--color-paper-alt), transparent);
+}
+
+.partners-fade-right {
+  background: linear-gradient(270deg, var(--color-paper-alt), transparent);
+}
+
 .animate-result-in {
   animation: result-in .45s ease both;
 }
@@ -262,6 +284,18 @@ html.dark {
 @media (prefers-reduced-motion: reduce) {
   .route-dash {
     animation: none;
+  }
+
+  .partners-marquee {
+    overflow-x: auto;
+  }
+
+  .partners-track {
+    animation: none;
+  }
+
+  .partners-track > :last-child {
+    display: none;
   }
 
   .reveal, .reveal-stagger > * {
