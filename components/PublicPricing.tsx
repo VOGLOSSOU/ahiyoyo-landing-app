@@ -24,7 +24,7 @@ type PricingLine = {
   actif?: boolean;
 };
 
-const API_URL = (process.env.NEXT_PUBLIC_API_URL || "https://api.tracking.ahiyoyo.com").replace(/\/$/, "");
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || "https://orchid-jellyfish-551876.hostingersite.com").replace(/\/$/, "");
 
 const FILTERS: Array<{ key: FilterMode; label: string; icon: string }> = [
   { key: "tous", label: "Tous", icon: "fa-border-all" },

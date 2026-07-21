@@ -61,7 +61,7 @@ const ORDER_STEPS = [
 ];
 
 const ORDER_STATUS_LABELS = Object.fromEntries(ORDER_STEPS.map((step) => [step.code, step.label]));
-const API_URL = (process.env.NEXT_PUBLIC_API_URL || "https://api.tracking.ahiyoyo.com").replace(/\/$/, "");
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || "https://orchid-jellyfish-551876.hostingersite.com").replace(/\/$/, "");
 
 function stringValue(value: unknown): string | null {
   if (value === null || value === undefined || value === "") return null;
