@@ -237,6 +237,7 @@ export default function PublicTracking() {
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
   const autoSearched = useRef(false);
+  const resultSectionRef = useRef<HTMLDivElement>(null);
 
   const search = useCallback(async (rawReference: string) => {
     const query = rawReference.trim();
@@ -298,6 +299,17 @@ export default function PublicTracking() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [preview]);
 
+  useEffect(() => {
+    if (!result || !resultKind) return;
+    const frame = window.requestAnimationFrame(() => {
+      resultSectionRef.current?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [result, resultKind]);
+
   const submit = (event: FormEvent) => {
     event.preventDefault();
     void search(reference);
@@ -340,8 +352,10 @@ export default function PublicTracking() {
       </section>
 
       {loading && <div className="max-w-5xl mx-auto px-5 py-16 text-center text-slate" role="status" aria-live="polite"><i className="fa-solid fa-spinner fa-spin text-amber text-2xl mb-4" /><p>Nous recherchons votre référence…</p></div>}
-      {result && resultKind === "colis" && <PackageResult data={result} onReset={reset} onPreview={setPreview} />}
-      {result && resultKind === "commande" && <OrderResult data={result} onReset={reset} onPreview={setPreview} />}
+      <div ref={resultSectionRef} className="scroll-mt-16">
+        {result && resultKind === "colis" && <PackageResult data={result} onReset={reset} onPreview={setPreview} />}
+        {result && resultKind === "commande" && <OrderResult data={result} onReset={reset} onPreview={setPreview} />}
+      </div>
 
       {preview && (
         <div className="fixed inset-0 z-[100] bg-black/85 p-5 flex items-center justify-center" role="dialog" aria-modal="true" aria-label="Aperçu du fichier" onClick={() => setPreview(null)}>
