@@ -34,11 +34,11 @@ const FILTERS: Array<{ key: FilterMode; label: string; icon: string }> = [
 ];
 
 const MODES: Record<string, { label: string; icon: string; className: string }> = {
-  air_standard: { label: "Aérien standard", icon: "fa-plane", className: "bg-blue-500/10 text-blue-600 border-blue-500/20 dark:text-blue-300" },
-  air_economie: { label: "Aérien économie", icon: "fa-plane", className: "bg-sky-500/10 text-sky-600 border-sky-500/20 dark:text-sky-300" },
-  air_express: { label: "Aérien express", icon: "fa-plane", className: "bg-violet-500/10 text-violet-600 border-violet-500/20 dark:text-violet-300" },
-  maritime: { label: "Maritime groupage", icon: "fa-ship", className: "bg-teal-500/10 text-teal-700 border-teal-500/20 dark:text-teal-300" },
-  routier: { label: "Transport routier", icon: "fa-truck", className: "bg-orange-500/10 text-orange-700 border-orange-500/20 dark:text-orange-300" },
+  air_standard: { label: "Aérien standard", icon: "fa-plane", className: "bg-blue-500/20 text-blue-800 border-blue-500/35 dark:bg-blue-400/20 dark:text-blue-200 dark:border-blue-400/35" },
+  air_economie: { label: "Aérien économie", icon: "fa-plane", className: "bg-sky-500/20 text-sky-800 border-sky-500/35 dark:bg-sky-400/20 dark:text-sky-200 dark:border-sky-400/35" },
+  air_express: { label: "Aérien express", icon: "fa-plane", className: "bg-violet-500/20 text-violet-800 border-violet-500/35 dark:bg-violet-400/20 dark:text-violet-200 dark:border-violet-400/35" },
+  maritime: { label: "Maritime groupage", icon: "fa-ship", className: "bg-teal-500/20 text-teal-800 border-teal-500/35 dark:bg-teal-400/20 dark:text-teal-200 dark:border-teal-400/35" },
+  routier: { label: "Transport routier", icon: "fa-truck", className: "bg-orange-500/20 text-orange-800 border-orange-500/35 dark:bg-orange-400/20 dark:text-orange-200 dark:border-orange-400/35" },
 };
 
 function matchesFilter(line: PricingLine, filter: FilterMode) {
@@ -162,7 +162,7 @@ export default function PublicPricing() {
 
         {!loading && !error && lines.length > 0 && (
           <>
-            <div className="flex gap-2.5 overflow-x-auto pb-3 mb-7 md:mb-9" role="group" aria-label="Filtrer par mode de transport">
+            <div className="flex flex-wrap justify-center gap-2.5 pb-3 mb-7 md:mb-9" role="group" aria-label="Filtrer par mode de transport">
               {visibleFilters.map((item) => (
                 <button key={item.key} type="button" onClick={() => setFilter(item.key)} aria-pressed={filter === item.key} className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition ${filter === item.key ? "bg-amber text-[#111827] border-amber shadow-sm" : "bg-paperAlt text-slate border-ink/10 hover:border-amber/50 hover:text-ink"}`}>
                   <i className={`fa-solid ${item.icon}`} /><span>{item.label}</span><span className={`min-w-5 h-5 px-1 rounded-full text-[10px] flex items-center justify-center ${filter === item.key ? "bg-[#111827]/10" : "bg-ink/5"}`}>{counts[item.key]}</span>
@@ -213,7 +213,7 @@ function PricingCard({ line }: { line: PricingLine }) {
       <div className="p-5 md:p-6 border-b border-ink/8 bg-paper/60">
         <div className="flex flex-wrap gap-2 mb-5">
           <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold ${mode.className}`}><i className={`fa-solid ${mode.icon}`} />{modeLabel}</span>
-          {line.categorie && <span className="inline-flex items-center rounded-full border border-ink/10 bg-ink/5 px-3 py-1.5 text-xs text-slate">{line.categorie}</span>}
+          {line.categorie && <span className="inline-flex items-center rounded-full border border-slate/30 bg-slate/15 px-3 py-1.5 text-xs font-semibold text-ink">{line.categorie}</span>}
         </div>
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
           <div><p className="font-mono-tag text-[9px] text-slate mb-1">DÉPART</p><h2 className="font-display font-bold leading-tight">{line.paysDepart || "—"}</h2><p className="text-sm text-slate mt-1">{line.villeDepart || "—"}</p></div>
@@ -234,9 +234,9 @@ function PricingCard({ line }: { line: PricingLine }) {
       </div>
 
       <div className="grid grid-cols-3 border-t border-ink/8 bg-paper/40">
-        <button type="button" onClick={() => void handleCopy("address", address)} disabled={!line.adressePhysique} title={line.adressePhysique ? "Copier l’adresse et le contact" : "Adresse non renseignée"} className="min-h-16 px-2 py-3 text-[10px] sm:text-xs font-semibold border-r border-ink/8 hover:bg-amber/10 disabled:opacity-35 disabled:cursor-not-allowed transition"><i className={`fa-solid ${copied === "address" ? "fa-check text-emerald-500" : "fa-copy text-amber"} block mb-1.5`} />{copied === "address" ? "Copié !" : "Copier l’adresse"}</button>
-        <button type="button" onClick={() => void handleCopy("instructions", line.instructionsClient || "")} disabled={!line.instructionsClient} title={line.instructionsClient ? "Copier les instructions" : "Instructions non renseignées"} className="min-h-16 px-2 py-3 text-[10px] sm:text-xs font-semibold border-r border-ink/8 hover:bg-amber/10 disabled:opacity-35 disabled:cursor-not-allowed transition"><i className={`fa-solid ${copied === "instructions" ? "fa-check text-emerald-500" : "fa-copy text-amber"} block mb-1.5`} />{copied === "instructions" ? "Copié !" : "Instructions"}</button>
-        <a href={whatsappUrl} target="_blank" rel="noreferrer" className="min-h-16 px-2 py-3 text-[10px] sm:text-xs font-semibold text-center hover:bg-emerald-500/10 transition"><i className="fa-brands fa-whatsapp text-emerald-500 block mb-1.5" />WhatsApp</a>
+        <button type="button" onClick={() => void handleCopy("address", address)} disabled={!line.adressePhysique} title={line.adressePhysique ? "Copier l’adresse et le contact" : "Adresse non renseignée"} className="min-h-16 px-2 py-3 text-[10px] sm:text-xs font-semibold border-r border-ink/8 hover:bg-amber/10 disabled:opacity-35 disabled:cursor-not-allowed transition flex flex-col items-center justify-center gap-2"><i className={`fa-solid ${copied === "address" ? "fa-check text-emerald-500" : "fa-copy text-amber"}`} />{copied === "address" ? "Copié !" : "Copier l’adresse"}</button>
+        <button type="button" onClick={() => void handleCopy("instructions", line.instructionsClient || "")} disabled={!line.instructionsClient} title={line.instructionsClient ? "Copier les instructions" : "Instructions non renseignées"} className="min-h-16 px-2 py-3 text-[10px] sm:text-xs font-semibold border-r border-ink/8 hover:bg-amber/10 disabled:opacity-35 disabled:cursor-not-allowed transition flex flex-col items-center justify-center gap-2"><i className={`fa-solid ${copied === "instructions" ? "fa-check text-emerald-500" : "fa-copy text-amber"}`} />{copied === "instructions" ? "Copié !" : "Instructions"}</button>
+        <a href={whatsappUrl} target="_blank" rel="noreferrer" className="min-h-16 px-2 py-3 text-[10px] sm:text-xs font-semibold text-center hover:bg-emerald-500/10 transition flex flex-col items-center justify-center gap-2"><i className="fa-brands fa-whatsapp text-emerald-500" />WhatsApp</a>
       </div>
     </article>
   );
