@@ -57,14 +57,14 @@ export default function Pricing() {
               <p className="text-slate text-sm mb-6 leading-relaxed">Chine → Afrique. Parfait pour les colis urgents, produits légers et tests de marché.</p>
               
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
+                <div className="flex items-center justify-between p-4 bg-paperAlt rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
                   <div>
                     <p className="font-display font-semibold">Standard</p>
                     <p className="text-slate text-xs mt-1">10 à 20 jours</p>
                   </div>
                   <p className="font-mono-tag font-bold text-xl text-amber">15 000 F<span className="text-sm text-slate font-normal ml-1">/kg</span></p>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
+                <div className="flex items-center justify-between p-4 bg-paperAlt rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
                   <div>
                     <p className="font-display font-semibold">Électroniques</p>
                     <p className="text-slate text-xs mt-1">≈ 3 semaines</p>
@@ -87,14 +87,14 @@ export default function Pricing() {
               <p className="text-slate text-sm mb-6 leading-relaxed">Chine → Afrique. Idéal pour les envois volumineux et marchandises lourdes.</p>
               
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
+                <div className="flex items-center justify-between p-4 bg-paperAlt rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
                   <div>
                     <p className="font-display font-semibold">1 à 9,99 CBM</p>
                     <p className="text-slate text-xs mt-1">≈ 90 jours</p>
                   </div>
                   <p className="font-mono-tag font-bold text-xl text-amber">250 000 F<span className="text-sm text-slate font-normal ml-1">/CBM</span></p>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
+                <div className="flex items-center justify-between p-4 bg-paperAlt rounded-xl border border-ink/5 hover:border-amber/30 transition-colors">
                   <div>
                     <p className="font-display font-semibold">À partir de 10 CBM</p>
                     <p className="text-slate text-xs mt-1">≈ 90 jours</p>
@@ -115,15 +115,15 @@ export default function Pricing() {
 
         <Reveal stagger>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="p-5 rounded-xl border border-ink/8 bg-white hover:border-amber/40 transition-colors">
+            <div className="p-5 rounded-xl border border-ink/8 bg-paperAlt hover:border-amber/40 transition-colors">
               <h4 className="font-display font-semibold mb-2">Bénin ↔ Togo ↔ Côte d&apos;Ivoire</h4>
               <p className="text-slate text-sm">Corridor Ouest Africain. Colis et marchandises.</p>
             </div>
-            <div className="p-5 rounded-xl border border-ink/8 bg-white hover:border-amber/40 transition-colors">
+            <div className="p-5 rounded-xl border border-ink/8 bg-paperAlt hover:border-amber/40 transition-colors">
               <h4 className="font-display font-semibold mb-2">Afrique → Chine</h4>
               <p className="text-slate text-sm">Envois aériens à partir de 10 000 F/kg.</p>
             </div>
-            <div className="p-5 rounded-xl border border-ink/8 bg-white hover:border-amber/40 transition-colors">
+            <div className="p-5 rounded-xl border border-ink/8 bg-paperAlt hover:border-amber/40 transition-colors">
               <h4 className="font-display font-semibold mb-2">Afrique → Paris</h4>
               <p className="text-slate text-sm">Envois aériens à partir de 10 000 F/kg.</p>
             </div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +26,8 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Link href="/#suivi" className="btn-primary bg-ink text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 md:px-5 py-2 md:py-2.5 rounded-full whitespace-nowrap" onClick={closeMenu}>
+          <ThemeToggle />
+          <Link href="/#suivi" className="btn-primary bg-navy text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 md:px-5 py-2 md:py-2.5 rounded-full whitespace-nowrap" onClick={closeMenu}>
             Suivre un colis
           </Link>
           <button

@@ -31,10 +31,10 @@ export default function Hero() {
 
               <div className="flex items-center gap-3 mt-9 text-sm text-slate">
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-white border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇧🇯</div>
-                  <div className="w-8 h-8 rounded-full bg-white border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇹🇬</div>
-                  <div className="w-8 h-8 rounded-full bg-white border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇨🇮</div>
-                  <div className="w-8 h-8 rounded-full bg-white border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇨🇳</div>
+                  <div className="w-8 h-8 rounded-full bg-paperAlt border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇧🇯</div>
+                  <div className="w-8 h-8 rounded-full bg-paperAlt border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇹🇬</div>
+                  <div className="w-8 h-8 rounded-full bg-paperAlt border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇨🇮</div>
+                  <div className="w-8 h-8 rounded-full bg-paperAlt border-2 border-paper flex items-center justify-center text-xs shadow-sm">🇨🇳</div>
                 </div>
                 <span>Agences au Bénin, Togo, Côte d&apos;Ivoire — sourcing en Chine</span>
               </div>
@@ -63,10 +63,10 @@ export default function Hero() {
 
                 <svg viewBox="0 0 400 70" className="w-full h-14 -mt-1">
                   <path d="M15,35 Q200,-5 385,35" fill="none" stroke="#C7CAD6" strokeWidth="2" className="route-dash" strokeLinecap="round" />
-                  <circle cx="15" cy="35" r="4.5" fill="#111827" />
+                  <circle cx="15" cy="35" r="4.5" fill="currentColor" className="text-ink" />
                   <circle cx="385" cy="35" r="4.5" fill="#fdc354" />
                   <g>
-                    <path d="M-6,-4 L6,0 L-6,4 L-2,0 Z" fill="#111827" />
+                    <path d="M-6,-4 L6,0 L-6,4 L-2,0 Z" fill="currentColor" className="text-ink" />
                     <animateMotion dur="4.5s" repeatCount="indefinite" rotate="auto" path="M15,35 Q200,-5 385,35" />
                   </g>
                 </svg>

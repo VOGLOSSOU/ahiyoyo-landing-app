@@ -26,7 +26,7 @@ export default function Services() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {services.map((s) => (
               <div key={s.title} className="bg-paper rounded-2xl p-6 lift">
-                <div className="w-11 h-11 bg-ink rounded-xl flex items-center justify-center mb-4">
+                <div className="w-11 h-11 bg-navy rounded-xl flex items-center justify-center mb-4">
                   <i className={`fa-solid ${s.icon} text-amber`} />
                 </div>
                 <h3 className="font-display font-semibold mb-2">{s.title}</h3>
