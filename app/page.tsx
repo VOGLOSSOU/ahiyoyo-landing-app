@@ -9,7 +9,6 @@ import Services from "@/components/Services";
 import ClientSpace from "@/components/ClientSpace";
 import Tracking from "@/components/Tracking";
 import Pricing from "@/components/Pricing";
-import Advantages from "@/components/Advantages";
 import Testimonials from "@/components/Testimonials";
 import ContactCTA from "@/components/ContactCTA";
 
@@ -26,7 +25,6 @@ export default function Home() {
       <ClientSpace />
       <Tracking />
       <Pricing />
-      <Advantages />
       <Testimonials />
       <ContactCTA />
       <Footer />

@@ -1,34 +1,30 @@
 import Stamp from "./Stamp";
-import Waybill from "./Waybill";
 import Reveal from "./Reveal";
 
 const steps = [
-  { num: "01", title: "Demande", desc: "Vous envoyez le lien, la photo, la quantité ou les détails du produit." },
-  { num: "02", title: "Devis", desc: "Ahiyoyo estime les coûts d'achat, le transport, les délais et les conditions." },
-  { num: "03", title: "Paiement", desc: "Vous validez, puis la commande est lancée auprès des fournisseurs." },
-  { num: "04", title: "Préparation", desc: "Réception, consolidation, emballage, documentation et expédition." },
-  { num: "05", title: "Livraison", desc: "Suivi jusqu'au retrait ou à la livraison finale." },
+  { num: "01", title: "Vous partagez votre besoin", desc: "Un lien, une photo, une quantité ou les détails de votre expédition suffisent pour commencer.", icon: "fa-paper-plane" },
+  { num: "02", title: "Nous cadrons l’opération", desc: "Produit, fournisseur, route, coûts et délai : tout est clarifié avant votre validation.", icon: "fa-file-signature" },
+  { num: "03", title: "Nous coordonnons sur place", desc: "Paiement, réception au cargo, contrôle, consolidation et préparation documentaire.", icon: "fa-people-arrows" },
+  { num: "04", title: "Vous suivez jusqu’à la remise", desc: "Les étapes importantes restent accessibles avec votre référence Ahiyoyo.", icon: "fa-location-dot" },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 bg-paper">
       <div className="max-w-6xl mx-auto px-5 md:px-6">
-        <div className="text-center mb-14 md:mb-16">
+        <div className="max-w-2xl mb-12 md:mb-16">
           <Stamp variant="amber" className="mb-6">Comment ça marche</Stamp>
-          <p className="text-slate text-base md:text-lg max-w-xl mx-auto">
-            Envoyez-nous vos besoins, notre équipe vous guide jusqu&apos;à la livraison finale.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-4">Un parcours clair, sans vous laisser seul entre deux étapes.</h2>
+          <p className="text-slate leading-relaxed">Derrière la plateforme, une équipe suit l’opération et intervient là où l’automatisation ne suffit pas.</p>
         </div>
 
         <Reveal stagger>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-4">
+          <div className="grid md:grid-cols-2 gap-x-10 gap-y-4">
             {steps.map((step) => (
-              <Waybill key={step.num} className="p-6 md:p-6 lift">
-                <span className="font-mono-tag text-amber text-xs font-semibold mb-4 block">N° {step.num}</span>
-                <h3 className="font-display font-semibold text-base mb-2">{step.title}</h3>
-                <p className="text-slate text-sm leading-relaxed">{step.desc}</p>
-              </Waybill>
+              <article key={step.num} className="group grid grid-cols-[52px_1fr] gap-5 py-6 border-t border-ink/10">
+                <div className="w-12 h-12 rounded-xl bg-paperAlt border border-ink/8 text-amber flex items-center justify-center group-hover:border-amber/40 transition"><i className={`fa-solid ${step.icon}`} /></div>
+                <div><p className="font-mono-tag text-[9px] text-amber mb-2">ÉTAPE {step.num}</p><h3 className="font-display font-semibold text-lg mb-2">{step.title}</h3><p className="text-slate text-sm leading-relaxed">{step.desc}</p></div>
+              </article>
             ))}
           </div>
         </Reveal>
