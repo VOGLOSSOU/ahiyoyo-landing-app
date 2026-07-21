@@ -99,7 +99,7 @@ function formatDate(value: string | null, includeTime = false): string {
   if (Number.isNaN(date.getTime())) return value;
   return new Intl.DateTimeFormat("fr-FR", includeTime
     ? { dateStyle: "medium", timeStyle: "short" }
-    : { dateStyle: "medium" }).format(date);
+    : { day: "2-digit", month: "long", year: "numeric" }).format(date);
 }
 
 function formatFCFA(value: string | null): string {
@@ -109,11 +109,27 @@ function formatFCFA(value: string | null): string {
   return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "XOF", maximumFractionDigits: 0 }).format(amount);
 }
 
-function estimatedDelivery(data: TrackingRecord): string {
-  const days = first(data, "delaiJours", "estimatedDeliveryDays", "nombreJoursEstime", "delaiEstimatif");
-  if (days && Number.isFinite(Number(days))) return `${days} jour${Number(days) > 1 ? "s" : ""}`;
+function getDaysRemaining(value: string | null): number | null {
+  if (!value) return null;
+  const today = new Date();
+  const eta = new Date(value);
+  if (Number.isNaN(eta.getTime())) return null;
+  today.setHours(0, 0, 0, 0);
+  eta.setHours(0, 0, 0, 0);
+  return Math.max(0, Math.ceil((eta.getTime() - today.getTime()) / 86_400_000));
+}
+
+function estimatedDelivery(data: TrackingRecord) {
   const date = first(data, "estimatedDeliveryAt", "dateLivraisonEstimee", "estimatedDeliveryDate");
-  return date ? formatDate(date) : "À confirmer";
+  const remaining = getDaysRemaining(date);
+  return {
+    date: date ? formatDate(date) : "Date estimée non disponible",
+    remaining: remaining === null
+      ? null
+      : remaining === 0
+        ? "Livraison prévue aujourd’hui ou délai atteint"
+        : `${remaining} jour${remaining > 1 ? "s" : ""} restant${remaining > 1 ? "s" : ""}`,
+  };
 }
 
 function buildFileUrl(path?: string | null): string | null {
@@ -250,8 +266,11 @@ export default function PublicTracking() {
       }
       if (!data || typeof data !== "object") throw new Error("SERVER_ERROR");
 
+      const isOrder = Boolean(data.reference && data.facture);
+      const isPackage = Boolean(data.trackingNumber);
+      if (!isOrder && !isPackage) throw new Error("SERVER_ERROR");
       setResult(data);
-      setResultKind(data.type === "commande" ? "commande" : "colis");
+      setResultKind(isOrder ? "commande" : "colis");
     } catch (searchError) {
       if (searchError instanceof Error && searchError.message === "NOT_FOUND") {
         setError("Référence introuvable. Veuillez vérifier le numéro saisi.");
@@ -387,7 +406,8 @@ function PackageResult({ data, onReset, onPreview }: { data: TrackingRecord; onR
         </div>
         <div className="waybill p-5 md:p-6 border border-ink/8">
           <p className="font-mono-tag text-[10px] text-slate mb-2"><i className="fa-solid fa-calendar-check text-amber mr-2" />LIVRAISON ESTIMÉE</p>
-          <p className="font-display text-2xl md:text-3xl font-bold">{deliveryEstimate}</p>
+          <p className="font-display text-xl md:text-2xl font-bold">{deliveryEstimate.date}</p>
+          {deliveryEstimate.remaining && <p className="text-sm font-semibold text-amber mt-2">{deliveryEstimate.remaining}</p>}
         </div>
       </section>
 
@@ -417,18 +437,19 @@ function OrderResult({ data, onReset, onPreview }: { data: TrackingRecord; onRes
   const history = arrayValue<HistoryEntry>(data, "historique", "history");
   const orderAmount = formatFCFA(first(invoice, "montantTotal") || first(data, "totalAmount", "montantTotal"));
   const orderDelay = first(invoice, "delaiEstimatif") || first(data, "delaiEstimatif", "delaiJours") || "À confirmer";
+  const paymentConfirmedAt = first(data, "paiementConfirmeAt");
 
   return (
     <div className="max-w-5xl mx-auto px-5 md:px-6 py-12 md:py-16 space-y-6 animate-result-in">
       <section className="waybill p-5 md:p-7">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
-          <div><p className="font-mono-tag text-[10px] text-slate mb-2">RÉFÉRENCE DE COMMANDE</p><h2 className="font-display text-2xl md:text-3xl font-bold break-all">{first(data, "reference") || "—"}</h2><span className="stamp stamp-amber !rotate-0 !normal-case mt-4">{status}</span><p className="text-sm text-slate mt-4">Créée le {formatDate(first(data, "createdAt", "dateCreation"))}</p></div>
+          <div><p className="font-mono-tag text-[10px] text-slate mb-2">RÉFÉRENCE DE COMMANDE</p><h2 className="font-display text-2xl md:text-3xl font-bold break-all">{first(data, "reference") || "—"}</h2><span className="stamp stamp-amber !rotate-0 !normal-case mt-4">{status}</span><p className="text-sm text-slate mt-4">Créée le {formatDate(first(data, "createdAt", "dateCreation"))}</p>{paymentConfirmedAt && <p className="text-sm text-emerald-600 dark:text-emerald-300 mt-2"><i className="fa-solid fa-circle-check mr-2" />Paiement confirmé le {formatDate(paymentConfirmedAt, true)}</p>}</div>
           <button type="button" onClick={onReset} className="btn-ghost border border-ink/20 rounded-full px-5 py-2.5 text-sm font-semibold self-start"><i className="fa-solid fa-arrow-rotate-left mr-2" />Nouvelle recherche</button>
         </div>
       </section>
 
       <section className="grid sm:grid-cols-2 gap-4">
-        <div className="waybill p-5 md:p-6 border border-amber/25"><p className="font-mono-tag text-[10px] text-slate mb-2"><i className="fa-solid fa-wallet text-amber mr-2" />MONTANT DE LA COMMANDE</p><p className="font-display text-2xl md:text-3xl font-bold text-amber">{orderAmount}</p></div>
+        <div className="waybill p-5 md:p-6 border border-amber/25"><p className="font-mono-tag text-[10px] text-slate mb-2"><i className="fa-solid fa-wallet text-amber mr-2" />{paymentConfirmedAt ? "MONTANT PAYÉ" : "MONTANT À PAYER"}</p><p className="font-display text-2xl md:text-3xl font-bold text-amber">{orderAmount}</p></div>
         <div className="waybill p-5 md:p-6 border border-ink/8"><p className="font-mono-tag text-[10px] text-slate mb-2"><i className="fa-solid fa-clock text-amber mr-2" />DÉLAI ESTIMATIF</p><p className="font-display text-2xl md:text-3xl font-bold">{orderDelay}</p></div>
       </section>
 
@@ -445,5 +466,5 @@ function RouteCard({ origin, destination, mode }: { origin: string | null; desti
 }
 
 function Items({ items, onPreview }: { items: TrackingRecord[]; onPreview: (url: string) => void }) {
-  return <section className="waybill p-5 md:p-7"><h2 className="font-display font-bold text-xl mb-5">Articles</h2><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">{items.map((item, index) => { const imageUrl = buildFileUrl(first(item, "image", "imageUrl", "photo")); const itemTotal = formatFCFA(first(item, "totalPrice", "montantTotal")); return <article key={first(item, "id") || index} className="rounded-xl border border-ink/10 bg-paper p-3 flex items-center gap-4">{imageUrl ? <button type="button" onClick={() => onPreview(imageUrl)} className="w-16 h-16 rounded-lg bg-cover bg-center flex-shrink-0" style={{ backgroundImage: `url(${JSON.stringify(imageUrl)})` }} aria-label="Agrandir l’image de l’article" /> : <div className="w-16 h-16 rounded-lg bg-amber/10 flex items-center justify-center text-amber"><i className="fa-solid fa-box" /></div>}<div className="min-w-0"><h3 className="font-display font-semibold text-sm break-words">{first(item, "description", "nom", "name", "designation") || `Article ${index + 1}`}</h3>{first(item, "quantity", "quantite") && <p className="text-xs text-slate mt-1">Quantité : {first(item, "quantity", "quantite")}</p>}{itemTotal && <p className="text-xs font-semibold text-amber mt-1">{itemTotal}</p>}</div></article>; })}</div></section>;
+  return <section className="waybill p-5 md:p-7"><h2 className="font-display font-bold text-xl mb-5">Articles</h2><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">{items.map((item, index) => { const imageUrl = buildFileUrl(first(item, "image", "imageUrl", "photo")); const unitPrice = formatFCFA(first(item, "unitPrice", "prixUnitaire")); const itemTotal = formatFCFA(first(item, "totalPrice", "montantTotal")); const purchaseLink = first(item, "purchaseLink", "lienAchat"); return <article key={first(item, "id") || index} className="rounded-xl border border-ink/10 bg-paper p-3 flex items-center gap-4">{imageUrl ? <button type="button" onClick={() => onPreview(imageUrl)} className="w-16 h-16 rounded-lg bg-cover bg-center flex-shrink-0" style={{ backgroundImage: `url(${JSON.stringify(imageUrl)})` }} aria-label="Agrandir l’image de l’article" /> : <div className="w-16 h-16 rounded-lg bg-amber/10 flex items-center justify-center text-amber"><i className="fa-solid fa-box" /></div>}<div className="min-w-0"><h3 className="font-display font-semibold text-sm break-words">{first(item, "description", "nom", "name", "designation") || `Article ${index + 1}`}</h3>{first(item, "quantity", "quantite") && <p className="text-xs text-slate mt-1">Quantité : {first(item, "quantity", "quantite")}</p>}{unitPrice && <p className="text-xs text-slate mt-1">Prix unitaire : {unitPrice}</p>}{itemTotal && <p className="text-xs font-semibold text-amber mt-1">Total : {itemTotal}</p>}{purchaseLink && <a href={purchaseLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs font-semibold text-amber mt-2 hover:underline">Voir l’article <i className="fa-solid fa-arrow-up-right-from-square text-[9px]" /></a>}</div></article>; })}</div></section>;
 }
