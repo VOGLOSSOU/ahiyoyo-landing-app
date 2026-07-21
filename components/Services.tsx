@@ -18,7 +18,7 @@ export default function Services() {
           <Stamp className="mb-6">Nos services</Stamp>
           <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">Ce que vous pouvez faire avec Ahiyoyo</h2>
           <p className="text-slate text-base md:text-lg max-w-xl mx-auto">
-            Un accompagnement complet, du sourcing jusqu'à la livraison finale.
+            Un accompagnement complet, du sourcing jusqu&apos;à la livraison finale.
           </p>
         </div>
 

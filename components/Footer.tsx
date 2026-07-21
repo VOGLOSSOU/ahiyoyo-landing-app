@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const agencies = [
   { country: "Bénin", flag: "🇧🇯", address: "Gbégamey, avant dernier von avant le carrefour Kossi en prenant le trafic local en quittant l'étoile Rouge, Cotonou", phone: "+229 01 91 08 41 41" },
@@ -22,7 +23,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1.3fr_1fr] gap-10 md:gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src="/ahiyoyo.png" alt="Ahiyoyo" className="h-8 w-auto" />
+              <Image src="/ahiyoyo.png" alt="Ahiyoyo" width={512} height={167} className="h-8 w-auto" />
             </div>
             <p className="text-white/45 text-sm leading-relaxed max-w-xs mb-6">
               Votre partenaire pour acheter, vendre et expédier entre l&apos;Afrique et l&apos;international. Rapide, sûr et transparent.
@@ -61,16 +62,10 @@ export default function Footer() {
         </div>
 
         <div className="sep-soft-dark mt-12 md:mt-16" />
-        <div className="pt-6 md:pt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="pt-6 md:pt-8">
           <p className="text-white/40 text-sm">
-            © 2025 <Link href="https://ahiyoyo.com/confidentialite/" className="hover:text-white transition">NEW MARKETS TECHNOLOGIES</Link>. Tous droits réservés.
+            © {new Date().getFullYear()} <Link href="https://ahiyoyo.com/confidentialite/" className="hover:text-white transition">NEW MARKETS TECHNOLOGIES</Link>. Tous droits réservés.
           </p>
-          <div className="flex gap-5">
-            <a href="#" className="text-white/40 hover:text-white transition"><i className="fa-brands fa-instagram text-lg" /></a>
-            <a href="#" className="text-white/40 hover:text-white transition"><i className="fa-brands fa-facebook text-lg" /></a>
-            <a href="#" className="text-white/40 hover:text-white transition"><i className="fa-brands fa-linkedin text-lg" /></a>
-            <a href="#" className="text-white/40 hover:text-white transition"><i className="fa-brands fa-whatsapp text-lg" /></a>
-          </div>
         </div>
       </div>
     </footer>

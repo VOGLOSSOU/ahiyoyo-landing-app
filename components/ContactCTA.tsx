@@ -12,8 +12,8 @@ export default function ContactCTA() {
           Créez votre compte gratuitement ou contactez-nous pour toute question.
         </p>
         <div className="flex items-center justify-center gap-4 flex-wrap">
-          <a href="#" className="btn-primary bg-amber text-ink font-semibold px-8 py-4 rounded-full text-sm md:text-base">
-            Créer un compte
+          <a href="https://app.ahiyoyo.com/login" className="btn-primary bg-amber text-ink font-semibold px-8 py-4 rounded-full text-sm md:text-base">
+            Se connecter
           </a>
           <a href="mailto:support@ahiyoyo.com" className="btn-ghost border border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 text-sm md:text-base">
             Nous contacter

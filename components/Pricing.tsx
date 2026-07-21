@@ -11,7 +11,7 @@ export default function Pricing() {
             <Stamp className="mb-6">Tarifs</Stamp>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-5">Tarifs simples et transparents</h2>
             <p className="text-slate text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-              Chaque devis est validé avant l'expédition. Pas de frais cachés, juste des prix justes et clairs.
+              Chaque devis est validé avant l&apos;expédition. Pas de frais cachés, juste des prix justes et clairs.
             </p>
           </div>
         </Reveal>
@@ -116,7 +116,7 @@ export default function Pricing() {
         <Reveal stagger>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="p-5 rounded-xl border border-ink/8 bg-white hover:border-amber/40 transition-colors">
-              <h4 className="font-display font-semibold mb-2">Bénin ↔ Togo ↔ Côte d'Ivoire</h4>
+              <h4 className="font-display font-semibold mb-2">Bénin ↔ Togo ↔ Côte d&apos;Ivoire</h4>
               <p className="text-slate text-sm">Corridor Ouest Africain. Colis et marchandises.</p>
             </div>
             <div className="p-5 rounded-xl border border-ink/8 bg-white hover:border-amber/40 transition-colors">

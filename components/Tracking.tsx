@@ -2,7 +2,6 @@
 
 import Stamp from "./Stamp";
 import Waybill from "./Waybill";
-import Reveal from "./Reveal";
 
 export default function Tracking() {
   return (
@@ -18,11 +17,16 @@ export default function Tracking() {
         </div>
 
         <Waybill className="p-6 md:p-8">
-          <form onSubmit={(e) => { e.preventDefault(); alert("Intégration avec le backend de suivi Ahiyoyo"); }} className="flex gap-3">
+          <form onSubmit={(e) => { e.preventDefault(); alert("Intégration avec le backend de suivi Ahiyoyo"); }} className="flex flex-col sm:flex-row gap-3">
+            <label htmlFor="tracking-number" className="sr-only">Numéro de suivi</label>
             <input
+              id="tracking-number"
+              name="trackingNumber"
               type="text"
+              required
+              autoComplete="off"
               placeholder="Ex: AHI-2026-0001"
-              className="font-mono-tag flex-1 rounded-full border border-ink/15 px-5 py-3 text-sm focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber"
+              className="font-mono-tag min-w-0 flex-1 rounded-full border border-ink/15 px-5 py-3 text-sm focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber"
             />
             <button type="submit" className="btn-primary bg-amber text-ink font-semibold px-6 md:px-8 py-3 rounded-full text-sm whitespace-nowrap">
               <i className="fa-solid fa-magnifying-glass mr-2" />Rechercher

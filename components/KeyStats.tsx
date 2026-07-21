@@ -1,8 +1,7 @@
-import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const stats = [
-  { value: "3", label: "Agences", sub: "Côte d&apos;Ivoire, Bénin, Togo" },
+  { value: "3", label: "Agences", sub: "Côte d'Ivoire, Bénin, Togo" },
   { value: "2", label: "Corridors internationaux", sub: "Chine et France" },
   { value: "100%", label: "Suivi en ligne", sub: "Depuis votre espace client", highlight: true },
   { value: "24/7", label: "Support client", sub: "Une équipe à votre écoute" },

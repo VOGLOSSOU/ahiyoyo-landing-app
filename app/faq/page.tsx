@@ -1,5 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "FAQ — Ahiyoyo",
+  description: "Retrouvez les réponses à vos questions sur les services, tarifs, paiements, expéditions et le suivi Ahiyoyo.",
+};
 
 const categories = [
   { id: "presentation", label: "Présentation" },
@@ -22,7 +29,7 @@ const faqData: Record<string, Array<{ q: string; a: string | React.ReactNode }>>
       q: "À qui s'adresse Ahiyoyo ?",
       a: (
         <>
-          <p className="mb-3">Ahiyoyo s'adresse notamment à :</p>
+          <p className="mb-3">Ahiyoyo s&apos;adresse notamment à :</p>
           <ul className="space-y-1.5 mb-3">
             <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />Entrepreneurs et e-commerçants</li>
             <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />PME, commerçants et grossistes</li>
@@ -30,7 +37,7 @@ const faqData: Record<string, Array<{ q: string; a: string | React.ReactNode }>>
             <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />Exportateurs agroalimentaires ou industriels</li>
             <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />Importateurs débutants ou expérimentés</li>
           </ul>
-          <p>Nos services s'adaptent aux opérations ponctuelles comme aux flux commerciaux récurrents.</p>
+          <p>Nos services s&apos;adaptent aux opérations ponctuelles comme aux flux commerciaux récurrents.</p>
         </>
       )
     },
@@ -88,7 +95,7 @@ const faqData: Record<string, Array<{ q: string; a: string | React.ReactNode }>>
           <ul className="space-y-1.5 mb-3">
             <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />du volume (CBM) ou du poids</li>
             <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />du mode de transport (mer, air, terre)</li>
-            <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />de l'origine et de la destination</li>
+            <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />de l&apos;origine et de la destination</li>
             <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />des services inclus (douane, livraison, stockage, accompagnement)</li>
           </ul>
           <p>Chaque devis est clair, détaillé et validé avant expédition.</p>
@@ -126,7 +133,7 @@ const faqData: Record<string, Array<{ q: string; a: string | React.ReactNode }>>
             <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />Une facture commerciale</li>
             <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />Une description précise des produits</li>
             <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />Des photos claires hors carton</li>
-            <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />D'autres documents réglementaires spécifiques</li>
+            <li className="flex items-start gap-2"><i className="fa-solid fa-circle text-amber text-[8px] mt-1.5 flex-shrink-0" />D&apos;autres documents réglementaires spécifiques</li>
           </ul>
         </>
       )
@@ -239,9 +246,9 @@ export default function FAQ() {
             <a href="mailto:support@ahiyoyo.com" className="btn-primary bg-amber text-ink font-semibold px-8 py-4 rounded-full text-sm md:text-base">
               Nous contacter
             </a>
-            <a href="/#suivi" className="btn-ghost border border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 text-sm md:text-base">
+            <Link href="/#suivi" className="btn-ghost border border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 text-sm md:text-base">
               Suivre un colis
-            </a>
+            </Link>
           </div>
           <div className="mt-12 flex items-center justify-center gap-8 md:gap-12 text-sm text-white/60 flex-wrap font-mono-tag text-xs">
             <div><i className="fa-solid fa-phone text-amber mr-2" />+229 01 91 08 41 41</div>
