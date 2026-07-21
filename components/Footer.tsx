@@ -10,8 +10,8 @@ const agencies = [
 const usefulLinks = [
   { href: "https://ahiyoyo.com/comment-ca-marche/", label: "Comment ça marche" },
   { href: "/faq", label: "Foire aux questions (FAQ)" },
-  { href: "https://ahiyoyo.com/cgu-logistique/", label: "Conditions d'utilisation logistique" },
-  { href: "https://ahiyoyo.com/confidentialite/", label: "Politique de confidentialité" },
+  { href: "/cgu", label: "Conditions générales d’utilisation" },
+  { href: "/confidentialite", label: "Politique de confidentialité" },
   { href: "https://ahiyoyo.com/cga", label: "Conditions générales d'achat" },
   { href: "https://ahiyoyo.com/mentions-legales/", label: "Mentions légales" },
 ];
@@ -64,7 +64,7 @@ export default function Footer() {
         <div className="sep-soft-dark mt-12 md:mt-16" />
         <div className="pt-6 md:pt-8">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} <Link href="https://ahiyoyo.com/confidentialite/" className="hover:text-white transition">NEW MARKETS TECHNOLOGIES</Link>. Tous droits réservés.
+            © {new Date().getFullYear()} <Link href="/confidentialite" className="hover:text-white transition">NEW MARKETS TECHNOLOGIES</Link>. Tous droits réservés.
           </p>
         </div>
       </div>
