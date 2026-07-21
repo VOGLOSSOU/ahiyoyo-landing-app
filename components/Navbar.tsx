@@ -18,18 +18,13 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate">
-          <Link href="/#fonctionnalites" className="hover:text-ink transition-colors">Services</Link>
-          <Link href="/#suivi" className="hover:text-ink transition-colors">Suivi</Link>
-          <Link href="/#tarifs" className="hover:text-ink transition-colors">Tarifs</Link>
-          <Link href="/#temoignages" className="hover:text-ink transition-colors">Témoignages</Link>
+          <Link href="/suivi" className="hover:text-ink transition-colors">Suivi</Link>
+          <Link href="/tarifs" className="hover:text-ink transition-colors">Adresses et tarifs</Link>
           <Link href="/faq" className="hover:text-ink transition-colors">FAQ</Link>
         </div>
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Link href="/#suivi" className="btn-primary bg-navy text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 md:px-5 py-2 md:py-2.5 rounded-full whitespace-nowrap" onClick={closeMenu}>
-            Suivre un colis
-          </Link>
           <button
             type="button"
             className="md:hidden w-10 h-10 rounded-full border border-ink/15 flex items-center justify-center"
@@ -46,10 +41,8 @@ export default function Navbar() {
       {menuOpen && (
         <div id="mobile-menu" className="md:hidden border-t border-ink/10 bg-paper px-5 py-4 shadow-lg">
           <div className="flex flex-col text-sm font-medium text-slate">
-            <Link href="/#fonctionnalites" className="py-3 hover:text-ink" onClick={closeMenu}>Services</Link>
-            <Link href="/#suivi" className="py-3 hover:text-ink" onClick={closeMenu}>Suivi</Link>
-            <Link href="/#tarifs" className="py-3 hover:text-ink" onClick={closeMenu}>Tarifs</Link>
-            <Link href="/#temoignages" className="py-3 hover:text-ink" onClick={closeMenu}>Témoignages</Link>
+            <Link href="/suivi" className="py-3 hover:text-ink" onClick={closeMenu}>Suivi</Link>
+            <Link href="/tarifs" className="py-3 hover:text-ink" onClick={closeMenu}>Adresses et tarifs</Link>
             <Link href="/faq" className="py-3 hover:text-ink" onClick={closeMenu}>FAQ</Link>
           </div>
         </div>
