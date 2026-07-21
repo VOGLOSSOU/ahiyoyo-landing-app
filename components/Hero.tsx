@@ -20,7 +20,7 @@ export default function Hero() {
             <div className="max-w-3xl">
               <Stamp variant="amber" dot className="mb-7">Commerce &amp; logistique internationale</Stamp>
               <h1 className="text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.35rem] font-display font-bold leading-[1.03] tracking-[-.035em] mb-7">
-                Vos échanges avec le monde, <span className="text-amber">enfin plus simples.</span>
+                Achetez, vendez et expédiez <span className="text-amber">à l’international depuis l’Afrique.</span>
               </h1>
               <p className="text-slate text-base md:text-lg leading-relaxed max-w-2xl mb-9">
                 Achetez, sourcez et expédiez entre l’Afrique, la Chine et l’Europe avec une équipe qui coordonne chaque étape — du devis à la livraison.
