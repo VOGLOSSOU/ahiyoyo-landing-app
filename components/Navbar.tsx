@@ -54,39 +54,39 @@ export default function Navbar() {
           <Link href="/suivi" className="hover:text-ink transition-colors">Suivi</Link>
           <Link href="/tarifs" className="hover:text-ink transition-colors">Adresses et tarifs</Link>
           <Link href="/faq" className="hover:text-ink transition-colors">FAQ</Link>
-          <div className="relative" onMouseEnter={() => setOpenDropdown("start")} onMouseLeave={() => setOpenDropdown(null)}>
+          <div className="relative group/dropdown">
             <button type="button" onClick={() => toggleDropdown("start")} className="flex items-center gap-2 hover:text-ink transition-colors" aria-expanded={openDropdown === "start"} aria-haspopup="menu">
               Démarrer <i className={`fa-solid fa-chevron-down text-[9px] transition-transform ${openDropdown === "start" ? "rotate-180" : ""}`} />
             </button>
-            {openDropdown === "start" && (
-              <div className="absolute top-full left-0 mt-4 w-64 waybill border border-ink/10 !rounded-xl !shadow-lg p-2 before:absolute before:-top-4 before:inset-x-0 before:h-4" role="menu">
+            <div className={`absolute top-full left-0 pt-4 w-64 transition-[opacity,visibility] duration-150 group-hover/dropdown:visible group-hover/dropdown:opacity-100 group-hover/dropdown:pointer-events-auto ${openDropdown === "start" ? "visible opacity-100 pointer-events-auto" : "invisible opacity-0 pointer-events-none"}`} role="menu">
+              <div className="waybill border border-ink/10 !rounded-xl !shadow-lg p-2">
                 <a href="https://app.ahiyoyo.com/expedier-colis" onClick={closeMenu} className="flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-amber/10 transition text-ink" role="menuitem"><i className="fa-solid fa-box text-amber w-4" />Enregistrer un colis</a>
                 <a href="https://app.ahiyoyo.com/nouvelle-demande" onClick={closeMenu} className="flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-amber/10 transition text-ink" role="menuitem"><i className="fa-solid fa-file-circle-plus text-amber w-4" />Demander un devis</a>
               </div>
-            )}
+            </div>
           </div>
-          <div className="relative" onMouseEnter={() => setOpenDropdown("activities")} onMouseLeave={() => setOpenDropdown(null)}>
+          <div className="relative group/dropdown">
             <button type="button" onClick={() => toggleDropdown("activities")} className="flex items-center gap-2 hover:text-ink transition-colors" aria-expanded={openDropdown === "activities"} aria-haspopup="menu">
               Mes activités <i className={`fa-solid fa-chevron-down text-[9px] transition-transform ${openDropdown === "activities" ? "rotate-180" : ""}`} />
             </button>
-            {openDropdown === "activities" && (
-              <div className="absolute top-full right-0 mt-4 w-56 waybill border border-ink/10 !rounded-xl !shadow-lg p-2 before:absolute before:-top-4 before:inset-x-0 before:h-4" role="menu">
+            <div className={`absolute top-full right-0 pt-4 w-56 transition-[opacity,visibility] duration-150 group-hover/dropdown:visible group-hover/dropdown:opacity-100 group-hover/dropdown:pointer-events-auto ${openDropdown === "activities" ? "visible opacity-100 pointer-events-auto" : "invisible opacity-0 pointer-events-none"}`} role="menu">
+              <div className="waybill border border-ink/10 !rounded-xl !shadow-lg p-2">
                 <a href="https://app.ahiyoyo.com/mes-devis" onClick={closeMenu} className="flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-amber/10 transition text-ink" role="menuitem"><i className="fa-solid fa-file-invoice text-amber w-4" />Mes devis</a>
                 <a href="https://app.ahiyoyo.com/mes-commandes" onClick={closeMenu} className="flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-amber/10 transition text-ink" role="menuitem"><i className="fa-solid fa-cart-shopping text-amber w-4" />Mes commandes</a>
                 <a href="https://app.ahiyoyo.com/mes-colis" onClick={closeMenu} className="flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-amber/10 transition text-ink" role="menuitem"><i className="fa-solid fa-box-open text-amber w-4" />Mes colis</a>
               </div>
-            )}
+            </div>
           </div>
-          <div className="relative" onMouseEnter={() => setOpenDropdown("legal")} onMouseLeave={() => setOpenDropdown(null)}>
+          <div className="relative group/dropdown">
             <button type="button" onClick={() => toggleDropdown("legal")} className="flex items-center gap-2 hover:text-ink transition-colors" aria-expanded={openDropdown === "legal"} aria-haspopup="menu">
               Légal <i className={`fa-solid fa-chevron-down text-[9px] transition-transform ${openDropdown === "legal" ? "rotate-180" : ""}`} />
             </button>
-            {openDropdown === "legal" && (
-              <div className="absolute top-full right-0 mt-4 w-64 waybill border border-ink/10 !rounded-xl !shadow-lg p-2 before:absolute before:-top-4 before:inset-x-0 before:h-4" role="menu">
+            <div className={`absolute top-full right-0 pt-4 w-64 transition-[opacity,visibility] duration-150 group-hover/dropdown:visible group-hover/dropdown:opacity-100 group-hover/dropdown:pointer-events-auto ${openDropdown === "legal" ? "visible opacity-100 pointer-events-auto" : "invisible opacity-0 pointer-events-none"}`} role="menu">
+              <div className="waybill border border-ink/10 !rounded-xl !shadow-lg p-2">
                 <Link href="/cgu" onClick={closeMenu} className="flex items-start gap-3 rounded-lg px-3 py-3 hover:bg-amber/10 transition" role="menuitem"><i className="fa-solid fa-file-contract text-amber mt-0.5" /><span><span className="block text-sm font-semibold text-ink">Conditions générales</span><span className="block text-[11px] text-slate mt-0.5">Utilisation et services</span></span></Link>
                 <Link href="/confidentialite" onClick={closeMenu} className="flex items-start gap-3 rounded-lg px-3 py-3 hover:bg-amber/10 transition" role="menuitem"><i className="fa-solid fa-shield-halved text-amber mt-0.5" /><span><span className="block text-sm font-semibold text-ink">Confidentialité</span><span className="block text-[11px] text-slate mt-0.5">Protection des données</span></span></Link>
               </div>
-            )}
+            </div>
           </div>
         </div>
 
