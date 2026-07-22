@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import PublicTracking from "@/components/PublicTracking";
 
 export const metadata: Metadata = {
-  title: "Suivi de colis et commande — Ahiyoyo",
+  title: "Suivi de colis et commande - Ahiyoyo",
   description: "Suivez publiquement votre colis ou votre commande Ahiyoyo grâce à votre référence.",
 };
 

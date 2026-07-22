@@ -5,7 +5,7 @@ import { cguContent } from "@/content/legal/cgu";
 const pdfUrl = "/documents/cgu-ahiyoyo-19-juillet-2026.pdf";
 
 export const metadata: Metadata = {
-  title: "Conditions générales d’utilisation et de services — Ahiyoyo",
+  title: "Conditions générales d’utilisation et de services - Ahiyoyo",
   description: "Consultez les Conditions générales d’utilisation et de services de la plateforme Ahiyoyo, version du 19 juillet 2026.",
 };
 

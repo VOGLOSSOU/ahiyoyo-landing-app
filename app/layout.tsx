@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-displ
 const ibmPlexMono = IBM_Plex_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["500", "600"] });
 
 export const metadata: Metadata = {
-  title: "Ahiyoyo — Achetez, vendez et expédiez à l'international depuis l'Afrique",
+  title: "Ahiyoyo - Achetez, vendez et expédiez à l'international depuis l'Afrique",
   description: "Sourcing en Chine, vérification produit, paiement fournisseur et transport groupé : Ahiyoyo s'occupe de tout, du premier devis jusqu'à la livraison.",
   icons: {
     icon: "/favicon.ico",

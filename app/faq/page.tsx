@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FAQ — Ahiyoyo",
+  title: "FAQ - Ahiyoyo",
   description: "Retrouvez les réponses à vos questions sur les services, tarifs, paiements, expéditions et le suivi Ahiyoyo.",
 };
 

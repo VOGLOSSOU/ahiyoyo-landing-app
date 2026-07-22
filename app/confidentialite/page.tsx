@@ -5,7 +5,7 @@ import { privacyContent } from "@/content/legal/privacy";
 const pdfUrl = "/documents/politique-confidentialite-ahiyoyo-19-juillet-2026.pdf";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité — Ahiyoyo",
+  title: "Politique de confidentialité - Ahiyoyo",
   description: "Consultez la Politique de confidentialité de la plateforme Ahiyoyo, version révisée du 19 juillet 2026.",
 };
 
