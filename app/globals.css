@@ -150,6 +150,24 @@ html.dark {
   animation-play-state: paused;
 }
 
+.testimonials-track {
+  animation: partners-scroll 56s linear infinite;
+  will-change: transform;
+}
+
+.testimonials-marquee:hover .testimonials-track,
+.testimonials-marquee:focus-within .testimonials-track {
+  animation-play-state: paused;
+}
+
+.testimonials-fade-left {
+  background: linear-gradient(90deg, var(--color-paper), transparent);
+}
+
+.testimonials-fade-right {
+  background: linear-gradient(270deg, var(--color-paper), transparent);
+}
+
 .partners-fade-left {
   background: linear-gradient(90deg, var(--color-paper-alt), transparent);
 }
@@ -286,15 +304,15 @@ html.dark {
     animation: none;
   }
 
-  .partners-marquee {
+  .partners-marquee, .testimonials-marquee {
     overflow-x: auto;
   }
 
-  .partners-track {
+  .partners-track, .testimonials-track {
     animation: none;
   }
 
-  .partners-track > :last-child {
+  .partners-track > :last-child, .testimonials-track > :last-child {
     display: none;
   }
 
