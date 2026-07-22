@@ -5,7 +5,7 @@ import Reveal from "./Reveal";
 const partners = [
   { name: "China Merchants Fund", logo: "/partners/China_Merchants_Fund_8K.webp" },
   { name: "Digital Valley", logo: "/partners/Digital_Valley_8K.webp" },
-  { name: "MTN Innovation Lab", logo: "/partners/MTN_Innovation_Lab_8K.webp", dark: true },
+  { name: "MTN Innovation Lab", logo: "/partners/MTN_Innovation_Lab_8K.webp", lightLogo: "/partners/MTN_Innovation_Lab_Light.webp" },
   { name: "Talents Africains à l’International", logo: "/partners/Talents_Africains_International_8K.webp" },
   { name: "Westerwelle Foundation", logo: "/partners/Westerwelle_Foundation_8K.webp" },
 ];
@@ -14,8 +14,15 @@ function PartnerGroup({ duplicate = false }: { duplicate?: boolean }) {
   return (
     <div className="partners-group flex gap-4 pr-4" aria-hidden={duplicate || undefined}>
       {partners.map((partner) => (
-        <div key={`${duplicate ? "duplicate-" : ""}${partner.name}`} className={`w-64 sm:w-72 h-32 sm:h-36 rounded-2xl border flex items-center justify-center px-7 sm:px-9 flex-shrink-0 ${partner.dark ? "bg-navy border-white/10" : "bg-white border-black/8"}`}>
-          <Image src={partner.logo} alt={duplicate ? "" : partner.name} width={1200} height={360} className="w-full h-20 object-contain" sizes="(max-width: 640px) 200px, 230px" />
+        <div key={`${duplicate ? "duplicate-" : ""}${partner.name}`} className="w-52 sm:w-64 h-24 sm:h-28 flex items-center justify-center px-5 sm:px-7 flex-shrink-0">
+          {partner.lightLogo ? (
+            <>
+              <Image src={partner.lightLogo} alt={duplicate ? "" : partner.name} width={900} height={300} className="w-full h-16 sm:h-20 object-contain dark:hidden" sizes="(max-width: 640px) 170px, 210px" />
+              <Image src={partner.logo} alt={duplicate ? "" : partner.name} width={900} height={300} className="hidden w-full h-16 sm:h-20 object-contain dark:block" sizes="(max-width: 640px) 170px, 210px" />
+            </>
+          ) : (
+            <Image src={partner.logo} alt={duplicate ? "" : partner.name} width={900} height={300} className="w-full h-16 sm:h-20 object-contain" sizes="(max-width: 640px) 170px, 210px" />
+          )}
         </div>
       ))}
     </div>
