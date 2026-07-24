@@ -20,8 +20,6 @@ export default function Navbar() {
   const [availabilityVisible, setAvailabilityVisible] = useState(true);
 
   useEffect(() => {
-    setAvailabilityVisible(localStorage.getItem("ahiyoyo-availability-dismissed") !== "true");
-
     const closeOnOutsideClick = (event: PointerEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setOpenDropdown(null);
@@ -56,21 +54,20 @@ export default function Navbar() {
 
   const dismissAvailability = () => {
     setAvailabilityVisible(false);
-    localStorage.setItem("ahiyoyo-availability-dismissed", "true");
   };
 
   return (
     <>
     <header ref={navRef} className="fixed top-0 left-0 right-0 z-50">
       {availabilityVisible && (
-        <aside className="h-20 sm:h-16 bg-[#090b10] text-white border-b border-white/10" aria-label="Pays dans lesquels Ahiyoyo est disponible">
-          <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 pr-12 sm:pr-14 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 lg:gap-10 relative">
-            <p className="text-center sm:text-left text-[11px] sm:text-xs font-semibold leading-snug">
+        <aside className="h-16 sm:h-14 bg-[#090b10] text-white border-b border-white/10" aria-label="Pays dans lesquels Ahiyoyo est disponible">
+          <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 pr-12 sm:pr-14 flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-5 lg:gap-8 relative">
+            <p className="text-center sm:text-left text-[10px] sm:text-[11px] font-semibold leading-snug">
               Nous sommes dans ces pays
             </p>
-            <div className="flex items-start justify-center gap-4 sm:gap-7 lg:gap-10">
+            <div className="flex items-start justify-center gap-3.5 sm:gap-6 lg:gap-8">
               {availableCountries.map((country) => (
-                <span key={country.name} className="text-xl sm:text-2xl leading-none" role="img" aria-label={country.name}>{country.flag}</span>
+                <span key={country.name} className="text-lg sm:text-xl leading-none" role="img" aria-label={country.name}>{country.flag}</span>
               ))}
             </div>
             <button type="button" onClick={dismissAvailability} className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-white/20 text-white/75 hover:text-white hover:border-white/50 hover:bg-white/10 transition" aria-label="Masquer la liste des pays disponibles">
@@ -171,7 +168,7 @@ export default function Navbar() {
       )}
       </nav>
     </header>
-    {availabilityVisible && <div className="h-20 sm:h-16" aria-hidden="true" />}
+    {availabilityVisible && <div className="h-16 sm:h-14" aria-hidden="true" />}
     </>
   );
 }
