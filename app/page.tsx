@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Corridors from "@/components/Corridors";
-import KeyStats from "@/components/KeyStats";
 import Partners from "@/components/Partners";
 import Problem from "@/components/Problem";
 import Audiences from "@/components/Audiences";
@@ -21,7 +20,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Corridors />
-      <KeyStats />
       <Partners />
       <Problem />
       <Audiences />
