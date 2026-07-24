@@ -63,17 +63,14 @@ export default function Navbar() {
     <>
     <header ref={navRef} className="fixed top-0 left-0 right-0 z-50">
       {availabilityVisible && (
-        <aside className="h-28 sm:h-24 lg:h-20 bg-[#090b10] text-white border-b border-white/10" aria-label="Pays dans lesquels Ahiyoyo est disponible">
+        <aside className="h-20 sm:h-16 bg-[#090b10] text-white border-b border-white/10" aria-label="Pays dans lesquels Ahiyoyo est disponible">
           <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 pr-12 sm:pr-14 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 lg:gap-10 relative">
-            <p className="text-center sm:text-left text-[11px] sm:text-xs font-semibold leading-snug max-w-44">
-              Nous sommes disponibles dans les pays suivants :
+            <p className="text-center sm:text-left text-[11px] sm:text-xs font-semibold leading-snug">
+              Nous sommes dans ces pays
             </p>
             <div className="flex items-start justify-center gap-4 sm:gap-7 lg:gap-10">
               {availableCountries.map((country) => (
-                <div key={country.name} className="flex flex-col items-center min-w-10 sm:min-w-12">
-                  <span className="text-xl sm:text-2xl leading-none mb-1.5" aria-hidden="true">{country.flag}</span>
-                  <span className="text-[8px] sm:text-[10px] text-white/75 whitespace-nowrap">{country.name}</span>
-                </div>
+                <span key={country.name} className="text-xl sm:text-2xl leading-none" role="img" aria-label={country.name}>{country.flag}</span>
               ))}
             </div>
             <button type="button" onClick={dismissAvailability} className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-white/20 text-white/75 hover:text-white hover:border-white/50 hover:bg-white/10 transition" aria-label="Masquer la liste des pays disponibles">
@@ -174,7 +171,7 @@ export default function Navbar() {
       )}
       </nav>
     </header>
-    {availabilityVisible && <div className="h-28 sm:h-24 lg:h-20" aria-hidden="true" />}
+    {availabilityVisible && <div className="h-20 sm:h-16" aria-hidden="true" />}
     </>
   );
 }
