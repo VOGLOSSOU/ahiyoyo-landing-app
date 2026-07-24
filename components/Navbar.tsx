@@ -5,12 +5,23 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
+const availableCountries = [
+  { flag: "🇨🇳", name: "Chine" },
+  { flag: "🇫🇷", name: "France" },
+  { flag: "🇧🇯", name: "Bénin" },
+  { flag: "🇹🇬", name: "Togo" },
+  { flag: "🇨🇮", name: "Côte d’Ivoire" },
+];
+
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<"start" | "activities" | "legal" | null>(null);
+  const [availabilityVisible, setAvailabilityVisible] = useState(true);
 
   useEffect(() => {
+    setAvailabilityVisible(localStorage.getItem("ahiyoyo-availability-dismissed") !== "true");
+
     const closeOnOutsideClick = (event: PointerEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setOpenDropdown(null);
@@ -43,8 +54,35 @@ export default function Navbar() {
     setOpenDropdown((current) => current === dropdown ? null : dropdown);
   };
 
+  const dismissAvailability = () => {
+    setAvailabilityVisible(false);
+    localStorage.setItem("ahiyoyo-availability-dismissed", "true");
+  };
+
   return (
-    <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50 bg-paper/90 backdrop-blur-sm" style={{ boxShadow: "0 1px 0 rgba(20,22,31,.08)" }}>
+    <>
+    <header ref={navRef} className="fixed top-0 left-0 right-0 z-50">
+      {availabilityVisible && (
+        <aside className="h-28 sm:h-24 lg:h-20 bg-[#090b10] text-white border-b border-white/10" aria-label="Pays dans lesquels Ahiyoyo est disponible">
+          <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 pr-12 sm:pr-14 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 lg:gap-10 relative">
+            <p className="text-center sm:text-left text-[11px] sm:text-xs font-semibold leading-snug max-w-44">
+              Nous sommes disponibles dans les pays suivants :
+            </p>
+            <div className="flex items-start justify-center gap-4 sm:gap-7 lg:gap-10">
+              {availableCountries.map((country) => (
+                <div key={country.name} className="flex flex-col items-center min-w-10 sm:min-w-12">
+                  <span className="text-xl sm:text-2xl leading-none mb-1.5" aria-hidden="true">{country.flag}</span>
+                  <span className="text-[8px] sm:text-[10px] text-white/75 whitespace-nowrap">{country.name}</span>
+                </div>
+              ))}
+            </div>
+            <button type="button" onClick={dismissAvailability} className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-white/20 text-white/75 hover:text-white hover:border-white/50 hover:bg-white/10 transition" aria-label="Masquer la liste des pays disponibles">
+              <i className="fa-solid fa-xmark" aria-hidden="true" />
+            </button>
+          </div>
+        </aside>
+      )}
+      <nav className="bg-paper/90 backdrop-blur-sm" style={{ boxShadow: "0 1px 0 rgba(20,22,31,.08)" }}>
       <div className="max-w-7xl mx-auto px-5 md:px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center" onClick={closeMenu}>
           <Image src="/ahiyoyo.png" alt="Ahiyoyo" width={512} height={167} priority className="h-8 w-auto" />
@@ -134,6 +172,9 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+      </nav>
+    </header>
+    {availabilityVisible && <div className="h-28 sm:h-24 lg:h-20" aria-hidden="true" />}
+    </>
   );
 }
