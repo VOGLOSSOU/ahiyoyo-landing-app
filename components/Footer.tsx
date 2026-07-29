@@ -9,6 +9,7 @@ const agencies = [
 
 const usefulLinks = [
   { href: "https://ahiyoyo.com/comment-ca-marche/", label: "Comment ça marche" },
+  { href: "/blog", label: "Blog" },
   { href: "/faq", label: "Foire aux questions (FAQ)" },
   { href: "/cgu", label: "Conditions générales d’utilisation" },
   { href: "/confidentialite", label: "Politique de confidentialité" },
