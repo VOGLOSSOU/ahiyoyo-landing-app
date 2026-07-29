@@ -85,6 +85,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-medium text-slate">
           <Link href="/suivi" className="hover:text-ink transition-colors">Suivi</Link>
           <Link href="/tarifs" className="hover:text-ink transition-colors">Adresses et tarifs</Link>
+          <Link href="/blog" className="hover:text-ink transition-colors">Blog</Link>
           <Link href="/faq" className="hover:text-ink transition-colors">FAQ</Link>
           <div className="relative group/dropdown">
             <button type="button" onClick={() => toggleDropdown("start")} className="flex items-center gap-2 hover:text-ink transition-colors" aria-expanded={openDropdown === "start"} aria-haspopup="menu">
@@ -145,6 +146,7 @@ export default function Navbar() {
           <div className="flex flex-col text-sm font-medium text-slate">
             <Link href="/suivi" className="py-3 hover:text-ink" onClick={closeMenu}>Suivi</Link>
             <Link href="/tarifs" className="py-3 hover:text-ink" onClick={closeMenu}>Adresses et tarifs</Link>
+            <Link href="/blog" className="py-3 hover:text-ink" onClick={closeMenu}>Blog</Link>
             <Link href="/faq" className="py-3 hover:text-ink" onClick={closeMenu}>FAQ</Link>
             <div className="border-t border-ink/8 mt-2 pt-2">
               <p className="font-mono-tag text-[9px] text-slate px-1 py-2">DÉMARRER</p>

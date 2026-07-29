@@ -13,8 +13,12 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import FAQPreview from "@/components/FAQPreview";
 import ContactCTA from "@/components/ContactCTA";
+import LatestArticlesSection from "@/components/blog/LatestArticlesSection";
+import { getLatestBlogArticles } from "@/lib/blog";
 
-export default function Home() {
+export default async function Home() {
+  const latestArticles = await getLatestBlogArticles(3);
+
   return (
     <>
       <Navbar />
@@ -30,6 +34,7 @@ export default function Home() {
       <Pricing />
       <Testimonials />
       <FAQPreview />
+      <LatestArticlesSection articles={latestArticles} />
       <ContactCTA />
       <Footer />
     </>
