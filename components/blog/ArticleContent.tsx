@@ -51,13 +51,13 @@ export default function ArticleContent({ article }: ArticleContentProps) {
       )}
 
       {article.excerpt && (
-        <div className="blog-introduction text-base md:text-lg text-slate leading-relaxed mb-8">
+        <div className="blog-markdown blog-introduction text-base md:text-lg !text-slate leading-relaxed mb-8">
           <BlogMarkdown>{article.excerpt}</BlogMarkdown>
         </div>
       )}
 
       {article.content && (
-        <div className="blog-introduction text-base md:text-lg text-ink leading-relaxed mb-10">
+        <div className="blog-markdown blog-introduction text-base md:text-lg text-ink leading-relaxed mb-10">
           <BlogMarkdown>{article.content}</BlogMarkdown>
         </div>
       )}
@@ -86,6 +86,13 @@ export default function ArticleContent({ article }: ArticleContentProps) {
             )}
           </section>
         ))}
+      </div>
+
+      <div className="mt-12 pt-8 border-t border-ink/10">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-amber hover:underline">
+          <i className="fa-solid fa-arrow-left text-xs" />
+          Retour vers tous les articles
+        </Link>
       </div>
     </article>
   );

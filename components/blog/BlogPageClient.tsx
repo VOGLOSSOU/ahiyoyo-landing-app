@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Stamp from "@/components/Stamp";
 import Reveal from "@/components/Reveal";
@@ -15,6 +15,7 @@ type BlogPageClientProps = {
   initialQuery: string;
   initialTotal: number;
   limit: number;
+  initialError?: string;
 };
 
 export default function BlogPageClient({
@@ -23,20 +24,24 @@ export default function BlogPageClient({
   initialQuery,
   initialTotal,
   limit,
+  initialError = "",
 }: BlogPageClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [articles, setArticles] = useState<BlogArticle[]>(initialArticles);
   const [total, setTotal] = useState(initialTotal);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(initialError);
+  const requestIdRef = useRef(0);
 
-  const page = Number(searchParams.get("page") || initialPage);
+  const requestedPage = Number.parseInt(searchParams.get("page") || String(initialPage), 10);
+  const page = Number.isFinite(requestedPage) ? Math.max(1, requestedPage) : 1;
   const query = searchParams.get("q") || initialQuery;
   const totalPages = Math.ceil(total / limit);
 
   const load = useCallback(
     async (nextPage: number, nextQuery: string) => {
+      const requestId = ++requestIdRef.current;
       setLoading(true);
       setError("");
 
@@ -46,12 +51,14 @@ export default function BlogPageClient({
           limit,
           q: nextQuery,
         });
+        if (requestId !== requestIdRef.current) return;
         setArticles(response.data);
         setTotal(response.total);
       } catch {
+        if (requestId !== requestIdRef.current) return;
         setError("Impossible de charger les articles pour le moment.");
       } finally {
-        setLoading(false);
+        if (requestId === requestIdRef.current) setLoading(false);
       }
     },
     [limit],
@@ -92,7 +99,7 @@ export default function BlogPageClient({
                 Guides pratiques, astuces et actualités pour réussir vos échanges
                 entre l&apos;Afrique et l&apos;international.
               </p>
-              <BlogSearch initialQuery={query} onSearchChange={handleSearchChange} />
+              <BlogSearch key={query} initialQuery={query} onSearchChange={handleSearchChange} />
             </div>
           </Reveal>
         </div>
@@ -118,9 +125,9 @@ export default function BlogPageClient({
         )}
 
         {!error && loading && (
-          <div className="py-20 text-center text-slate" role="status">
-            <i className="fa-solid fa-spinner fa-spin text-amber text-3xl mb-4" />
-            <p>Chargement des articles…</p>
+          <div className="flex items-center justify-center gap-3 py-5 text-sm text-slate" role="status" aria-live="polite">
+            <i className="fa-solid fa-spinner fa-spin text-amber" />
+            <p>Mise à jour des articles…</p>
           </div>
         )}
 
@@ -140,9 +147,9 @@ export default function BlogPageClient({
           </div>
         )}
 
-        {!error && !loading && articles.length > 0 && (
+        {!error && articles.length > 0 && (
           <>
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <div className={`grid gap-5 md:grid-cols-2 xl:grid-cols-3 transition-opacity ${loading ? "opacity-55" : ""}`} aria-busy={loading}>
               {articles.map((article, index) => (
                 <ArticleCard key={article.id} article={article} index={index} />
               ))}

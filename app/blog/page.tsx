@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogPageClient from "@/components/blog/BlogPageClient";
-import { listPublicBlogArticles } from "@/lib/blog";
+import { listPublicBlogArticles, type BlogListResponse } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog Ahiyoyo — Conseils import, export et logistique",
@@ -16,10 +16,18 @@ interface BlogPageProps {
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
-  const page = Math.max(1, Number(params.page || 1));
-  const query = params.q || "";
+  const requestedPage = Number.parseInt(params.page || "1", 10);
+  const page = Number.isFinite(requestedPage) ? Math.max(1, requestedPage) : 1;
+  const query = (params.q || "").trim();
 
-  const response = await listPublicBlogArticles({ page, limit: 12, q: query });
+  let response: BlogListResponse = { data: [], page, limit: 12, total: 0 };
+  let initialError = "";
+
+  try {
+    response = await listPublicBlogArticles({ page, limit: 12, q: query });
+  } catch {
+    initialError = "Impossible de charger les articles pour le moment.";
+  }
 
   return (
     <>
@@ -31,6 +39,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           initialQuery={query}
           initialTotal={response.total}
           limit={response.limit}
+          initialError={initialError}
         />
       </main>
       <Footer />

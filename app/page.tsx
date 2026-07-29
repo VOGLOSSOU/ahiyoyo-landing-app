@@ -17,7 +17,7 @@ import LatestArticlesSection from "@/components/blog/LatestArticlesSection";
 import { getLatestBlogArticles } from "@/lib/blog";
 
 export default async function Home() {
-  const latestArticles = await getLatestBlogArticles(3);
+  const latestArticles = await getLatestBlogArticles(3).catch(() => []);
 
   return (
     <>

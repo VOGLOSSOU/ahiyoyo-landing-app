@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ArticleContent from "@/components/blog/ArticleContent";
-import { getPublicBlogArticle } from "@/lib/blog";
+import { BlogApiError, getPublicBlogArticle } from "@/lib/blog";
 import Reveal from "@/components/Reveal";
 import Stamp from "@/components/Stamp";
 
@@ -37,7 +37,8 @@ export async function generateMetadata({ params }: BlogArticlePageProps): Promis
         images: seoImage ? [seoImage] : [],
       },
     };
-  } catch {
+  } catch (error) {
+    if (error instanceof BlogApiError && error.status !== 404) throw error;
     return {
       title: "Article introuvable",
       description: "Cet article n'existe pas ou n'est plus disponible.",
@@ -51,8 +52,9 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
   let article;
   try {
     article = await getPublicBlogArticle(slug);
-  } catch {
-    notFound();
+  } catch (error) {
+    if (error instanceof BlogApiError && error.status === 404) notFound();
+    throw error;
   }
 
   return (

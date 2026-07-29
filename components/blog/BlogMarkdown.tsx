@@ -3,7 +3,6 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
-import Image from "next/image";
 
 type BlogMarkdownProps = {
   children: string;
@@ -40,13 +39,14 @@ export default function BlogMarkdown({ children }: BlogMarkdownProps) {
           if (!src) return null;
 
           return (
-            <Image
+            // Markdown can reference several trusted publishing hosts, which
+            // cannot all be known by Next Image at build time.
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               src={src}
               alt={alt || ""}
               loading="lazy"
               decoding="async"
-              width={800}
-              height={600}
               {...props}
             />
           );
@@ -57,8 +57,12 @@ export default function BlogMarkdown({ children }: BlogMarkdownProps) {
         h2({ children }) {
           return <h3>{children}</h3>;
         },
-        table({ children }) {
-          return <div className="table-wrapper">{children}</div>;
+        table({ children, ...props }) {
+          return (
+            <div className="table-wrapper">
+              <table {...props}>{children}</table>
+            </div>
+          );
         },
       }}
     >

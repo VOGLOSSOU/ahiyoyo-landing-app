@@ -10,8 +10,14 @@ type BlogSearchProps = {
 export default function BlogSearch({ initialQuery, onSearchChange }: BlogSearchProps) {
   const [query, setQuery] = useState(initialQuery);
   const timeoutRef = useRef<number | null>(null);
+  const firstRenderRef = useRef(true);
 
   useEffect(() => {
+    if (firstRenderRef.current) {
+      firstRenderRef.current = false;
+      return;
+    }
+
     if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
 
     timeoutRef.current = window.setTimeout(() => {
@@ -25,7 +31,6 @@ export default function BlogSearch({ initialQuery, onSearchChange }: BlogSearchP
 
   const reset = () => {
     setQuery("");
-    onSearchChange("");
   };
 
   return (
