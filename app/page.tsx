@@ -8,7 +8,6 @@ import Audiences from "@/components/Audiences";
 import HowItWorks from "@/components/HowItWorks";
 import Services from "@/components/Services";
 import ClientSpace from "@/components/ClientSpace";
-import Tracking from "@/components/Tracking";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import FAQPreview from "@/components/FAQPreview";
@@ -30,7 +29,6 @@ export default async function Home() {
       <Services />
       <HowItWorks />
       <ClientSpace />
-      <Tracking />
       <Pricing />
       <Testimonials />
       <LatestArticlesSection articles={latestArticles} />

@@ -15,12 +15,6 @@ export default function LatestArticlesSection({ articles }: LatestArticlesSectio
 
   const latestArticles = articles.slice(0, 3);
 
-  const cardLayout = (index: number) => {
-    if (latestArticles.length === 1) return "md:col-span-2 lg:col-span-12";
-    if (latestArticles.length === 2) return index === 0 ? "md:col-span-2 lg:col-span-8" : "md:col-span-2 lg:col-span-4";
-    return index === 0 ? "md:col-span-2 lg:col-span-6" : "lg:col-span-3";
-  };
-
   return (
     <section className="py-16 md:py-24 bg-paperAlt border-y border-ink/5 relative overflow-hidden">
       <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-amber/10 blur-3xl pointer-events-none" />
@@ -48,14 +42,12 @@ export default function LatestArticlesSection({ articles }: LatestArticlesSectio
           </div>
         </Reveal>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-12 items-stretch">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 items-stretch">
           {latestArticles.map((article, index) => (
             <ArticleCard
               key={article.id}
               article={article}
               index={index}
-              featured={index === 0}
-              className={cardLayout(index)}
             />
           ))}
         </div>

@@ -8,8 +8,6 @@ import remarkGfm from "remark-gfm";
 type ArticleCardProps = {
   article: BlogArticle;
   index?: number;
-  featured?: boolean;
-  className?: string;
 };
 
 function ExcerptMarkdown({ children }: { children: string }) {
@@ -22,14 +20,14 @@ function ExcerptMarkdown({ children }: { children: string }) {
   );
 }
 
-export default function ArticleCard({ article, index = 0, featured = false, className }: ArticleCardProps) {
+export default function ArticleCard({ article, index = 0 }: ArticleCardProps) {
   const date = formatDate(article.published_at);
 
   return (
-    <Reveal delay={index * 80} className={className}>
+    <Reveal delay={index * 80} className="h-full">
       <article className="group relative waybill border border-ink/8 lift flex flex-col h-full focus-within:ring-2 focus-within:ring-amber focus-within:ring-offset-2 focus-within:ring-offset-paper">
         <Link href={`/blog/${article.slug}`} className="absolute inset-0 z-10 rounded-[22px]" aria-label={`Lire l’article : ${article.title}`} />
-        <div className={`relative overflow-hidden ${featured ? "aspect-[16/8] lg:aspect-[16/10]" : "aspect-[16/10]"}`}>
+        <div className="relative aspect-[16/10] overflow-hidden">
           {article.featured_image_url ? (
             <Image
               src={article.featured_image_url}
@@ -54,7 +52,7 @@ export default function ArticleCard({ article, index = 0, featured = false, clas
             </span>
           </div>
 
-          <h3 className={`font-display font-bold leading-snug mb-3 ${featured ? "text-xl md:text-2xl" : "text-lg"}`}>
+          <h3 className="font-display font-bold text-lg leading-snug mb-3">
             {article.title}
           </h3>
 
