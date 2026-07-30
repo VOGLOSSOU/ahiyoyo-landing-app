@@ -33,8 +33,8 @@ export default async function Home() {
       <Tracking />
       <Pricing />
       <Testimonials />
-      <FAQPreview />
       <LatestArticlesSection articles={latestArticles} />
+      <FAQPreview />
       <ContactCTA />
       <Footer />
     </>

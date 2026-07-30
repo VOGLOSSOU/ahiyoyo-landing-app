@@ -12,7 +12,7 @@ const questions = [
 
 export default function FAQPreview() {
   return (
-    <section className="py-16 md:py-24 bg-paperAlt">
+    <section className="py-16 md:py-24 bg-paper">
       <div className="max-w-4xl mx-auto px-5 md:px-6">
         <div className="text-center mb-11 md:mb-14"><Stamp variant="amber" className="mb-6">Questions fréquentes</Stamp><h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Les réponses utiles avant de commencer.</h2><p className="text-slate">L’essentiel en quelques minutes, sans jargon logistique.</p></div>
         <Reveal>

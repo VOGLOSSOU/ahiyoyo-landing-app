@@ -8,31 +8,34 @@ import remarkGfm from "remark-gfm";
 type ArticleCardProps = {
   article: BlogArticle;
   index?: number;
+  featured?: boolean;
+  className?: string;
 };
 
 function ExcerptMarkdown({ children }: { children: string }) {
   if (!children?.trim()) return null;
 
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} allowedElements={["p", "strong", "em", "a"]} unwrapDisallowed>
+    <ReactMarkdown remarkPlugins={[remarkGfm]} allowedElements={["p", "strong", "em"]} unwrapDisallowed>
       {children}
     </ReactMarkdown>
   );
 }
 
-export default function ArticleCard({ article, index = 0 }: ArticleCardProps) {
+export default function ArticleCard({ article, index = 0, featured = false, className }: ArticleCardProps) {
   const date = formatDate(article.published_at);
 
   return (
-    <Reveal delay={index * 80}>
-      <article className="waybill border border-ink/8 lift flex flex-col h-full">
-        <div className="relative aspect-[16/10] overflow-hidden">
+    <Reveal delay={index * 80} className={className}>
+      <article className="group relative waybill border border-ink/8 lift flex flex-col h-full focus-within:ring-2 focus-within:ring-amber focus-within:ring-offset-2 focus-within:ring-offset-paper">
+        <Link href={`/blog/${article.slug}`} className="absolute inset-0 z-10 rounded-[22px]" aria-label={`Lire l’article : ${article.title}`} />
+        <div className={`relative overflow-hidden ${featured ? "aspect-[16/8] lg:aspect-[16/10]" : "aspect-[16/10]"}`}>
           {article.featured_image_url ? (
             <Image
               src={article.featured_image_url}
               alt={article.title}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
             />
           ) : (
@@ -51,7 +54,7 @@ export default function ArticleCard({ article, index = 0 }: ArticleCardProps) {
             </span>
           </div>
 
-          <h3 className="font-display font-bold text-lg leading-snug mb-3">
+          <h3 className={`font-display font-bold leading-snug mb-3 ${featured ? "text-xl md:text-2xl" : "text-lg"}`}>
             {article.title}
           </h3>
 
@@ -62,13 +65,10 @@ export default function ArticleCard({ article, index = 0 }: ArticleCardProps) {
           )}
 
           <div className="mt-auto">
-            <Link
-              href={`/blog/${article.slug}`}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-amber hover:underline"
-            >
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-amber group-hover:underline">
               Lire l&apos;article
-              <i className="fa-solid fa-arrow-right text-xs" />
-            </Link>
+              <i className="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1" />
+            </span>
           </div>
         </div>
       </article>
