@@ -7,8 +7,9 @@ const benefits = [
   "Les frais et montants sont directement affichés pour chaque opération et sans frais cachés",
   "Nos délais estimatifs pour chaque ligne vous aident à mieux anticiper les livraisons",
   "Nous proposons des tarifs au kilogramme ou au CBM",
-  "Les adresses d'entrepôts s'affichent avec des instructions d'envoi pour éviter les erreurs",
 ];
+
+const importantNote = "Les adresses d'entrepôts s'affichent avec des instructions d'envoi pour éviter les erreurs";
 
 export default function Pricing() {
   return (
@@ -22,13 +23,17 @@ export default function Pricing() {
               <Stamp variant="ghost" className="mb-6">TRANSPARENCE DES PRIX</Stamp>
               <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-10">Les tarifs et adresses utiles, accessibles avant d&apos;envoyer.</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 justify-items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 justify-items-center">
                 {benefits.map((item, index) => (
                   <div key={index} className="w-full max-w-lg rounded-xl border border-white/10 bg-white/[.04] p-5 md:p-6 flex items-start gap-3 text-left">
                     <span className="w-6 h-6 rounded-full bg-amber/15 text-amber flex items-center justify-center flex-shrink-0 mt-0.5"><i className="fa-solid fa-check text-[9px]" /></span>
                     <p className="text-sm md:text-base text-white/75 leading-relaxed">{item}</p>
                   </div>
                 ))}
+              </div>
+
+              <div className="w-full max-w-2xl mx-auto rounded-xl border-2 border-amber/40 bg-amber/10 p-5 md:p-6 text-center mb-8">
+                <p className="text-sm md:text-base text-amber font-semibold leading-relaxed">{importantNote}</p>
               </div>
 
               <Link href="/tarifs" className="btn-primary inline-flex items-center justify-center bg-amber text-[#111827] font-semibold px-7 py-4 rounded-full text-sm">Consulter les lignes tarifaires <i className="fa-solid fa-arrow-right ml-2" /></Link>
