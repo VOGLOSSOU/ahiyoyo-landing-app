@@ -16,8 +16,8 @@ export default function Problem() {
         <div className="grid lg:grid-cols-[.9fr_1.1fr] gap-12 lg:gap-20 items-center">
           <Reveal>
             <Stamp variant="ghost" className="mb-7">Une logistique plus lisible</Stamp>
-            <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-5">Moins d’intermédiaires.<br /><span className="text-amber">Plus de maîtrise.</span></h2>
-            <p className="text-white/60 leading-relaxed mb-8">À distance, le plus difficile n’est pas seulement de transporter un colis. C’est de savoir à qui faire confiance, combien payer et ce qui se passe ensuite.</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-5">Ahiyoyo remplace plusieurs intermédiaires</h2>
+            <p className="text-white/60 leading-relaxed mb-8">Plus besoin de chercher séparément un fournisseur, un intermédiaire d&apos;achat, un transporteur, un transitaire ou des clients à l&apos;international.<br /><br />Même à distance, vous gardez un œil sur toutes vos activités commerciales avec le reste du monde.</p>
             <Link href="/faq" className="inline-flex items-center gap-2 text-sm font-semibold text-amber hover:underline">Comprendre notre fonctionnement <i className="fa-solid fa-arrow-right text-xs" /></Link>
           </Reveal>
           <Reveal stagger>
