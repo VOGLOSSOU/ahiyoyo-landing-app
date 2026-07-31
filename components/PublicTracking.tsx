@@ -328,7 +328,7 @@ export default function PublicTracking() {
       <section className="relative overflow-hidden border-b border-ink/5">
         <div className="grain" />
         <div className="relative max-w-4xl mx-auto px-5 md:px-6 py-14 md:py-20 text-center">
-          <Stamp variant="amber" dot className="mb-6">Suivi public et sécurisé</Stamp>
+          <Stamp variant="amber" dot className="mb-6">TRACKING EN LIGNE</Stamp>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-5">Suivez votre colis ou votre commande</h1>
           <p className="text-slate max-w-2xl mx-auto leading-relaxed">Consultez son statut, son trajet et ses dernières mises à jour avec votre référence Ahiyoyo.</p>
 
