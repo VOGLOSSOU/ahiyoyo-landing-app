@@ -27,12 +27,12 @@ export default function CommentCaMarche() {
 
         <ClientSpace dark />
 
-        <section className="py-14 md:py-18 bg-paperAlt border-y border-ink/5">
-          <div className="max-w-6xl mx-auto px-5 md:px-6">
-            <div className="grid md:grid-cols-3 gap-5">
+        <section className="py-10 sm:py-14 md:py-18 bg-paperAlt border-y border-ink/5">
+          <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6">
+            <div className="grid md:grid-cols-3 gap-3 sm:gap-5">
               {assurances.map((item) => (
-                <article key={item.title} className="flex items-start gap-4 p-5 rounded-2xl border border-ink/8 bg-paper">
-                  <span className="w-11 h-11 rounded-xl bg-amber/15 text-amber flex items-center justify-center flex-shrink-0"><i className={`fa-solid ${item.icon}`} /></span>
+                <article key={item.title} className="flex items-start gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl border border-ink/8 bg-paper">
+                  <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-amber/15 text-amber flex items-center justify-center flex-shrink-0"><i className={`fa-solid ${item.icon}`} /></span>
                   <div><h2 className="font-display font-semibold mb-1.5">{item.title}</h2><p className="text-sm text-slate leading-relaxed">{item.text}</p></div>
                 </article>
               ))}

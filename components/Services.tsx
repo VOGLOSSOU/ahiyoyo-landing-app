@@ -37,23 +37,23 @@ export default function Services() {
   const active = journeys.find((journey) => journey.id === activeId) || journeys[0];
 
   return (
-    <section id="fonctionnalites" className="py-16 md:py-24 bg-paper">
-      <div className="max-w-6xl mx-auto px-5 md:px-6">
+    <section id="fonctionnalites" className="py-12 sm:py-16 md:py-24 bg-paper">
+      <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6">
         <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
           <Stamp className="mb-6">Votre objectif</Stamp>
-          <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-4">Que voulez-vous faire aujourd’hui ?</h2>
-          <p className="text-slate leading-relaxed">Choisissez votre besoin pour découvrir le parcours Ahiyoyo correspondant.</p>
+          <h2 className="text-[1.8rem] sm:text-3xl md:text-4xl font-display font-bold leading-tight mb-4">Que voulez-vous faire aujourd’hui ?</h2>
+          <p className="text-sm sm:text-base text-slate leading-relaxed">Choisissez votre besoin pour découvrir le parcours Ahiyoyo correspondant.</p>
         </div>
 
         <Reveal>
-          <div className="flex flex-wrap justify-center gap-2 mb-7" role="tablist" aria-label="Choisir un objectif">
-            {journeys.map((journey) => <button key={journey.id} type="button" role="tab" aria-selected={activeId === journey.id} aria-controls="journey-panel" onClick={() => setActiveId(journey.id)} className={`rounded-full border px-4 sm:px-5 py-3 text-sm font-semibold transition ${activeId === journey.id ? "bg-amber border-amber text-[#111827] shadow-sm" : "bg-paperAlt border-ink/10 text-slate hover:text-ink hover:border-amber/40"}`}><i className={`fa-solid ${journey.icon} mr-2`} />{journey.label}</button>)}
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2 mb-6 sm:mb-7" role="tablist" aria-label="Choisir un objectif">
+            {journeys.map((journey) => <button key={journey.id} type="button" role="tab" aria-selected={activeId === journey.id} aria-controls="journey-panel" onClick={() => setActiveId(journey.id)} className={`min-w-0 rounded-xl sm:rounded-full border px-3 sm:px-5 py-3 text-xs sm:text-sm font-semibold transition ${activeId === journey.id ? "bg-amber border-amber text-[#111827] shadow-sm" : "bg-paperAlt border-ink/10 text-slate hover:text-ink hover:border-amber/40"}`}><i className={`fa-solid ${journey.icon} mr-1.5 sm:mr-2`} />{journey.label}</button>)}
           </div>
 
-          <div id="journey-panel" role="tabpanel" className="waybill border border-ink/8 p-6 sm:p-8 md:p-10">
-            <div className="grid lg:grid-cols-[.9fr_1.1fr] gap-9 lg:gap-14 items-center">
-              <div><span className="w-12 h-12 rounded-xl bg-navy text-amber flex items-center justify-center mb-6"><i className={`fa-solid ${active.icon}`} /></span><h3 className="font-display text-2xl md:text-3xl font-bold leading-tight mb-4">{active.title}</h3><p className="text-slate text-sm md:text-base leading-relaxed mb-7">{active.description}</p><Link href={active.href} className="btn-primary inline-flex items-center bg-amber text-[#111827] rounded-full px-6 py-3.5 text-sm font-semibold">{active.cta}<i className="fa-solid fa-arrow-right ml-2 text-xs" /></Link></div>
-              <ol className="space-y-3">{active.steps.map((step, index) => <li key={step} className="rounded-xl border border-ink/8 bg-paper p-4 flex items-center gap-4"><span className="font-mono-tag text-[9px] text-amber w-6">0{index + 1}</span><span className="text-sm font-medium">{step}</span></li>)}</ol>
+          <div id="journey-panel" role="tabpanel" className="waybill border border-ink/8 p-5 sm:p-8 md:p-10 !rounded-2xl sm:!rounded-[22px]">
+            <div className="grid lg:grid-cols-[.9fr_1.1fr] gap-7 sm:gap-9 lg:gap-14 items-center">
+              <div><span className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-navy text-amber flex items-center justify-center mb-5 sm:mb-6"><i className={`fa-solid ${active.icon}`} /></span><h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold leading-tight mb-4">{active.title}</h3><p className="text-slate text-sm md:text-base leading-relaxed mb-6 sm:mb-7">{active.description}</p><Link href={active.href} className="btn-primary w-full sm:w-auto inline-flex items-center justify-center bg-amber text-[#111827] rounded-full px-5 sm:px-6 py-3.5 text-sm font-semibold text-center">{active.cta}<i className="fa-solid fa-arrow-right ml-2 text-xs flex-shrink-0" /></Link></div>
+              <ol className="space-y-2.5 sm:space-y-3">{active.steps.map((step, index) => <li key={step} className="rounded-xl border border-ink/8 bg-paper p-3.5 sm:p-4 flex items-start sm:items-center gap-3 sm:gap-4"><span className="font-mono-tag text-[9px] text-amber w-5 sm:w-6 flex-shrink-0 pt-0.5">0{index + 1}</span><span className="text-xs sm:text-sm font-medium leading-relaxed">{step}</span></li>)}</ol>
             </div>
           </div>
         </Reveal>
