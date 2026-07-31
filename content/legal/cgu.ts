@@ -1,1 +1,620 @@
-export const cguContent = "PRÉAMBULE\nLes présentes Conditions Générales d’Utilisation et de Services, ci-après les « CGU », régissent l’accès à la plateforme Ahiyoyo et les\nservices commandés auprès de NEW MARKETS TECHNOLOGIES SAS. Elles s’appliquent au site internet, à l’application, à l’espace\nclient et aux outils de suivi exploités sous la marque Ahiyoyo.\nAhiyoyo permet notamment de demander un devis, acheter des marchandises, payer un fournisseur, organiser une expédition,\nsuivre une commande, recevoir des documents et préparer un voyage d’affaires. La nature exacte de la mission d’Ahiyoyo dépend\ndu service choisi et des documents validés par le Client.\nLe Client doit lire les CGU avant de créer un compte ou de valider une commande. En cochant la case d’acceptation prévue sur la\nPlateforme, il reconnaît les avoir comprises et acceptées.\nACCEPTATION\nGROUPAGE\n\nPAIEMENT\n\nPROPRIÉTÉ\n\nFACTURATION\n\nCOLIS\n\nLes CGU sont acceptées lors de la création du compte ou de la\nvalidation d’une commande sur la Plateforme.\nLe tarif au CBM ou au kilogramme comprend les frais ordinaires\nde douane et de dédouanement, sauf frais exceptionnels\nclairement identifiés.\nLes paiements par tranches sont possibles lorsqu’un échéancier\nest prévu. Aucun colis n’est remis tant que le solde exigible n’est\npas réglé.\nChaque client conserve ses droits sur ses marchandises. Le\ngroupage ne crée aucune copropriété sur le conteneur ni sur les\nbiens des autres clients.\nLes factures normalisées sont émises conformément aux règles\nfiscales applicables. Les achats pour compte peuvent être traités\nen débours lorsque les conditions sont réunies.\nTout colis envoyé à un entrepôt Ahiyoyo doit être préalablement\ndéclaré sur la Plateforme et porter le marquage communiqué au\nclient.\n\nI. ACCÈS À LA PLATEFORME ET FORMATION DU CONTRAT\nArticle 1 - Identification de l’opérateur\nLa Plateforme est exploitée par NEW MARKETS TECHNOLOGIES SAS, société par actions simplifiée de droit béninois, au capital de 2\n000 000 FCFA, immatriculée au RCCM sous le numéro RB/COT/25 B 40607 et identifiée fiscalement sous le numéro\n3202585063521, exerçant sous l’enseigne Ahiyoyo.\nLe siège social est situé à Cotonou, Ilot 1146, Quartier Houéhoun, Parcelle C, Maison ABUDU RAFIOU YESSOUFOU. Le service client\npeut être joint au +229 01 91 08 41 41 ou à support@ahiyoyo.com.\n\nArticle 2 - Objet et champ d’application\nLes CGU définissent les conditions d’accès à la Plateforme ainsi que les droits et obligations d’Ahiyoyo et du Client pour les achats,\nles expéditions, les services combinant achat et expédition, les formalités logistiques et les voyages d’affaires.\nElles s’appliquent à toute commande passée sur la Plateforme. Un devis, une facture, un bon de commande, un contrat particulier\nou un échéancier accepté peut compléter les CGU. En cas de contradiction, le document particulier accepté pour la commande\nconcernée prévaut.\n\nArticle 3 - Définitions\n• « Plateforme » : le site, l’application, l’espace client et les outils numériques Ahiyoyo.\n• « Client » : toute personne physique ou morale qui crée un compte, demande un devis, confie un colis ou commande un service.\n• « Commande » : toute opération validée par le Client et acceptée par Ahiyoyo.\n• « Marchandise » : tout produit, colis, équipement, document ou bien faisant l’objet d’un achat ou d’une expédition.\n• « Groupage » : expédition dans laquelle les marchandises de plusieurs clients sont consolidées dans un même flux, conteneur,\nvéhicule ou lot.\n• « Service non groupé » : conteneur complet, palette complète, véhicule dédié, affrètement ou expédition réservée à un seul\nClient.\n\n• « Fournisseur » : vendeur, fabricant ou prestataire auprès duquel les marchandises ou services sont obtenus.\n• « Débours » : somme payée par Ahiyoyo au nom et pour le compte du Client, lorsqu’elle peut être traitée comme telle au regard\ndes règles fiscales applicables.\n\nArticle 4 - Acceptation des CGU\nL’acceptation des CGU intervient lors de la création du compte, de la validation d’un devis ou d’une commande, du paiement d’un\nacompte ou de l’envoi d’une marchandise à un entrepôt indiqué par Ahiyoyo.\nLa version acceptée est celle affichée sur la Plateforme à la date de la commande. Ahiyoyo peut conserver la date, l’heure et la\nversion de cette acceptation comme preuve.\n\nArticle 5 - Création et sécurité du compte\nLe Client fournit des informations exactes et à jour, notamment son identité, son numéro de téléphone, son adresse électronique et,\npour un professionnel, sa raison sociale, son IFU, son RCCM et les coordonnées de son représentant.\nLe Client est responsable de l’utilisation de son compte et de la confidentialité de ses codes d’accès. Toute utilisation non autorisée\ndoit être signalée sans délai.\nAhiyoyo peut demander des pièces complémentaires lorsque cela est nécessaire pour la facturation, la douane, la sécurité, la\nprévention de la fraude ou le respect d’une obligation légale.\n\nArticle 6 - Fonctionnement et disponibilité de la Plateforme\nLa Plateforme permet notamment de demander un devis, enregistrer un colis, transmettre des documents, effectuer ou déclarer un\npaiement, consulter une facture et suivre l’état d’une commande.\nLes statuts de suivi sont fournis à titre d’information opérationnelle. Un décalage de mise à jour ne modifie pas la réalité de la prise\nen charge, du transport ou du paiement.\nAhiyoyo peut interrompre temporairement tout ou partie de la Plateforme pour maintenance, sécurité ou incident technique. Les\ncommandes en cours et les sommes exigibles restent dues.\n\nII. SERVICES, DEVIS ET COMMANDES\nArticle 7 - Services proposés\nSelon le devis choisi, Ahiyoyo peut fournir un ou plusieurs des services suivants :\n• recherche de produits, demande de prix, négociation et mise en relation avec un fournisseur ;\n• achat de marchandises ou paiement d’un fournisseur pour le compte du Client ;\n• réception en entrepôt, consolidation, contrôle, emballage, stockage temporaire et expédition ;\n• transport terrestre, maritime ou aérien, groupé ou non groupé ;\n• formalités douanières, dédouanement et livraison lorsque ces prestations sont prévues ;\n• préparation et accompagnement de voyages d’affaires ;\n• services complémentaires expressément indiqués dans le devis ou la commande.\n\nArticle 8 - Demande de devis\nLe Client décrit son besoin avec précision : produit, quantité, dimensions, matière, couleur, modèle, usage, destination, délai\nsouhaité, photographies, liens et toute exigence particulière.\nLe devis est établi sur la base des informations disponibles au moment de son émission. Il peut être corrigé si les caractéristiques\nréelles, le poids, le volume, la quantité, le prix fournisseur, le taux de change, les frais du transporteur ou les exigences\nréglementaires diffèrent des informations initiales.\nLes frais de recherche, d’étude, d’inspection ou de déplacement restent acquis lorsque le travail correspondant a commencé.\n\nArticle 9 - Validation de la commande\nLa commande est formée lorsque le Client accepte le devis ou l’offre, verse le montant demandé et reçoit une confirmation\nd’Ahiyoyo. Une simple capture d’écran de paiement ne vaut pas encaissement tant que les fonds ne sont pas effectivement reçus et\nidentifiés.\nAvant de valider, le Client vérifie les produits, quantités, prix, mode de transport, lieu de livraison, conditions de paiement et\nservices inclus. Toute modification demandée après validation peut entraîner un nouveau prix ou un nouveau délai.\n\nAhiyoyo peut refuser une commande portant sur une marchandise interdite, insuffisamment décrite, non conforme, suspecte,\ndangereuse ou impossible à traiter dans des conditions raisonnables.\n\nArticle 10 - Prix, poids, volume et taux de change\nLes prix applicables sont ceux indiqués sur la Plateforme, le devis ou la facture. Ils peuvent être exprimés au kilogramme, au mètre\ncube, au carton, à l’unité, au forfait ou selon toute autre base clairement indiquée.\nLe poids et le volume facturables sont ceux mesurés ou confirmés par l’entrepôt, le transporteur, le port, l’aéroport ou le prestataire\nchargé de l’opération. Le minimum facturable est celui indiqué dans le tarif ou le devis.\nLorsqu’un prix dépend d’une devise étrangère, le taux retenu est celui intégré au devis pendant sa durée de validité. Après\nexpiration ou avant encaissement effectif, le montant peut être actualisé.\n\nIII. PAIEMENT, FACTURATION ET RECOUVREMENT\nArticle 11 - Moyens de paiement\nLe Client paie uniquement sur les comptes bancaires, numéros marchands ou moyens de paiement affichés sur la Plateforme, le\ndevis ou la facture. Un paiement effectué sur un compte personnel ou à un tiers non autorisé n’est pas opposable à Ahiyoyo, sauf\nconfirmation écrite émise par un représentant habilité.\nTout paiement doit comporter une référence permettant d’identifier le Client et la commande. En cas de paiement en espèces, un\nreçu officiel doit être remis ou enregistré dans le système Ahiyoyo.\nLes frais bancaires, de transfert, de retrait ou de change sont supportés selon les indications du moyen de paiement utilisé ou du\ndevis.\n\nArticle 12 - Paiement par tranches et échéances\nAhiyoyo peut proposer un paiement intégral ou un paiement par tranches. L’échéancier applicable est celui affiché sur la\nPlateforme, indiqué sur la facture ou convenu par écrit.\nSauf condition différente prévue pour la commande, une expédition en groupage peut être subordonnée au paiement d’au moins\ncinquante pour cent (50 %) du fret estimé avant chargement. Le solde est payable dans les quarante-huit (48) heures suivant la\nnotification d’arrivée et, dans tous les cas, avant la remise de la marchandise.\nUn règlement partiel est imputé sur la commande indiquée par le Client. À défaut d’indication, Ahiyoyo peut l’affecter à la dette la\nplus ancienne. L’acceptation d’un paiement partiel ne vaut ni renonciation au solde ni modification de l’échéance.\nLe défaut de paiement d’une échéance autorise Ahiyoyo à suspendre l’achat, le chargement, le dédouanement, la livraison ou tout\nautre service. Si un échéancier a été accordé, le non-respect d’une échéance peut rendre immédiatement exigible le solde restant.\n\nArticle 13 - Factures, factures normalisées et fiscalité\nLa facture proforma, le devis et l’appel de fonds servent à présenter le prix ou à demander un paiement. Ils ne remplacent pas la\nfacture normalisée exigée par la réglementation fiscale.\nAhiyoyo émet les factures normalisées relatives à ses ventes et prestations au moyen du dispositif fiscal applicable. Les acomptes,\nrèglements partiels, avoirs et soldes sont enregistrés conformément aux règles en vigueur et aux possibilités du système de\nfacturation.\nLorsque Ahiyoyo paie un fournisseur ou une administration au nom et pour le compte du Client, les montants concernés peuvent\nêtre présentés comme débours si les conditions juridiques, comptables et fiscales sont réunies et si les pièces justificatives sont\ndisponibles. À défaut, ils sont facturés selon le traitement fiscal applicable à l’opération.\nLe Client professionnel communique avant facturation sa raison sociale exacte, son IFU, son adresse et, le cas échéant, son RCCM.\nUne erreur communiquée par le Client est corrigée par la procédure fiscale appropriée ; elle ne permet pas d’exiger la suppression\nou l’altération d’une facture déjà normalisée.\nAhiyoyo refuse toute demande de minoration de valeur, de fausse désignation, de facture fictive ou de document destiné à éluder\nune taxe. Le Client reste responsable de sa propre fiscalité, de la revente des marchandises et des déclarations qui lui incombent.\nToute retenue fiscale opérée par un Client doit être prévue par la loi et accompagnée du justificatif ou de l’attestation\ncorrespondante. À défaut de justificatif, le montant retenu reste dû.\n\nArticle 14 - Retard de paiement et recouvrement\nToute somme non réglée à son échéance peut faire l’objet de relances par la Plateforme, téléphone, courrier électronique, SMS ou\nWhatsApp. Ces relances n’interrompent pas les frais de stockage ni les autres coûts liés à la conservation de la marchandise.\n\nAhiyoyo peut retenir les marchandises, documents ou sommes détenus pour le compte du Client jusqu’au paiement complet des\nfactures exigibles liées à la commande, dans les limites prévues par la loi.\nAprès mise en demeure restée sans effet, Ahiyoyo peut engager toute procédure amiable, judiciaire ou OHADA de recouvrement.\nLes intérêts, frais de justice, frais d’huissier et dépenses de recouvrement légalement récupérables sont à la charge du Client.\nLe Client ne peut suspendre ou compenser un paiement de sa propre initiative en raison d’une réclamation distincte, sauf accord\nécrit ou décision exécutoire.\n\nIV. ACHATS ET ACHATS AVEC EXPÉDITION\nArticle 15 - Service d’achat\nLe service d’achat peut comprendre la recherche d’un fournisseur, la négociation, la transmission d’une offre, le paiement, le suivi\nde production et la réception en entrepôt. Le devis précise si Ahiyoyo agit comme vendeur, mandataire d’achat ou intermédiaire.\nLorsque le Client choisit le fournisseur ou transmet un lien produit, Ahiyoyo exécute la commande sur la base des informations\nfournies. Elle ne garantit pas les déclarations du fournisseur, les performances futures du produit ou son adaptation à un usage non\nexpressément indiqué.\nLe prix fournisseur, les frais de service, les frais de paiement, l’inspection, le transport local et le fret international peuvent\napparaître sur des lignes séparées.\n\nArticle 16 - Service intégré d’achat et d’expédition\nLe service intégré d’achat et d’expédition permet au Client de confier à Ahiyoyo l’acquisition des marchandises puis leur\nacheminement jusqu’au lieu convenu. Il s’agit d’une seule commande commerciale, mais chaque étape conserve ses propres\nconditions de prix, de délai, de conformité et de responsabilité.\nLe paiement du prix d’achat n’emporte pas paiement du transport, de la douane, de l’assurance ou de la livraison, sauf si ces\néléments sont expressément inclus dans l’offre acceptée.\nAhiyoyo peut suspendre l’expédition si le Client n’a pas réglé le fret, fourni les documents nécessaires ou validé une différence de\npoids, de volume ou de coût constatée après réception en entrepôt.\n\nArticle 17 - Contrôle des marchandises et relation avec le fournisseur\nUne inspection, un contrôle de quantité, une photographie ou une vidéo n’est réalisé que s’il est prévu dans la commande. Un\ncontrôle visuel ne constitue ni un essai technique complet ni une garantie de conformité cachée.\nEn cas d’erreur ou de défaut imputable au fournisseur, Ahiyoyo assiste le Client dans la transmission de la réclamation lorsque cela\nfait partie du service. Le remboursement, le remplacement ou la réparation dépend des conditions du fournisseur et des preuves\ndisponibles.\nLes délais de production et de remboursement annoncés par un fournisseur restent indicatifs tant qu’ils ne sont pas confirmés et\nexécutés par celui-ci.\n\nV. RÉCEPTION, EXPÉDITION ET GROUPAGE\nArticle 18 - Pré-enregistrement et identification des colis\nAvant tout envoi vers un entrepôt Ahiyoyo, le Client doit créer ou compléter l’expédition sur la Plateforme et transmettre les\ninformations demandées : fournisseur, description, quantité, valeur, mode de transport et numéro de suivi.\nChaque colis doit porter de manière lisible le nom ou code du Client, son numéro de commande et le marquage communiqué par\nAhiyoyo. Le fournisseur doit recevoir ces instructions avant l’expédition.\nUn colis non déclaré, mal identifié ou envoyé sans autorisation peut être traité avec retard, refusé, retourné ou soumis à des frais de\nrecherche et de traitement manuel au tarif en vigueur. Ahiyoyo n’est pas responsable d’une mauvaise affectation résultant d’un\nmarquage absent ou erroné avant que le colis ait pu être identifié.\n\nArticle 19 - Réception, emballage et mesure\nLa réception en entrepôt confirme uniquement l’arrivée apparente du colis. Elle ne vaut pas acceptation de la qualité, du contenu\nexact ou de la conformité du produit, sauf contrôle commandé.\nLe fournisseur reste responsable de l’emballage initial. Lorsque l’emballage est insuffisant, Ahiyoyo peut proposer ou imposer un\nrenforcement, une caisse, une palette ou un reconditionnement, aux frais du Client.\n\nLe poids, le volume et le nombre de colis sont confirmés après réception. Les mesures finales peuvent différer des estimations du\nfournisseur ou du Client et servent de base à la facture de transport.\n\nArticle 20 - Transport et délais\nLe mode de transport est celui choisi dans la commande : terrestre, maritime ou aérien. Ahiyoyo peut recourir à des transporteurs,\nentrepôts, transitaires, compagnies et agents indépendants.\nLes délais annoncés sont des estimations calculées à partir des départs habituels. Ils peuvent être affectés par la production, la\nconsolidation, la disponibilité des navires ou avions, la météo, les contrôles, la douane, les ports, les frontières, les autorités ou un\ncas de force majeure.\nUn retard ne donne lieu à indemnisation que s’il résulte d’une faute prouvée d’Ahiyoyo et dans les limites prévues par la loi, le devis\net les conditions du transporteur.\n\nArticle 21 - Douane, droits, taxes et autorisations\nPour les expéditions en groupage, Ahiyoyo supporte et règle les frais ordinaires de douane, de transit et de dédouanement du flux\nconsolidé. Ces frais sont inclus dans le tarif de transport facturé au CBM, au kilogramme, au carton ou au forfait, sauf mention\ncontraire clairement portée sur le devis.\nRestent à la charge du Client les coûts exceptionnels propres à sa marchandise, notamment les licences, autorisations, certificats,\ninspections particulières, taxes spécifiques, frais de laboratoire, surestaries, magasinage, amendes, saisies, destruction ou\nredressements résultant d’une description inexacte, d’une valeur erronée, d’un document manquant ou d’une marchandise\nréglementée non déclarée.\nPour un conteneur complet, une palette complète ou tout service non groupé, les conditions de douane sont précisées dans le devis.\nLe Client ne peut prendre directement en charge ses droits et formalités douanières qu’en vertu d’un accord distinct et écrit avec\nAhiyoyo. Cet accord doit préciser les responsabilités, les documents à fournir, les délais et les frais qui restent dus à Ahiyoyo.\nEn l’absence d’un tel accord écrit, Ahiyoyo ou son représentant organise les formalités et facture les droits, taxes, débours et\nprestations selon le devis ou les dépenses réellement engagées.\n\nArticle 22 - Propriété des marchandises en groupage\nLe groupage est une organisation de transport. Il ne transfère pas à Ahiyoyo la propriété des marchandises appartenant au Client et\nne crée aucune copropriété entre les clients sur le conteneur, la palette, le véhicule ou les marchandises des autres clients.\nLes marchandises de chaque Client sont identifiées au moyen du compte, du numéro de commande, du marquage, des preuves\nd’achat, du packing list et des registres d’entrepôt. Le Client doit conserver les documents permettant de justifier ses droits sur les\nbiens.\nLe fait qu’un connaissement, une déclaration, un document de transport ou un document douanier soit établi au nom d’Ahiyoyo ou\nde son agent répond aux besoins du groupage et des formalités. Il ne constitue pas, à lui seul, un transfert de propriété au profit\nd’Ahiyoyo.\nLe transfert de propriété et le transfert des risques sont distincts. Ils dépendent de la relation de vente, du rôle d’Ahiyoyo, des\nconditions convenues avec le fournisseur et de la prise en charge par le transporteur.\nLorsque les marchandises sont vendues directement par Ahiyoyo, leur propriété demeure réservée à Ahiyoyo jusqu’au paiement\nintégral du prix, sans préjudice du transfert des risques prévu par la commande.\nLe droit de rétention exercé en cas d’impayé ne rend pas Ahiyoyo propriétaire des marchandises. Toute vente ou réalisation du bien\nretenu ne peut intervenir que dans les conditions prévues par la loi et après les notifications nécessaires.\n\nArticle 23 - Conteneur complet, palette complète et service dédié\nPour un service non groupé, le Client doit fournir en temps utile la facture commerciale, le packing list, les codes douaniers, les\nautorisations et les informations nécessaires au transport.\nLes coûts de fret, manutention, port, terminal, surestaries, détention, inspection, douane, livraison et retour du matériel sont ceux\ndu devis ou, lorsqu’ils ne peuvent être connus à l’avance, ceux effectivement facturés par les tiers.\nTout dépassement lié à une surcharge, un volume supérieur, une immobilisation, un retard documentaire ou une modification\ndemandée par le Client lui est refacturé.\n\nArticle 24 - Risques et assurance\nLes marchandises voyagent aux risques définis par la loi, le contrat de vente, le document de transport et les conditions du\ntransporteur. La détention matérielle par Ahiyoyo ne signifie pas qu’elle assume sans limite tous les risques liés au produit ou au\ntransport.\n\nL’assurance transport n’est incluse que si elle est expressément indiquée sur le devis ou souscrite par le Client. En l’absence\nd’assurance, toute indemnisation éventuelle est limitée par les règles applicables au transporteur et par la responsabilité\neffectivement établie.\nLe Client doit déclarer la nature et la valeur réelle des marchandises. Une déclaration incomplète ou inexacte peut entraîner un\nrefus de couverture ou une réduction d’indemnisation.\n\nVI. LIVRAISON, STOCKAGE, ANNULATION ET RÉCLAMATIONS\nArticle 25 - Notification d’arrivée et remise\nLorsque les marchandises sont disponibles, Ahiyoyo informe le Client par la Plateforme ou l’un de ses canaux officiels. Le Client doit\nrégler le solde, fournir les documents demandés et retirer ou faire livrer ses marchandises dans le délai indiqué.\nLa remise est faite au Client ou à une personne autorisée, sur présentation d’une pièce d’identité, d’un code, d’une procuration ou\nde tout moyen de vérification jugé nécessaire.\nAucune marchandise n’est remise tant que les sommes exigibles relatives à la commande ne sont pas intégralement réglées, sauf\naccord écrit contraire.\n\nArticle 26 - Stockage et marchandises non réclamées\nUn délai de retrait gratuit ou inclus peut être indiqué dans la notification d’arrivée ou le tarif. Au-delà, des frais de stockage, de\nmanutention et de garde sont facturés.\nSi le Client ne retire pas ses marchandises ou reste injoignable malgré plusieurs relances, Ahiyoyo peut les déplacer, les retourner\nou prendre toute mesure nécessaire pour limiter les coûts et les risques, aux frais du Client.\nAprès mise en demeure restée sans effet et dans le respect de la procédure légale, les marchandises peuvent être considérées\ncomme abandonnées et faire l’objet d’une vente, d’une destruction ou d’une remise à l’autorité compétente. Le produit net éventuel\nest imputé sur les sommes dues.\n\nArticle 27 - Annulation, retour et remboursement\nToute demande d’annulation doit être faite depuis la Plateforme ou par écrit. Le montant remboursable dépend de l’état\nd’avancement de la commande.\nAvant paiement du fournisseur ou commencement du service, Ahiyoyo rembourse les sommes non engagées, après déduction des\nfrais de recherche, de paiement, de change ou de traitement déjà supportés.\nAprès paiement du fournisseur, lancement de production, réception en entrepôt ou chargement, l’annulation dépend de l’accord du\nfournisseur et du transporteur. Les frais, pénalités, retours, pertes de change et prestations déjà exécutées sont déduits.\nTout remboursement est effectué au payeur initial ou sur un compte vérifié, après rapprochement des factures et déduction des\nsommes restant dues.\n\nArticle 28 - Réclamations, pertes et avaries\nLe Client vérifie l’état apparent et le nombre de colis au retrait ou à la livraison. Toute perte ou avarie visible doit être signalée\navant signature du reçu et accompagnée de réserves précises.\nUne anomalie non visible doit être déclarée sur la Plateforme ou à support@ahiyoyo.com dès sa découverte et, pour faciliter\nl’enquête, au plus tard dans les quarante-huit (48) heures suivant la remise, sans préjudice d’un délai légal impératif plus long.\nLa réclamation doit contenir le numéro de commande, les factures, la preuve de valeur, les photographies de l’emballage et du\nproduit, ainsi qu’une description précise du dommage. Le Client doit conserver l’emballage jusqu’à la fin de l’instruction.\nL’indemnisation éventuelle porte sur le dommage direct, prouvé et imputable à la partie responsable, dans les limites de la loi, de\nl’assurance souscrite et des conditions du transporteur. Les pertes de marge, ventes manquées et préjudices indirects ne sont pas\nindemnisés, sauf règle impérative contraire.\n\nVII. CONFORMITÉ ET VOYAGES D’AFFAIRES\nArticle 29 - Marchandises interdites ou réglementées\nLe Client ne doit pas utiliser la Plateforme pour acheter ou expédier une marchandise interdite par la loi, les autorités, les\ncompagnies de transport ou les pays d’origine, de transit et de destination.\n\nLes produits dangereux, batteries, liquides, produits alimentaires, médicaments, cosmétiques, produits chimiques, équipements\nradio, animaux, végétaux, métaux précieux et autres marchandises réglementées doivent être déclarés avant commande et\naccompagnés des autorisations nécessaires.\nAhiyoyo peut refuser, isoler, retourner ou remettre aux autorités toute marchandise non déclarée ou interdite. Les coûts, amendes\net conséquences résultant d’une fausse déclaration sont supportés par le Client.\n\nArticle 30 - Voyages d’affaires\nLe service de voyage d’affaires peut comprendre la préparation du programme, l’assistance documentaire, les réservations, les\nvisites de fournisseurs, l’interprétariat, les transferts et l’accompagnement convenus.\nAhiyoyo n’est ni une ambassade ni une autorité d’immigration et ne garantit pas l’obtention d’un visa, l’entrée sur un territoire, la\ndisponibilité d’un vol, la conclusion d’un contrat avec un fournisseur ou le succès commercial du voyage.\nLe voyageur reste responsable de la validité de son passeport, de ses visas, assurances, vaccins, moyens financiers et obligations\npersonnelles. Les billets, hôtels et prestations de tiers sont soumis à leurs propres conditions d’annulation.\nLes frais de préparation et d’accompagnement restent dus pour le travail effectué. Les remboursements de prestations de tiers\ndépendent des montants effectivement récupérés auprès de ces tiers.\n\nVIII. DONNÉES, RESPONSABILITÉ ET DISPOSITIONS FINALES\nArticle 31 - Données personnelles et communications\nAhiyoyo traite les données nécessaires à la création des comptes, aux devis, paiements, achats, expéditions, formalités douanières,\nvoyages, livraisons, réclamations, contrôles de sécurité et obligations légales.\nCes données peuvent être transmises aux fournisseurs, transporteurs, entrepôts, prestataires de paiement, assureurs,\nadministrations et partenaires nécessaires à l’exécution de la commande, y compris hors du Bénin.\nLe Client peut exercer les droits reconnus par la réglementation applicable en écrivant à support@ahiyoyo.com. Les modalités\ndétaillées figurent dans la Politique de confidentialité publiée sur la Plateforme.\nLes messages opérationnels relatifs aux commandes, paiements, retards, arrivées et retraits peuvent être envoyés par notification,\ncourrier électronique, SMS, WhatsApp ou téléphone. Le Client doit maintenir ses coordonnées à jour.\n\nArticle 32 - Preuve électronique et propriété intellectuelle\nLes validations effectuées sur la Plateforme, journaux de connexion, messages officiels, devis, factures, reçus, preuves de paiement,\nphotographies, vidéos, documents de transport et données de suivi peuvent être utilisés comme moyens de preuve dans les\nconditions prévues par la loi.\nLa Plateforme, la marque Ahiyoyo, les logiciels, textes, modèles, bases de données, visuels et documents appartiennent à Ahiyoyo ou\nà leurs titulaires. Leur reproduction, extraction, revente ou utilisation non autorisée est interdite.\nLe Client autorise Ahiyoyo à utiliser les photographies, descriptions et documents transmis uniquement pour exécuter la\ncommande, vérifier la conformité, assurer le suivi et conserver les preuves nécessaires.\n\nArticle 33 - Suspension et fermeture du compte\nAhiyoyo peut suspendre une commande ou un compte en cas d’impayé, fraude, fausse déclaration, atteinte à la sécurité,\ncomportement abusif, marchandise interdite, violation des CGU ou demande d’une autorité.\nLa suspension n’efface pas les factures, frais de stockage, obligations douanières ou commandes déjà engagées. Le Client peut\ndemander la fermeture de son compte après règlement et clôture de toutes les opérations en cours.\n\nArticle 34 - Responsabilité et force majeure\nChaque partie répond des dommages directs causés par sa faute prouvée. Ahiyoyo n’est pas responsable du défaut propre de la\nmarchandise, d’une information inexacte du Client, d’une décision d’autorité, d’un fournisseur choisi par le Client ou d’un\névénement relevant du transporteur, sauf faute qui lui est directement imputable.\nLa responsabilité d’Ahiyoyo est appréciée en tenant compte du rôle effectivement prévu dans la commande. Lorsqu’elle agit comme\nintermédiaire ou organisateur, elle reste responsable du choix et du suivi de ses prestataires dans les limites prévues par la loi, sans\ndevenir le fabricant ou l’administration concernée.\nAucune partie n’est responsable d’un retard ou d’une inexécution résultant d’un événement extérieur, imprévisible et irrésistible,\nnotamment catastrophe, guerre, épidémie, fermeture de frontière, grève générale, incendie, panne majeure, congestion portuaire\nexceptionnelle ou décision d’autorité. La partie concernée informe l’autre et reprend l’exécution dès que possible.\n\nArticle 35 - Modification des CGU\nAhiyoyo peut modifier les CGU pour tenir compte d’une évolution de la Plateforme, des services, de la réglementation ou des\npratiques opérationnelles. La date d’entrée en vigueur est indiquée sur la nouvelle version.\nLes nouvelles CGU s’appliquent aux commandes passées après leur entrée en vigueur. Une commande déjà validée reste soumise à\nla version acceptée, sauf modification imposée par la loi ou acceptée par le Client.\n\nArticle 36 - Réclamations, droit applicable et litiges\nToute réclamation contractuelle est d’abord adressée à support@ahiyoyo.com avec les références et pièces utiles. Les parties\nrecherchent une solution amiable avant toute action, sauf urgence ou mesure conservatoire nécessaire.\nLes présentes CGU sont régies par le droit de la République du Bénin ainsi que, lorsqu’ils sont applicables, les Actes uniformes\nOHADA et les règles impératives relatives au transport.\nÀ défaut d’accord amiable, les litiges entre professionnels relèvent des juridictions compétentes de Cotonou, sous réserve d’une\nclause particulière valable ou d’une règle impérative. Pour un consommateur, la juridiction compétente est déterminée par la loi\napplicable.\nLa version française fait foi. Les CGU entrent en vigueur le 19 juillet 2026.\n\nANNEXE 1 - RÈGLES PRATIQUES DE LA PLATEFORME\n• Le Client crée une demande ou une expédition avant d’envoyer son colis à l’entrepôt.\n• Le fournisseur inscrit le marquage Ahiyoyo et la référence Client sur chaque carton.\n• Le Client téléverse les factures, preuves de paiement, numéros de suivi et documents demandés.\n• Le poids et le CBM sont confirmés après réception en entrepôt ; la facture est ajustée si nécessaire.\n• Le Client consulte régulièrement son tableau de bord et répond aux demandes de validation ou de documents.\n• Les paiements sont effectués uniquement sur les coordonnées officielles affichées dans la commande ou la facture.\n• Le retrait ou la livraison intervient après règlement du solde et vérification de l’identité du bénéficiaire.\n\nANNEXE 2 - ÉLÉMENTS GÉNÉRALEMENT INCLUS OU EXCLUS DU\nGROUPAGE\nSauf indication différente dans le devis, le tarif de groupage comprend la consolidation, le transport principal, les frais ordinaires de\ndouane et de dédouanement du flux, ainsi que la mise à disposition au point convenu.\nSont facturés séparément lorsqu’ils sont nécessaires : collecte locale, livraison finale, emballage renforcé, assurance, inspection,\nautorisation spéciale, taxe propre au produit, magasinage, surestaries, retour, destruction, amende ou frais provoqué par une\ndéclaration inexacte.\n\nANNEXE 3 - DOCUMENTS POUVANT ÊTRE DEMANDÉS\n• pièce d’identité, IFU, RCCM, procuration ou justificatif du représentant ;\n• facture fournisseur, preuve de paiement, lien ou fiche produit ;\n• packing list, dimensions, poids, quantité, matière, usage et valeur ;\n• code HS, licence, certificat, fiche de sécurité ou autorisation spéciale ;\n• documents de voyage, passeport, visa, assurance et réservations ;\n• tout document raisonnablement nécessaire à la conformité, à la douane, à la fiscalité ou à la sécurité.\n\nCONTACT\nService client Ahiyoyo : support@ahiyoyo.com - +229 01 91 08 41 41\nAdresse : Ilot 1146, Quartier Houéhoun, Parcelle C, Maison ABUDU RAFIOU YESSOUFOU, Cotonou, Bénin.";
+export const cguContent = `NOTE DE LECTURE
+Cette version présente les règles contractuelles d’Ahiyoyo dans un langage plus direct et plus
+accessible. Elle précise les responsabilités du Client, le rôle d’Ahiyoyo, les étapes d’une commande,
+les conditions de paiement, les règles de transport et la procédure de réclamation.
+PRÉAMBULE
+Les présentes Conditions Générales d’Utilisation et de Services, ci-après désignées les « CGU »,
+définissent les règles applicables à l’utilisation de la plateforme Ahiyoyo ainsi qu’aux services
+proposés par NEW MARKETS TECHNOLOGIES SAS.
+Elles s’appliquent au site internet Ahiyoyo, à l’application mobile, à l’espace personnel du Client, aux
+outils de demande de devis, aux outils d’enregistrement et de suivi des colis ainsi qu’aux services
+d’achat, de paiement, d’expédition, de livraison et d’organisation de voyages d’affaires.
+Ahiyoyo permet notamment au Client de rechercher des produits, demander un devis, acheter une
+marchandise, payer un fournisseur, faire réceptionner un colis dans un entrepôt, organiser son
+transport, suivre son expédition, recevoir des documents et préparer un voyage d’affaires.
+Le rôle exact d’Ahiyoyo dépend du service choisi. Selon la commande, Ahiyoyo peut agir comme
+vendeur, intermédiaire, mandataire d’achat, organisateur logistique ou prestataire d’accompagnement.
+Le Client doit lire les présentes CGU avant de créer un compte, de valider un devis, d’effectuer un
+paiement ou d’envoyer une marchandise vers un entrepôt communiqué par Ahiyoyo.
+En acceptant les CGU, le Client reconnaît notamment avoir pris connaissance des règles applicables,
+avoir compris ses obligations, accepter les conditions de paiement, de transport, de livraison et de
+réclamation, et s’engager à fournir des informations exactes concernant son identité et ses
+marchandises.
+RÈGLES ESSENTIELLES À RETENIR
+1. Tout colis doit être déclaré sur la Plateforme avant son expédition vers l’entrepôt.
+2. Chaque carton ou colis doit porter clairement le marquage communiqué par Ahiyoyo, notamment
+    le nom ou le code du Client et sa référence de commande.
+3. Les poids, dimensions et volumes communiqués avant réception sont des estimations. La
+    facturation définitive est établie sur la base des mesures réellement constatées.
+4. Les délais de transport sont estimatifs. Ils peuvent être affectés par la production, les
+    transporteurs, les compagnies maritimes ou aériennes, les autorités, les ports, la douane ou des
+    événements indépendants d’Ahiyoyo.
+5. Une photographie ou un contrôle visuel ne constitue pas un test technique complet du produit.
+6. L’assurance transport n’est pas automatiquement incluse. Elle doit être mentionnée dans le devis
+    ou demandée séparément.
+7. Les marchandises ne sont remises au Client qu’après paiement de toutes les sommes exigibles.
+8. Les dommages visibles doivent être signalés au moment du retrait ou de la livraison. Les
+    dommages non visibles doivent être signalés dès leur découverte, de préférence dans les
+    quarante-huit heures.
+9. Les marchandises interdites, dangereuses ou réglementées doivent être déclarées avant toute
+    commande ou expédition.
+10.Le Client doit effectuer ses paiements uniquement sur les coordonnées officielles indiquées sur la
+    Plateforme, le devis ou la facture.
+I. ACCÈS À LA PLATEFORME ET FORMATION DU CONTRAT
+Article 1 – Identification de l’opérateur
+La Plateforme Ahiyoyo est exploitée par NEW MARKETS TECHNOLOGIES SAS, société par actions
+simplifiée de droit béninois exerçant sous l’enseigne Ahiyoyo.
+Le Client peut contacter le service client par téléphone au +229 01 91 08 41 41, par courrier
+électronique à support@ahiyoyo.com ou par les canaux officiels affichés sur la Plateforme.
+Le Client doit vérifier les coordonnées de paiement avant toute opération. Ahiyoyo ne reconnaît pas
+les paiements effectués sur un compte personnel ou sur un compte qui n’a pas été officiellement
+communiqué, sauf confirmation écrite d’un représentant habilité.
+Article 2 – Objet et champ d’application
+Les présentes CGU déterminent les droits et obligations d’Ahiyoyo et du Client concernant :
+●   l’utilisation de la Plateforme ;
+●   les demandes de devis ;
+●   la recherche et l’achat de produits ;
+●   le paiement de fournisseurs ;
+●   la réception et l’entreposage de colis ;
+●   le transport terrestre, maritime ou aérien ;
+●   le groupage de marchandises ;
+●   les formalités douanières ;
+●   la livraison ;
+●   l’accompagnement à des voyages d’affaires.
+Les CGU s’appliquent à toute commande validée par le Client.
+Une commande peut également être encadrée par un devis, une facture, un bon de commande, un
+contrat particulier, un échéancier ou des conditions spécifiques.
+Lorsqu’une condition particulière acceptée par le Client contredit une disposition générale des
+présentes CGU, la condition particulière s’applique uniquement à la commande concernée.
+Article 3 – Définitions
+Plateforme : le site internet, l’application mobile, l’espace client et les outils numériques exploités sous
+la marque Ahiyoyo.
+Client : toute personne physique ou morale qui crée un compte, demande un devis, effectue un
+paiement, confie une marchandise ou commande un service.
+Commande : toute opération validée par le Client et acceptée par Ahiyoyo.
+Marchandise : tout produit, colis, équipement, document ou bien faisant l’objet d’un achat, d’un
+stockage ou d’une expédition.
+Groupage : une expédition dans laquelle les marchandises de plusieurs clients sont regroupées dans
+un même conteneur, véhicule, palette, avion ou autre moyen de transport.
+Service non groupé : notamment un conteneur complet, une palette complète, un véhicule dédié ou
+toute expédition réservée exclusivement à un Client.
+Fournisseur : le vendeur, le fabricant ou le prestataire auprès duquel les produits ou services sont
+commandés.
+Débours : une somme payée par Ahiyoyo au nom et pour le compte du Client, lorsque les conditions
+juridiques, comptables et fiscales permettent de la traiter comme telle.
+Article 4 – Acceptation des CGU
+Les CGU sont considérées comme acceptées lorsque le Client réalise au moins l’une des actions
+suivantes :
+●   création ou activation d’un compte ;
+●   validation d’un devis ;
+●   validation d’une commande ;
+●   paiement total ou partiel d’une commande ;
+●   envoi d’une marchandise vers un entrepôt communiqué par Ahiyoyo ;
+●   utilisation effective d’un service Ahiyoyo.
+La version applicable est celle qui était disponible à la date de validation de la commande.
+Ahiyoyo peut conserver la date, l’heure, l’adresse de connexion, la version des CGU et toute autre
+information permettant de prouver l’acceptation du Client.
+Article 5 – Création et sécurité du compte
+Le Client doit fournir des informations exactes, complètes et à jour. Il doit notamment communiquer,
+lorsque cela est demandé :
+●   ses nom et prénoms ;
+●   son numéro de téléphone ;
+●   son adresse électronique ;
+●   son adresse de livraison ;
+●   les informations relatives à son entreprise lorsqu’il agit en qualité de professionnel ;
+●   son IFU, son RCCM et les coordonnées de son représentant lorsque ces informations sont
+     nécessaires.
+Le Client est responsable de la confidentialité de son mot de passe, de ses codes de connexion et de
+toute action effectuée depuis son compte.
+En cas de perte, de piratage ou d’utilisation non autorisée du compte, le Client doit immédiatement en
+informer Ahiyoyo.
+Ahiyoyo peut demander une pièce d’identité, un justificatif d’entreprise, une procuration, une preuve
+de paiement ou tout autre document nécessaire pour vérifier l’identité du Client, prévenir la fraude,
+effectuer la facturation, accomplir les formalités douanières ou respecter une obligation légale.
+Article 6 – Fonctionnement et disponibilité de la Plateforme
+La Plateforme permet notamment au Client de :
+●   demander un devis ;
+●   enregistrer un colis attendu ;
+●   transmettre des photographies et des documents ;
+●   déclarer ou effectuer un paiement ;
+●   consulter ses factures ;
+●   suivre ses commandes ;
+●   recevoir des notifications ;
+●   signaler une réclamation.
+Les informations de suivi affichées sur la Plateforme sont fournies à titre opérationnel. Un retard de
+mise à jour du statut ne signifie pas nécessairement que la marchandise n’a pas été reçue, chargée,
+transportée ou livrée.
+Ahiyoyo peut temporairement interrompre tout ou partie de la Plateforme pour effectuer une
+maintenance, corriger un incident technique, renforcer la sécurité ou respecter une obligation
+réglementaire.
+Une interruption de la Plateforme n’annule pas les commandes déjà validées ni les sommes déjà
+exigibles.
+II. SERVICES, DEVIS ET COMMANDES
+Article 7 – Services proposés
+Selon le devis ou la commande, Ahiyoyo peut fournir un ou plusieurs des services suivants :
+●   recherche de produits ou de fournisseurs ;
+●   demande de prix et négociation commerciale ;
+●   vérification de l’existence d’un fournisseur ;
+●   mise en relation avec un fournisseur ;
+●   paiement d’un fournisseur pour le compte du Client ;
+●   achat direct de marchandises ;
+●   suivi de la fabrication ou de la préparation ;
+●   réception des marchandises en entrepôt ;
+●   prise de photographies ou de vidéos ;
+●   contrôle de quantité ;
+●   consolidation de plusieurs colis ;
+●   emballage ou renforcement de l’emballage ;
+●   stockage temporaire ;
+●   transport terrestre, maritime ou aérien ;
+●   formalités douanières et dédouanement ;
+●   livraison au lieu convenu ;
+●   organisation et accompagnement de voyages d’affaires.
+Seuls les services expressément mentionnés dans le devis, la facture ou la commande sont inclus.
+Par exemple, si le devis prévoit uniquement le paiement du fournisseur, Ahiyoyo n’est pas tenue
+d’inspecter, de transporter ou de livrer les produits, sauf ajout écrit de ces prestations.
+Article 8 – Demande de devis
+Le Client doit décrire son besoin avec suffisamment de précision. Il doit notamment indiquer, lorsque
+cela est applicable :
+●   le nom du produit ;
+●   la quantité ;
+●   la matière ;
+●   les dimensions ;
+●   la couleur ;
+●   le modèle ou la référence ;
+●   l’utilisation prévue ;
+●   le pays et la ville de destination ;
+●   le délai souhaité ;
+●   les photographies ou liens du produit ;
+●   toute exigence technique ou réglementaire particulière.
+Le devis est établi sur la base des informations disponibles au moment de sa préparation.
+Les montants peuvent être modifiés en cas de variation du prix du fournisseur ou du taux de change,
+de modification de la quantité, de poids ou volume réel supérieur à l’estimation, de changement de
+transporteur, de frais imposés par une autorité, d’autorisation ou inspection particulière, ou de
+changement demandé par le Client.
+Les frais de devis, de recherche, d’inspection, d’étude ou de déplacement restent dus lorsque le
+travail correspondant a déjà commencé, même si le Client décide ensuite de ne pas poursuivre la
+commande.
+Article 9 – Validation de la commande
+Une commande devient ferme lorsque les trois conditions suivantes sont réunies :
+11.le Client accepte le devis ou l’offre ;
+12.le Client effectue le paiement demandé ;
+13.Ahiyoyo confirme la prise en charge de la commande.
+Une capture d’écran de paiement ne constitue pas une preuve définitive d’encaissement. Le paiement
+doit avoir été effectivement reçu, identifié et rapproché de la commande.
+Avant de valider sa commande, le Client doit vérifier les produits, les quantités, les caractéristiques,
+les prix, le mode de transport, le lieu de livraison, les délais estimatifs, les services inclus, les services
+exclus et les modalités de paiement.
+Toute modification demandée après validation peut entraîner une modification du prix, un nouveau
+délai, des frais supplémentaires ou l’impossibilité d’annuler une opération déjà engagée.
+Ahiyoyo peut refuser ou suspendre une commande lorsque la marchandise est interdite, dangereuse,
+suspecte, insuffisamment décrite, difficilement transportable ou non conforme aux règles applicables.
+Article 10 – Prix, poids, volume et taux de change
+Les prix applicables sont ceux indiqués sur la Plateforme, le devis, la facture ou le contrat particulier.
+Ils peuvent être calculés au kilogramme, au mètre cube ou CBM, au carton, à l’unité, au forfait, selon
+le poids volumétrique ou selon toute autre base clairement indiquée.
+Les poids, dimensions et volumes communiqués avant la réception en entrepôt sont estimatifs.
+La facturation définitive est établie sur la base des mesures constatées ou confirmées par l’entrepôt,
+le transporteur, le port, l’aéroport, le transitaire ou un autre prestataire chargé de l’opération.
+Lorsque le prix est calculé au CBM, le volume facturable peut être arrondi selon les règles tarifaires
+affichées ou mentionnées dans le devis. Le minimum facturable applicable est celui indiqué dans le
+tarif ou le devis.
+Lorsqu’un montant dépend d’une devise étrangère, le taux utilisé est celui intégré au devis pendant sa
+période de validité. Lorsque le devis a expiré ou que le paiement n’a pas encore été effectivement
+encaissé, Ahiyoyo peut mettre à jour le montant pour tenir compte du nouveau taux.
+III. PAIEMENT, FACTURATION ET RECOUVREMENT
+Article 11 – Moyens de paiement
+Le Client doit effectuer ses paiements uniquement sur les comptes bancaires officiels, les numéros
+marchands officiels, les liens de paiement officiels ou les moyens indiqués sur la Plateforme, le devis
+ou la facture.
+Un paiement envoyé à un employé, un particulier, un intermédiaire ou un compte non autorisé ne
+libère pas le Client de sa dette envers Ahiyoyo, sauf confirmation écrite d’un représentant habilité.
+Chaque paiement doit contenir une référence permettant d’identifier le Client, la commande et la
+facture concernée.
+Les frais bancaires, frais de transfert, frais de retrait, commissions de paiement et pertes de change
+sont supportés selon les conditions indiquées dans le devis ou par le moyen de paiement utilisé.
+Article 12 – Paiement par tranches et échéances
+Ahiyoyo peut demander un paiement intégral avant le début du service, un acompte suivi d’un solde,
+un paiement en plusieurs tranches ou un paiement à différentes étapes de la commande.
+L’échéancier applicable est celui affiché sur la Plateforme, indiqué sur la facture ou accepté par écrit.
+Sauf condition particulière, une expédition en groupage peut être subordonnée au paiement d’au
+moins 50 % du fret estimé avant le chargement.
+Le solde doit être payé dans les quarante-huit heures suivant la notification d’arrivée ou l’appel de
+fonds et, dans tous les cas, avant la remise de la marchandise.
+Un paiement partiel ne vaut pas paiement complet et ne donne pas automatiquement droit au retrait
+de la marchandise.
+Lorsqu’une échéance n’est pas respectée, Ahiyoyo peut suspendre le paiement du fournisseur, la
+production, le chargement, l’expédition, le dédouanement, la livraison ou tout autre service en cours.
+Le non-paiement d’une échéance peut rendre immédiatement exigible la totalité du solde restant.
+Article 13 – Facturation et fiscalité
+Le devis, la facture proforma et l’appel de fonds présentent le montant estimé ou demandent un
+paiement. Ils ne remplacent pas la facture normalisée exigée par la réglementation fiscale.
+Ahiyoyo émet les factures normalisées relatives à ses ventes et prestations conformément aux règles
+fiscales applicables.
+Le Client professionnel doit transmettre avant facturation sa raison sociale exacte, son IFU, son
+adresse et son RCCM lorsque cela est applicable.
+Une erreur provenant des informations communiquées par le Client doit être corrigée selon la
+procédure fiscale applicable. Elle ne permet pas de supprimer ou de modifier librement une facture
+déjà normalisée.
+Ahiyoyo refuse toute demande visant à :
+●   diminuer artificiellement la valeur d’une marchandise ;
+●   utiliser une fausse désignation ;
+●   établir une facture fictive ;
+●   dissimuler la nature réelle d’un produit ;
+●   éviter illégalement une taxe ou un droit de douane.
+Le Client reste responsable de sa propre fiscalité, de ses activités de revente et des déclarations
+fiscales qui lui incombent.
+Article 14 – Retard de paiement et recouvrement
+En cas de retard, Ahiyoyo peut adresser des relances par notification sur la Plateforme, courrier
+électronique, téléphone, SMS, WhatsApp ou courrier formel.
+Les relances ne suspendent pas les frais de stockage, de manutention ou de conservation des
+marchandises.
+Ahiyoyo peut retenir les marchandises ou documents qu’elle détient pour le compte du Client jusqu’au
+paiement complet des sommes exigibles liées à la commande. Cette rétention ne signifie pas
+qu’Ahiyoyo devient propriétaire des marchandises.
+Après une mise en demeure restée sans effet, Ahiyoyo peut engager une procédure amiable,
+judiciaire ou conforme aux règles OHADA.
+Les intérêts de retard, frais d’huissier, frais judiciaires et autres dépenses de recouvrement légalement
+récupérables peuvent être mis à la charge du Client.
+IV. ACHATS ET ACHATS AVEC EXPÉDITION
+Article 15 – Service d’achat
+Le service d’achat peut comprendre la recherche d’un fournisseur, la comparaison de plusieurs offres,
+la négociation, le paiement du fournisseur, le suivi de la production et la réception des produits en
+entrepôt. Le devis précise le rôle d’Ahiyoyo.
+Lorsque le Client choisit lui-même un fournisseur ou transmet un lien précis, Ahiyoyo exécute la
+commande sur la base des informations fournies par le Client.
+Dans ce cas, Ahiyoyo ne garantit pas l’exactitude de toutes les déclarations du fournisseur, les
+performances futures ou la durabilité du produit, l’adaptation à un usage non communiqué ou
+l’obtention d’une autorisation particulière dans le pays de destination.
+Les frais de service, le prix du produit, le paiement, l’inspection, le transport local et le fret international
+peuvent apparaître séparément sur le devis.
+Article 16 – Service intégré d’achat et d’expédition
+Dans le cadre d’un service intégré, Ahiyoyo peut prendre en charge l’achat puis l’expédition de la
+marchandise jusqu’au lieu convenu.
+Même lorsqu’il s’agit d’une seule commande, les différentes étapes restent distinctes : recherche du
+produit, achat, production, réception, contrôle, transport, dédouanement et livraison.
+Le paiement du prix d’achat ne signifie pas que le transport, la douane, l’assurance ou la livraison ont
+également été payés, sauf si ces prestations sont expressément incluses.
+Ahiyoyo peut suspendre l’expédition lorsque le Client n’a pas payé le fret, n’a pas transmis les
+documents nécessaires, n’a pas validé une différence de prix, refuse de payer une différence de poids
+ou de volume constatée, ou n’a pas répondu à une demande importante concernant la commande.
+Article 17 – Contrôle des marchandises
+Une inspection, une photographie, une vidéo, un comptage ou un contrôle n’est réalisé que s’il est
+inclus dans la commande ou demandé séparément.
+Un contrôle visuel permet principalement de vérifier les éléments visibles, tels que :
+●   l’apparence générale ;
+●   la couleur ;
+●   la quantité apparente ;
+●   la présence de dommages visibles ;
+●   le modèle ou la référence affichée.
+Un contrôle visuel ne constitue pas un test technique complet, un test de performance, une
+certification, une analyse de laboratoire ou une garantie contre un défaut caché.
+Lorsqu’une erreur est imputable au fournisseur, Ahiyoyo peut aider le Client à présenter une
+réclamation si cette assistance est comprise dans le service.
+Le remboursement, la réparation ou le remplacement dépend notamment des conditions du
+fournisseur, des preuves disponibles, du délai de réclamation, de l’état de la marchandise et de la
+possibilité de retourner le produit.
+V. RÉCEPTION, EXPÉDITION ET GROUPAGE
+Article 18 – Pré-enregistrement et identification des colis
+Avant que le fournisseur n’expédie une marchandise vers un entrepôt Ahiyoyo, le Client doit
+enregistrer l’expédition sur la Plateforme et indiquer notamment le nom du fournisseur, la description
+des produits, les quantités, la valeur, le mode de transport souhaité et le numéro de suivi.
+Chaque colis doit porter clairement :
+●   le marquage Ahiyoyo communiqué ;
+●   le nom ou le code du Client ;
+●   le numéro de commande ;
+●   toute autre référence demandée.
+Le Client est responsable de la transmission de ces instructions à son fournisseur.
+Un colis non déclaré ou mal identifié peut être traité avec retard, être attribué au mauvais Client, être
+refusé, être retourné ou entraîner des frais de recherche et de traitement manuel.
+Ahiyoyo ne peut pas être tenue responsable d’une mauvaise affectation provoquée par l’absence ou
+l’inexactitude du marquage avant que le véritable propriétaire du colis puisse être identifié.
+Article 19 – Réception, emballage et mesure
+La réception en entrepôt signifie uniquement que le colis est physiquement arrivé.
+Elle ne confirme pas automatiquement le contenu exact, la quantité exacte, la qualité, le
+fonctionnement, l’authenticité ou la conformité du produit. Ces éléments ne sont vérifiés que lorsqu’un
+contrôle spécifique a été commandé.
+Le fournisseur reste responsable de l’emballage initial.
+Lorsque l’emballage est jugé insuffisant pour le transport, Ahiyoyo peut proposer ou imposer un
+emballage renforcé, un reconditionnement, une caisse en bois, une palette ou une protection
+supplémentaire. Ces prestations sont facturées au Client lorsqu’elles ne sont pas incluses dans le
+devis.
+Après réception, Ahiyoyo ou ses partenaires confirment le nombre de colis, le poids et le volume. Ces
+mesures servent de base à la facturation définitive du transport.
+Article 20 – Transport et délais
+Le mode de transport est celui accepté dans la commande : terrestre, maritime ou aérien.
+Ahiyoyo peut travailler avec des transporteurs, compagnies maritimes, compagnies aériennes,
+transitaires, entrepôts, agents et autres prestataires indépendants.
+Les délais annoncés sont des estimations et non des dates garanties, sauf engagement écrit
+spécifique.
+Ils peuvent être prolongés notamment par :
+●   un retard de production ou du fournisseur ;
+●   une attente de consolidation ;
+●   une modification de la commande ;
+●   l’indisponibilité d’un navire ou d’un avion ;
+●   des conditions météorologiques ;
+●   des contrôles douaniers ;
+●   une congestion portuaire ;
+●   une fermeture de frontière ;
+●   une décision d’une autorité ;
+●   une grève ;
+●   un événement de force majeure.
+Un retard ne donne droit à une indemnisation que lorsqu’une faute directe et prouvée d’Ahiyoyo est
+établie, dans les limites de la loi et des conditions applicables au transport.
+Article 21 – Douane, droits et taxes
+Pour les expéditions en groupage, le tarif facturé au CBM, au kilogramme, au carton ou au forfait
+comprend les frais ordinaires de douane, de transit et de dédouanement du flux consolidé, sauf
+mention contraire dans le devis.
+Ne sont pas considérés comme des frais ordinaires et peuvent être facturés séparément les licences,
+autorisations spéciales, certificats, analyses de laboratoire, inspections particulières, taxes propres à
+certains produits, amendes, magasinage, surestaries, saisie, destruction, redressement douanier et
+frais causés par une description ou une valeur inexacte ou par une marchandise réglementée non
+déclarée.
+Pour un conteneur complet, une palette complète ou un service dédié, les conditions douanières sont
+définies dans le devis.
+Le Client ne peut prendre directement en charge les formalités douanières que si un accord écrit
+distinct a été conclu avec Ahiyoyo.
+Article 22 – Propriété des marchandises en groupage
+Le groupage est uniquement une méthode d’organisation du transport. Il ne rend pas Ahiyoyo
+propriétaire des marchandises du Client et ne crée aucune copropriété entre les différents clients.
+Chaque Client reste propriétaire des marchandises qui lui appartiennent, sous réserve des conditions
+du contrat de vente et du paiement intégral lorsque les produits sont directement vendus par Ahiyoyo.
+Les marchandises sont identifiées au moyen du compte du Client, du numéro de commande, du
+marquage, des factures, du packing list et des registres d’entrepôt.
+Un connaissement, une déclaration douanière ou un document de transport établi au nom d’Ahiyoyo
+ou de son agent ne transfère pas automatiquement la propriété des marchandises à Ahiyoyo.
+Article 23 – Conteneur complet et service dédié
+Pour un service non groupé, le Client doit fournir dans les délais demandés la facture commerciale, le
+packing list, les codes douaniers, les autorisations, les informations relatives aux marchandises et tout
+document demandé par le transporteur ou les autorités.
+Les coûts supplémentaires résultant notamment d’une surcharge, d’un volume supérieur, d’un retard
+documentaire, d’une immobilisation ou d’une modification demandée par le Client lui sont refacturés.
+Article 24 – Risques et assurance
+Les marchandises voyagent selon les risques définis par la loi applicable, le contrat de vente, le
+document de transport, les conditions du transporteur et l’assurance éventuellement souscrite.
+La simple détention matérielle d’une marchandise par Ahiyoyo ne signifie pas qu’Ahiyoyo assume tous
+les risques sans limite.
+L’assurance transport n’est incluse que lorsqu’elle est expressément mentionnée dans le devis ou la
+commande.
+En l’absence d’assurance, une indemnisation éventuelle peut être limitée par les règles applicables au
+transporteur.
+Le Client doit déclarer la nature et la valeur réelles de ses marchandises. Une déclaration inexacte
+peut entraîner un refus de couverture ou une réduction de l’indemnisation.
+VI. LIVRAISON, STOCKAGE, ANNULATION ET RÉCLAMATIONS
+Article 25 – Notification d’arrivée et remise
+Lorsque les marchandises sont disponibles, Ahiyoyo informe le Client par la Plateforme ou par un
+canal officiel.
+Avant le retrait ou la livraison, le Client doit régler le solde exigible, transmettre les documents
+demandés, confirmer l’identité du bénéficiaire et respecter les instructions de retrait.
+La marchandise peut être remise au Client ou à une personne autorisée sur présentation d’une pièce
+d’identité, d’un code ou d’une procuration.
+Aucune marchandise n’est remise tant que les sommes exigibles ne sont pas intégralement réglées,
+sauf accord écrit contraire.
+Article 26 – Stockage et marchandises non réclamées
+Un délai de retrait gratuit peut être prévu dans le tarif ou la notification d’arrivée. Après ce délai, des
+frais de stockage, de garde ou de manutention peuvent être facturés.
+Lorsque le Client ne retire pas ses marchandises ou reste injoignable, Ahiyoyo peut les déplacer, les
+retourner ou prendre toute mesure raisonnable pour limiter les coûts et les risques.
+Après une mise en demeure restée sans effet et dans le respect de la procédure légale, les
+marchandises peuvent être considérées comme abandonnées et faire l’objet d’une vente, d’une
+destruction ou d’une remise à l’autorité compétente.
+Le produit net éventuel d’une vente est d’abord utilisé pour régler les sommes dues par le Client.
+Article 27 – Annulation, retour et remboursement
+Toute demande d’annulation doit être adressée par écrit ou depuis la Plateforme.
+Le montant remboursable dépend de l’état d’avancement de la commande.
+Avant le paiement du fournisseur ou le début du service, les sommes non engagées peuvent être
+remboursées après déduction des frais déjà supportés.
+Après le paiement du fournisseur, le début de la production, la réception ou le chargement,
+l’annulation dépend de l’accord du fournisseur et du transporteur.
+Peuvent notamment être déduits du remboursement :
+●   les frais de recherche ;
+●   les frais de service déjà exécuté ;
+●   les commissions de paiement ;
+●   les pertes de change ;
+●   les frais de retour ;
+●   les pénalités du fournisseur ;
+●   les frais de transport ;
+●   les frais de stockage.
+Tout remboursement est effectué au payeur initial ou sur un compte préalablement vérifié.
+Article 28 – Réclamations, pertes et avaries
+Le Client doit vérifier le nombre de colis et leur état apparent au moment du retrait ou de la livraison.
+Toute perte ou avarie visible doit être signalée avant la signature du reçu et faire l’objet de réserves
+précises.
+Une formule générale telle que « sous réserve de vérification » peut être insuffisante. Le Client doit
+décrire clairement l’anomalie constatée.
+Une anomalie non visible doit être signalée dès sa découverte et, afin de faciliter l’enquête, au plus
+tard dans les quarante-huit heures suivant la remise, sans préjudice d’un délai légal impératif plus
+long.
+La réclamation doit comprendre :
+●   le numéro de commande ;
+●   les factures ;
+●   la preuve de la valeur ;
+●   les photographies du colis ;
+●   les photographies de l’emballage ;
+●   les photographies du produit ;
+●   une description précise du dommage.
+Le Client doit conserver l’emballage jusqu’à la fin de l’enquête.
+Une indemnisation éventuelle porte uniquement sur le dommage direct, prouvé et imputable à la
+partie responsable, dans les limites de la loi, de l’assurance et des conditions du transporteur.
+Les pertes de bénéfices, ventes manquées et autres dommages indirects ne sont pas indemnisés,
+sauf disposition légale contraire.
+VII. CONFORMITÉ ET VOYAGES D’AFFAIRES
+Article 29 – Marchandises interdites ou réglementées
+Le Client ne doit pas utiliser Ahiyoyo pour acheter ou expédier une marchandise interdite dans le pays
+d’origine, de transit ou de destination.
+Les marchandises réglementées doivent être déclarées avant la commande.
+Sont notamment concernées :
+● les batteries ;
+● les liquides ;
+●   les produits alimentaires ;
+●   les médicaments ;
+●   les cosmétiques ;
+●   les produits chimiques ;
+●   les équipements radio ;
+●   les animaux et végétaux ;
+●   les métaux précieux ;
+●   les marchandises dangereuses.
+Ahiyoyo peut refuser, isoler, retourner ou remettre aux autorités une marchandise interdite ou non
+déclarée.
+Les coûts, amendes, pertes et conséquences résultant d’une fausse déclaration sont supportés par le
+Client.
+Article 30 – Voyages d’affaires
+Le service de voyage d’affaires peut comprendre l’élaboration d’un programme, l’assistance
+documentaire, l’organisation de visites, l’interprétariat, les transferts, les réservations et
+l’accompagnement auprès de fournisseurs.
+Ahiyoyo ne garantit pas :
+●   l’obtention d’un visa ;
+●   l’entrée sur un territoire ;
+●   la disponibilité d’un vol ;
+●   la conclusion d’un contrat commercial ;
+●   la fiabilité absolue d’un fournisseur ;
+●   le succès commercial du voyage.
+Le voyageur reste responsable de son passeport, de son visa, de ses assurances, de ses vaccins, de
+ses moyens financiers et du respect des règles du pays visité.
+Les billets, hôtels et autres prestations de tiers restent soumis aux conditions d’annulation de ces
+prestataires.
+VIII. DONNÉES, RESPONSABILITÉ ET DISPOSITIONS FINALES
+Article 31 – Données personnelles et communications
+Ahiyoyo collecte et traite les données nécessaires à la création des comptes, l’établissement des
+devis, la facturation, l’achat, le paiement, l’expédition, la douane, la livraison, la gestion des
+réclamations, la prévention de la fraude, l’organisation des voyages et l’exécution de ses obligations
+légales.
+Les données peuvent être communiquées aux fournisseurs, transporteurs, entrepôts, assureurs,
+prestataires de paiement, administrations et partenaires nécessaires à la commande, y compris
+lorsqu’ils sont situés hors du Bénin.
+Le Client peut exercer les droits prévus par la réglementation applicable en écrivant à
+support@ahiyoyo.com.
+Les messages relatifs aux commandes peuvent être envoyés par notification, courrier électronique,
+téléphone, SMS ou WhatsApp.
+Le Client doit maintenir ses coordonnées à jour.
+Article 32 – Preuve électronique et propriété intellectuelle
+Peuvent être utilisés comme éléments de preuve les validations effectuées sur la Plateforme, les
+journaux de connexion, les courriers électroniques, les messages officiels, les devis, les factures, les
+reçus, les preuves de paiement, les photographies, les vidéos, les documents de transport et les
+données de suivi.
+La marque Ahiyoyo, la Plateforme, les textes, logiciels, modèles, bases de données, visuels et
+documents appartiennent à Ahiyoyo ou à leurs titulaires respectifs.
+Leur reproduction, revente ou utilisation non autorisée est interdite.
+Le Client autorise Ahiyoyo à utiliser les photographies et documents transmis uniquement pour
+exécuter la commande, assurer le suivi, vérifier la conformité et conserver les preuves nécessaires.
+Article 33 – Suspension ou fermeture du compte
+Ahiyoyo peut suspendre une commande ou un compte en cas de fraude, impayé, fausse déclaration,
+comportement abusif, risque de sécurité, marchandise interdite, violation des CGU ou demande d’une
+autorité.
+La suspension ne supprime pas les factures, frais de stockage, obligations douanières ou commandes
+déjà engagées.
+Le Client peut demander la fermeture de son compte après le règlement et la clôture de toutes les
+opérations en cours.
+Article 34 – Responsabilité et force majeure
+Chaque partie est responsable des dommages directs causés par sa faute prouvée.
+Ahiyoyo n’est notamment pas responsable d’un défaut propre au produit, d’une fausse information
+communiquée par le Client, d’un fournisseur directement choisi par le Client, d’une décision d’une
+autorité, d’un événement relevant du transporteur, d’un usage du produit non communiqué ou d’un
+défaut caché non détectable par un contrôle visuel.
+La responsabilité d’Ahiyoyo est appréciée selon le rôle qu’elle assume réellement dans la commande.
+Lorsqu’Ahiyoyo agit comme intermédiaire ou organisateur logistique, elle ne devient pas
+automatiquement le fabricant, le vendeur initial, le transporteur ou l’autorité douanière.
+Aucune partie n’est responsable d’un retard ou d’une inexécution résultant d’un événement extérieur,
+imprévisible et irrésistible, notamment :
+●   une catastrophe naturelle ;
+●   une guerre ;
+●   une épidémie ;
+●   un incendie ;
+●   une fermeture de frontière ;
+●   une grève générale ;
+●   une panne majeure ;
+●   une congestion portuaire exceptionnelle ;
+●   une décision d’une autorité.
+Article 35 – Modification des CGU
+Ahiyoyo peut modifier les CGU pour tenir compte d’une évolution de ses services, de la Plateforme,
+de la réglementation ou de ses pratiques opérationnelles.
+La nouvelle version indique sa date d’entrée en vigueur et s’applique aux commandes passées après
+cette date.
+Une commande déjà validée reste soumise à la version acceptée au moment de sa validation, sauf
+modification imposée par la loi ou expressément acceptée par le Client.
+Article 36 – Réclamations, droit applicable et litiges
+Toute réclamation contractuelle doit d’abord être adressée à support@ahiyoyo.com avec les
+références et documents nécessaires.
+Ahiyoyo et le Client recherchent en priorité une solution amiable.
+Les présentes CGU sont soumises au droit de la République du Bénin ainsi qu’aux Actes uniformes
+OHADA et aux règles impératives relatives au transport lorsqu’ils sont applicables.
+À défaut d’accord amiable, les litiges entre professionnels relèvent des juridictions compétentes de
+Cotonou, sauf règle impérative ou clause particulière valable.
+Pour un consommateur, la juridiction compétente est déterminée conformément à la législation
+applicable.
+La version française des CGU fait foi. Les présentes CGU entrent en vigueur le 19 juillet 2026.
+ANNEXE 1 – RÈGLES PRATIQUES D’UTILISATION
+14.Créer une demande ou une expédition avant d’envoyer le colis à l’entrepôt.
+15.Transmettre au fournisseur le marquage Ahiyoyo et la référence du Client.
+16.Vérifier que ces informations sont inscrites sur chaque carton.
+17.Téléverser les factures, preuves de paiement et numéros de suivi.
+18.Déclarer fidèlement la nature, la quantité et la valeur des produits.
+19.Consulter régulièrement le tableau de bord.
+20.Répondre rapidement aux demandes de validation ou de documents.
+21.Effectuer les paiements uniquement sur les coordonnées officielles.
+22.Vérifier le poids et le CBM confirmés après réception.
+23.Régler le solde avant le retrait ou la livraison.
+ANNEXE 2 – SERVICES GÉNÉRALEMENT INCLUS OU EXCLUS DU GROUPAGE
+Sauf indication différente dans le devis, le tarif de groupage comprend généralement :
+●   la consolidation ;
+●   le transport principal ;
+●   les frais ordinaires de douane ;
+●   le dédouanement du flux groupé ;
+●   la mise à disposition de la marchandise au point convenu.
+Peuvent être facturés séparément :
+●   la collecte chez le fournisseur ;
+●   la livraison finale ;
+●   l’emballage renforcé ;
+●   l’assurance ;
+●   l’inspection ;
+●   les autorisations particulières ;
+●   les taxes spécifiques au produit ;
+●   le magasinage ;
+●   les surestaries ;
+●   les frais de retour ;
+●   les frais de destruction ;
+●   les amendes ;
+● les frais provoqués par une déclaration inexacte.
+ANNEXE 3 – DOCUMENTS POUVANT ÊTRE DEMANDÉS
+●   une pièce d’identité ;
+●   un IFU ;
+●   un RCCM ;
+●   une procuration ;
+●   un justificatif du représentant ;
+●   une facture fournisseur ;
+●   une preuve de paiement ;
+●   un lien ou une fiche produit ;
+●   un packing list ;
+●   les dimensions et poids ;
+●   la matière et l’usage du produit ;
+●   la valeur réelle de la marchandise ;
+●   le code HS ;
+●   une licence ;
+●   un certificat ;
+●   une fiche de sécurité ;
+●   une autorisation spéciale ;
+●   un passeport ;
+●   un visa ;
+●   une assurance de voyage ;
+●   tout autre document raisonnablement nécessaire à la douane, à la fiscalité, à la sécurité ou à la
+     conformité.
+CONTACT
+NEW MARKETS TECHNOLOGIES SAS
+Enseigne commerciale : Ahiyoyo
+Capital social : 2 000 000 FCFA
+RCCM : RB/COT/25 B 40607 • IFU : 3202585063521
+Siège : Ilot 1146, Quartier Houéhoun, Parcelle C, Maison ABUDU RAFIOU YESSOUFOU, Cotonou,
+Bénin
+Téléphone : +229 01 91 08 41 41 • Email : support@ahiyoyo.com
+
+Important
+La version française fait foi. Avant publication officielle, une validation finale par un conseil juridique
+compétent en droit béninois et OHADA est recommandée.
+
+Service client | Ahiyoyo
+
+Adresse électronique | support@ahiyoyo.com
+
+Téléphone | +229 01 91 08 41 41
+
+Adresse | Ilot 1146, Quartier Houéhoun, Parcelle C, Maison ABUDU RAFIOU YESSOUFOU, Cotonou,
+Bénin`;

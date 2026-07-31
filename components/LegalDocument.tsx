@@ -21,9 +21,57 @@ function slugify(value: string) {
 
 function isHeading(line: string, type: LegalDocumentProps["documentType"]) {
   if (type === "cgu") {
-    return line === "PRÉAMBULE" || line === "CONTACT" || /^(?:[IVX]+\.|ANNEXE \d+ -)/.test(line) || /^Article \d+ -/.test(line);
+    return line === "NOTE DE LECTURE"
+      || line === "PRÉAMBULE"
+      || line === "RÈGLES ESSENTIELLES À RETENIR"
+      || line === "CONTACT"
+      || /^(?:[IVX]+\.|ANNEXE \d+\s[-–—])/.test(line)
+      || /^Article \d+\s[-–—]/.test(line);
   }
   return line === "À RETENIR" || line === "Cadre de référence" || /^\d+\.\s/.test(line);
+}
+
+function paragraphsFromLines(lines: string[]) {
+  const paragraphs: string[] = [];
+  let prose = "";
+  let list: string[] = [];
+  let listType: "bullet" | "ordered" | null = null;
+
+  const flushProse = () => {
+    if (prose.trim()) paragraphs.push(prose.trim());
+    prose = "";
+  };
+  const flushList = () => {
+    if (list.length) paragraphs.push(list.join("\n"));
+    list = [];
+    listType = null;
+  };
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim().replace(/^●\s*/, "• ");
+    const bullet = /^•\s*/.test(line);
+    const ordered = /^\d+\.\s*/.test(line);
+
+    if (!line) {
+      flushProse();
+      flushList();
+    } else if (bullet || ordered) {
+      flushProse();
+      const nextType = bullet ? "bullet" : "ordered";
+      if (listType && listType !== nextType) flushList();
+      listType = nextType;
+      list.push(line);
+    } else if (list.length && /^\s/.test(rawLine)) {
+      list[list.length - 1] += ` ${line}`;
+    } else {
+      flushList();
+      prose += `${prose ? " " : ""}${line}`;
+    }
+  }
+
+  flushProse();
+  flushList();
+  return paragraphs;
 }
 
 function parseContent(content: string, type: LegalDocumentProps["documentType"]): LegalBlock[] {
@@ -33,7 +81,7 @@ function parseContent(content: string, type: LegalDocumentProps["documentType"])
 
   const flush = () => {
     if (!title) return;
-    const paragraphs = body.join("\n").split(/\n\s*\n/).map((paragraph) => paragraph.trim()).filter(Boolean);
+    const paragraphs = paragraphsFromLines(body);
     blocks.push({ title, id: slugify(title), paragraphs });
   };
 
@@ -57,21 +105,26 @@ function parseContent(content: string, type: LegalDocumentProps["documentType"])
 }
 
 function Paragraph({ text }: { text: string }) {
-  const bulletParts = text.split(/(?=^•\s)/m).map((part) => part.trim()).filter(Boolean);
-  if (bulletParts.length > 1 || text.trim().startsWith("•")) {
+  const lines = text.split("\n").map((line) => line.trim()).filter(Boolean);
+  if (lines.length && lines.every((line) => line.startsWith("•"))) {
     return (
       <ul className="space-y-2.5 my-5">
-        {bulletParts.map((part, index) => <li key={index} className="flex items-start gap-3"><span className="w-1.5 h-1.5 rounded-full bg-amber mt-2.5 flex-shrink-0" /><span>{part.replace(/^•\s*/, "").replace(/\n/g, " ")}</span></li>)}
+        {lines.map((line, index) => <li key={index} className="flex items-start gap-3"><span className="w-1.5 h-1.5 rounded-full bg-amber mt-2.5 flex-shrink-0" /><span>{line.replace(/^•\s*/, "")}</span></li>)}
       </ul>
     );
+  }
+  if (lines.length && lines.every((line) => /^\d+\.\s*/.test(line))) {
+    const start = Number.parseInt(lines[0], 10) || 1;
+    return <ol start={start} className="list-decimal space-y-2.5 my-5 pl-6 marker:text-amber marker:font-semibold">{lines.map((line, index) => <li key={index} className="pl-1">{line.replace(/^\d+\.\s*/, "")}</li>)}</ol>;
   }
   return <p className="whitespace-pre-line">{text}</p>;
 }
 
 function LegalSection({ block }: { block: LegalBlock }) {
-  const article = /^Article \d+ -/.test(block.title);
+  const article = /^Article \d+\s[-–—]/.test(block.title);
+  const essential = block.title === "RÈGLES ESSENTIELLES À RETENIR";
   return (
-    <section id={block.id} className={`scroll-mt-24 ${article ? "py-6 border-b border-ink/8 last:border-0" : "pt-10 first:pt-0"}`}>
+    <section id={block.id} className={`scroll-mt-24 ${article ? "py-6 border-b border-ink/8 last:border-0" : "pt-10 first:pt-0"} ${essential ? "rounded-2xl bg-amber/10 border border-amber/25 p-5 sm:p-7 mt-8" : ""}`}>
       {article
         ? <h3 className="font-display text-lg md:text-xl font-bold mb-4 text-ink">{block.title}</h3>
         : <h2 className="font-display text-xl md:text-2xl font-bold mb-6 flex items-start gap-3"><span className="w-1.5 self-stretch rounded-full bg-amber flex-shrink-0" />{block.title}</h2>}
@@ -84,7 +137,7 @@ function LegalSection({ block }: { block: LegalBlock }) {
 
 export default function LegalDocument({ eyebrow, title, subtitle, description, version, pdfUrl, content, documentType }: LegalDocumentProps) {
   const blocks = parseContent(content, documentType);
-  const toc = blocks.filter((block) => documentType === "privacy" || !/^Article \d+ -/.test(block.title));
+  const toc = blocks.filter((block) => documentType === "privacy" || !/^Article \d+\s[-–—]/.test(block.title));
 
   return (
     <>
@@ -114,10 +167,12 @@ export default function LegalDocument({ eyebrow, title, subtitle, description, v
             </aside>
 
             <article className="waybill border border-ink/8 !shadow-[0_18px_60px_-38px_rgba(0,0,0,.55)] p-5 sm:p-7 md:p-10 lg:p-12 min-w-0">
-              <header className="pb-8 mb-2 border-b border-ink/10">
-                <p className="font-mono-tag text-[10px] text-amber mb-3">NEW MARKETS TECHNOLOGIES SAS — ENSEIGNE AHIYOYO</p>
-                <p className="text-sm text-slate leading-relaxed">Capital social : 2 000 000 FCFA<br />RCCM : RB/COT/25 B 40607 — IFU : 3202585063521<br />Siège : Ilot 1146, Quartier Houéhoun, Parcelle C, Maison ABUDU RAFIOU YESSOUFOU, Cotonou, Bénin<br />Téléphone : +229 01 91 08 41 41 — Email : support@ahiyoyo.com</p>
-              </header>
+              {documentType === "privacy" && (
+                <header className="pb-8 mb-2 border-b border-ink/10">
+                  <p className="font-mono-tag text-[10px] text-amber mb-3">NEW MARKETS TECHNOLOGIES SAS — ENSEIGNE AHIYOYO</p>
+                  <p className="text-sm text-slate leading-relaxed">Capital social : 2 000 000 FCFA<br />RCCM : RB/COT/25 B 40607 — IFU : 3202585063521<br />Siège : Ilot 1146, Quartier Houéhoun, Parcelle C, Maison ABUDU RAFIOU YESSOUFOU, Cotonou, Bénin<br />Téléphone : +229 01 91 08 41 41 — Email : support@ahiyoyo.com</p>
+                </header>
+              )}
               {blocks.map((block) => <LegalSection key={block.id} block={block} />)}
             </article>
           </div>
