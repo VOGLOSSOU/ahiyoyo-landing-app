@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const partners = [
@@ -34,7 +33,6 @@ export default function Partners() {
     <section className="py-16 md:py-20 bg-paperAlt border-y border-ink/5 overflow-hidden">
       <div className="max-w-6xl mx-auto px-5 md:px-6 text-center mb-10 md:mb-12">
         <Reveal>
-          <Stamp variant="amber" className="mb-5">Écosystème</Stamp>
           <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">Ils nous accompagnent</h2>
           <p className="text-slate text-sm md:text-base max-w-xl mx-auto leading-relaxed">Des organisations qui soutiennent l’innovation, l’entrepreneuriat et le développement d’Ahiyoyo.</p>
         </Reveal>
