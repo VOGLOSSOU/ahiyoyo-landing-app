@@ -13,7 +13,6 @@ const usefulLinks = [
   { href: "/faq", label: "Foire aux questions (FAQ)" },
   { href: "/cgu", label: "Conditions générales d'utilisation" },
   { href: "/confidentialite", label: "Politique de confidentialité" },
-  { href: "https://ahiyoyo.com/cga", label: "Conditions générales d'achat" },
   { href: "https://ahiyoyo.com/mentions-legales/", label: "Mentions légales" },
 ];
 

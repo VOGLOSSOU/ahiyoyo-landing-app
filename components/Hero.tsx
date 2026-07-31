@@ -34,11 +34,6 @@ export default function Hero() {
                 </Link>
               </div>
 
-              <div className="mt-10 pt-7 border-t border-ink/10 flex flex-wrap gap-x-7 gap-y-3 text-xs md:text-sm text-slate">
-                <span><i className="fa-solid fa-circle-check text-amber mr-2" />Tarifs publics</span>
-                <span><i className="fa-solid fa-circle-check text-amber mr-2" />Suivi sans connexion</span>
-                <span><i className="fa-solid fa-circle-check text-amber mr-2" />Support humain</span>
-              </div>
             </div>
           </Reveal>
 
