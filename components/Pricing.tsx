@@ -13,17 +13,25 @@ const benefits = [
 export default function Pricing() {
   return (
     <section id="tarifs" className="py-16 md:py-24 bg-paperAlt">
-      <div className="max-w-6xl mx-auto px-5 md:px-6">
+      <div className="max-w-4xl mx-auto px-5 md:px-6">
         <Reveal>
-          <div className="rounded-[1.75rem] bg-navy text-white relative overflow-hidden p-7 sm:p-10 md:p-14">
+          <div className="rounded-[1.75rem] bg-navy text-white relative overflow-hidden p-7 sm:p-10 md:p-14 text-center">
             <div className="grain" />
             <div className="absolute -right-24 -bottom-24 w-72 h-72 rounded-full bg-amber/15 blur-3xl" />
-            <div className="relative grid lg:grid-cols-[1fr_.8fr] gap-10 lg:gap-16 items-center">
-              <div><Stamp variant="ghost" className="mb-6">TRANSPARENCE DES PRIX</Stamp><h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-5 text-center">Les tarifs et adresses utiles, accessibles avant d’envoyer.</h2></div>
-              <div>
-                <ul className="grid sm:grid-cols-2 lg:grid-cols-1 gap-3 mb-7">{benefits.map((item) => <li key={item} className="flex items-center gap-3 text-sm text-white/75"><span className="w-6 h-6 rounded-full bg-amber/15 text-amber flex items-center justify-center flex-shrink-0"><i className="fa-solid fa-check text-[9px]" /></span>{item}</li>)}</ul>
-                <Link href="/tarifs" className="btn-primary inline-flex items-center justify-center w-full sm:w-auto bg-amber text-[#111827] font-semibold px-7 py-4 rounded-full text-sm">Consulter les lignes tarifaires <i className="fa-solid fa-arrow-right ml-2" /></Link>
+            <div className="relative">
+              <Stamp variant="ghost" className="mb-6">TRANSPARENCE DES PRIX</Stamp>
+              <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-10">Les tarifs et adresses utiles, accessibles avant d&apos;envoyer.</h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                {benefits.map((item, index) => (
+                  <div key={index} className="rounded-xl border border-white/10 bg-white/[.04] p-5 md:p-6 flex items-start gap-3 text-left">
+                    <span className="w-6 h-6 rounded-full bg-amber/15 text-amber flex items-center justify-center flex-shrink-0 mt-0.5"><i className="fa-solid fa-check text-[9px]" /></span>
+                    <p className="text-sm md:text-base text-white/75 leading-relaxed">{item}</p>
+                  </div>
+                ))}
               </div>
+
+              <Link href="/tarifs" className="btn-primary inline-flex items-center justify-center bg-amber text-[#111827] font-semibold px-7 py-4 rounded-full text-sm">Consulter les lignes tarifaires <i className="fa-solid fa-arrow-right ml-2" /></Link>
             </div>
           </div>
         </Reveal>
