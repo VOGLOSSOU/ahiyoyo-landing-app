@@ -246,7 +246,7 @@ export default function FAQ() {
             <a href="mailto:support@ahiyoyo.com" className="btn-primary bg-amber text-ink font-semibold px-8 py-4 rounded-full text-sm md:text-base">
               Nous contacter
             </a>
-            <Link href="/#suivi" className="btn-ghost border border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 text-sm md:text-base">
+            <Link href="/suivi" className="btn-ghost border border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 text-sm md:text-base">
               Suivre un colis
             </Link>
           </div>

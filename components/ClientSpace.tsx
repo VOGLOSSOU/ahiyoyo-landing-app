@@ -2,29 +2,30 @@ import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const tools = [
-  { icon: "fa-location-crosshairs", title: "Tracking", desc: "Suivez vos colis et commandes en temps réels." },
+  { icon: "fa-location-crosshairs", title: "Tracking", desc: "Suivez vos colis et commandes en temps réel." },
   { icon: "fa-file-invoice", title: "Tableau de bord", desc: "Pour gérer vos devis, vos factures et autres opérations." },
   { icon: "fa-credit-card", title: "Solutions de paiement", desc: "Payez facilement en monnaie locale pour vos achats et le transport de vos marchandises." },
   { icon: "fa-bell", title: "Alertes", desc: "Des notifications automatiques pour vous tenir informés de chaque étape" },
 ];
 
-export default function ClientSpace() {
+export default function ClientSpace({ dark = false }: { dark?: boolean }) {
   return (
-    <section id="espace-client" className="py-16 md:py-24 bg-paper">
+    <section id="espace-client" className={`py-16 md:py-24 relative overflow-hidden ${dark ? "bg-navy text-white" : "bg-paper"}`}>
+      {dark && <div className="grain" />}
       <div className="max-w-7xl mx-auto px-5 md:px-6">
         <div className="grid lg:grid-cols-[.82fr_1.18fr] gap-12 lg:gap-20 items-center">
           <Reveal>
             <div>
-              <Stamp variant="amber" className="mb-6">Votre espace Ahiyoyo</Stamp>
+              <Stamp variant={dark ? "ghost" : "amber"} className="mb-6">Votre espace Ahiyoyo</Stamp>
               <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-5">Une vue claire sur ce qui compte maintenant.</h2>
-              <p className="text-slate leading-relaxed mb-8">L’application Ahiyoyo rassemble les opérations, documents et mises à jour qui concernent votre activité — sans vous obliger à chercher l’information dans plusieurs conversations.</p>
-              <div className="grid sm:grid-cols-2 gap-3 mb-8">{tools.map((tool) => <div key={tool.title} className="flex items-center gap-3 rounded-xl border border-ink/8 bg-paperAlt p-3.5"><span className="w-9 h-9 rounded-lg bg-amber/12 text-amber flex items-center justify-center flex-shrink-0"><i className={`fa-solid ${tool.icon} text-sm`} /></span><div><p className="font-display font-semibold text-sm">{tool.title}</p><p className="text-[10px] text-slate mt-0.5">{tool.desc}</p></div></div>)}</div>
+              <p className={`leading-relaxed mb-8 ${dark ? "text-white/60" : "text-slate"}`}>L’application Ahiyoyo rassemble les opérations, documents et mises à jour qui concernent votre activité — sans vous obliger à chercher l’information dans plusieurs conversations.</p>
+              <div className="grid sm:grid-cols-2 gap-3 mb-8">{tools.map((tool) => <div key={tool.title} className={`flex items-center gap-3 rounded-xl border p-3.5 ${dark ? "border-white/10 bg-white/5" : "border-ink/8 bg-paperAlt"}`}><span className="w-9 h-9 rounded-lg bg-amber/12 text-amber flex items-center justify-center flex-shrink-0"><i className={`fa-solid ${tool.icon} text-sm`} /></span><div><p className="font-display font-semibold text-sm">{tool.title}</p><p className={`text-[10px] mt-0.5 ${dark ? "text-white/50" : "text-slate"}`}>{tool.desc}</p></div></div>)}</div>
               <a href="https://app.ahiyoyo.com" className="inline-flex items-center gap-2 text-sm font-semibold text-amber hover:underline">Accéder à mon compte <i className="fa-solid fa-arrow-up-right-from-square text-xs" /></a>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="rounded-[1.75rem] bg-navy p-3 sm:p-5 shadow-2xl shadow-black/15">
+            <div className={`rounded-[1.75rem] p-3 sm:p-5 shadow-2xl shadow-black/25 ${dark ? "bg-[#090b10] border border-white/10" : "bg-navy"}`}>
               <div className="rounded-2xl bg-paperAlt border border-white/10 overflow-hidden">
                 <div className="h-12 px-4 flex items-center justify-between border-b border-ink/8"><div className="flex gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-postal/60" /><span className="w-2.5 h-2.5 rounded-full bg-amber" /><span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" /></div><span className="font-mono-tag text-[8px] text-slate">APP.AHIYOYO.COM</span></div>
                 <div className="p-5 sm:p-7">
