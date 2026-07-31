@@ -23,7 +23,7 @@ export default function Hero() {
                 Achetez, vendez et expédiez <span className="text-amber">à l’international depuis l’Afrique.</span>
               </h1>
               <p className="text-slate text-base md:text-lg leading-relaxed max-w-2xl mb-9">
-                Achetez, sourcez et expédiez entre l’Afrique, la Chine et l’Europe avec une équipe qui coordonne chaque étape — du devis à la livraison.
+                Gardez un œil sur toutes vos activités commerciales avec le reste du monde : du paiement jusqu’à la livraison, sans les tracas habituels.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
                 <Link href="/suivi" className="btn-primary inline-flex items-center justify-center bg-amber text-[#111827] font-semibold px-7 py-4 rounded-full text-sm">
