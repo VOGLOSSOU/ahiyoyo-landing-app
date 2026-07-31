@@ -2,10 +2,10 @@ import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const tools = [
-  { icon: "fa-location-crosshairs", title: "Suivre", desc: "Vos colis et commandes" },
-  { icon: "fa-file-invoice", title: "Centraliser", desc: "Devis et factures" },
-  { icon: "fa-credit-card", title: "Payer", desc: "Des parcours sécurisés" },
-  { icon: "fa-bell", title: "Être informé", desc: "À chaque étape utile" },
+  { icon: "fa-location-crosshairs", title: "Tracking", desc: "Suivez vos colis et commandes en temps réels." },
+  { icon: "fa-file-invoice", title: "Tableau de bord", desc: "Pour gérer vos devis, vos factures et autres opérations." },
+  { icon: "fa-credit-card", title: "Solutions de paiement", desc: "Payez facilement en monnaie locale pour vos achats et le transport de vos marchandises." },
+  { icon: "fa-bell", title: "Alertes", desc: "Des notifications automatiques pour vous tenir informés de chaque étape" },
 ];
 
 export default function ClientSpace() {
