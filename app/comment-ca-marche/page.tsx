@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Stamp from "@/components/Stamp";
 import Reveal from "@/components/Reveal";
 import ClientSpace from "@/components/ClientSpace";
+import Services from "@/components/Services";
 
 const steps = [
   { num: "01", title: "Vous partagez votre besoin", desc: "Un lien, une photo, une quantité ou les détails de votre expédition suffisent pour commencer.", icon: "fa-paper-plane" },
@@ -43,6 +44,8 @@ export default function CommentCaMarche() {
         </section>
 
         <ClientSpace />
+
+        <Services />
       </main>
       <Footer />
     </>

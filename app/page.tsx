@@ -5,7 +5,6 @@ import Corridors from "@/components/Corridors";
 import Partners from "@/components/Partners";
 import Problem from "@/components/Problem";
 import Audiences from "@/components/Audiences";
-import Services from "@/components/Services";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import FAQPreview from "@/components/FAQPreview";
@@ -24,7 +23,6 @@ export default async function Home() {
       <Partners />
       <Problem />
       <Audiences />
-      <Services />
       <Pricing />
       <Testimonials />
       <LatestArticlesSection articles={latestArticles} />
