@@ -10,7 +10,7 @@ export default function Problem() {
         <Reveal>
           <div className="text-center max-w-2xl mx-auto">
             <Stamp variant="ghost" className="mb-7">Une logistique plus lisible</Stamp>
-            <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-5">Ahiyoyo remplace plusieurs intermédiaires</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-5"><span className="text-amber">Ahiyoyo</span> remplace plusieurs intermédiaires</h2>
             <p className="text-white/60 leading-relaxed mb-8">Plus besoin de chercher séparément un fournisseur, un intermédiaire d&apos;achat, un transporteur, un transitaire ou des clients à l&apos;international.<br /><br />Même à distance, vous gardez un œil sur toutes vos activités commerciales avec le reste du monde.</p>
             <Link href="/faq" className="inline-flex items-center gap-2 text-sm font-semibold text-amber hover:underline">Comprendre notre fonctionnement <i className="fa-solid fa-arrow-right text-xs" /></Link>
           </div>
