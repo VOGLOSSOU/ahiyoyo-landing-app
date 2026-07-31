@@ -29,8 +29,8 @@ export default function Hero() {
                 <Link href="/suivi" className="btn-primary inline-flex items-center justify-center bg-amber text-[#111827] font-semibold px-7 py-4 rounded-full text-sm">
                   <i className="fa-solid fa-location-crosshairs mr-2" />Suivre un envoi
                 </Link>
-                <Link href="/tarifs" className="btn-ghost inline-flex items-center justify-center border border-ink/20 text-ink font-semibold px-7 py-4 rounded-full hover:bg-ink/5 text-sm">
-                  Voir les adresses et tarifs <i className="fa-solid fa-arrow-right ml-2 text-xs" />
+                <Link href="/comment-ca-marche" className="btn-ghost inline-flex items-center justify-center border border-ink/20 text-ink font-semibold px-7 py-4 rounded-full hover:bg-ink/5 text-sm">
+                  Comment ça marche <i className="fa-solid fa-arrow-right ml-2 text-xs" />
                 </Link>
               </div>
 
