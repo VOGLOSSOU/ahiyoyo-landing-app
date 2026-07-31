@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Stamp from "@/components/Stamp";
 import Reveal from "@/components/Reveal";
+import ClientSpace from "@/components/ClientSpace";
 
 const steps = [
   { num: "01", title: "Vous partagez votre besoin", desc: "Un lien, une photo, une quantité ou les détails de votre expédition suffisent pour commencer.", icon: "fa-paper-plane" },
@@ -22,7 +23,7 @@ export default function CommentCaMarche() {
       <main className="min-h-screen pt-16">
         <section className="py-16 md:py-24 bg-paper">
           <div className="max-w-6xl mx-auto px-5 md:px-6">
-            <div className="max-w-2xl mb-12 md:mb-16">
+            <div className="max-w-2xl mx-auto mb-12 md:mb-16 text-center">
               <Stamp variant="amber" className="mb-6">Comment ça marche</Stamp>
               <h1 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-4">Un parcours clair, sans vous laisser seul entre deux étapes.</h1>
               <p className="text-slate leading-relaxed">Derrière la plateforme, une équipe suit l'opération et intervient là où l'automatisation ne suffit pas.</p>
@@ -40,6 +41,8 @@ export default function CommentCaMarche() {
             </Reveal>
           </div>
         </section>
+
+        <ClientSpace />
       </main>
       <Footer />
     </>
