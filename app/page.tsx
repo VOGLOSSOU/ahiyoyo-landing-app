@@ -5,7 +5,6 @@ import Corridors from "@/components/Corridors";
 import Partners from "@/components/Partners";
 import Problem from "@/components/Problem";
 import Audiences from "@/components/Audiences";
-import HowItWorks from "@/components/HowItWorks";
 import Services from "@/components/Services";
 import ClientSpace from "@/components/ClientSpace";
 import Pricing from "@/components/Pricing";
@@ -27,7 +26,6 @@ export default async function Home() {
       <Problem />
       <Audiences />
       <Services />
-      <HowItWorks />
       <ClientSpace />
       <Pricing />
       <Testimonials />

@@ -87,6 +87,7 @@ export default function Navbar() {
           <Link href="/tarifs" className="hover:text-ink transition-colors">Adresses et tarifs</Link>
           <Link href="/blog" className="hover:text-ink transition-colors">Blog</Link>
           <Link href="/faq" className="hover:text-ink transition-colors">FAQ</Link>
+          <Link href="/comment-ca-marche" className="hover:text-ink transition-colors">Comment ça marche</Link>
           <div className="relative group/dropdown">
             <button type="button" onClick={() => toggleDropdown("start")} className="flex items-center gap-2 hover:text-ink transition-colors" aria-expanded={openDropdown === "start"} aria-haspopup="menu">
               Démarrer <i className={`fa-solid fa-chevron-down text-[9px] transition-transform ${openDropdown === "start" ? "rotate-180" : ""}`} />
@@ -148,6 +149,7 @@ export default function Navbar() {
             <Link href="/tarifs" className="py-3 hover:text-ink" onClick={closeMenu}>Adresses et tarifs</Link>
             <Link href="/blog" className="py-3 hover:text-ink" onClick={closeMenu}>Blog</Link>
             <Link href="/faq" className="py-3 hover:text-ink" onClick={closeMenu}>FAQ</Link>
+            <Link href="/comment-ca-marche" className="py-3 hover:text-ink" onClick={closeMenu}>Comment ça marche</Link>
             <div className="border-t border-ink/8 mt-2 pt-2">
               <p className="font-mono-tag text-[9px] text-slate px-1 py-2">DÉMARRER</p>
               <a href="https://app.ahiyoyo.com/expedier-colis" className="flex items-center gap-3 py-3 hover:text-ink" onClick={closeMenu}><i className="fa-solid fa-box text-amber w-4" />Enregistrer un colis</a>
