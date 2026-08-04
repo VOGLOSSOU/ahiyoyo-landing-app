@@ -5,19 +5,11 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
-const availableCountries = [
-  { flag: "🇨🇳", name: "Chine" },
-  { flag: "🇫🇷", name: "France" },
-  { flag: "🇧🇯", name: "Bénin" },
-  { flag: "🇹🇬", name: "Togo" },
-  { flag: "🇨🇮", name: "Côte d’Ivoire" },
-];
-
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<"start" | "activities" | "legal" | null>(null);
-  const [availabilityVisible, setAvailabilityVisible] = useState(true);
+  const [legalNoticeVisible, setLegalNoticeVisible] = useState(true);
 
   useEffect(() => {
     const closeOnOutsideClick = (event: PointerEvent) => {
@@ -52,25 +44,28 @@ export default function Navbar() {
     setOpenDropdown((current) => current === dropdown ? null : dropdown);
   };
 
-  const dismissAvailability = () => {
-    setAvailabilityVisible(false);
+  const dismissLegalNotice = () => {
+    setLegalNoticeVisible(false);
   };
 
   return (
     <>
     <header ref={navRef} className="fixed top-0 left-0 right-0 z-50">
-      {availabilityVisible && (
-        <aside className="h-16 sm:h-14 bg-[#090b10] text-white border-b border-white/10" aria-label="Pays dans lesquels Ahiyoyo est disponible">
-          <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 pr-12 sm:pr-14 flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-5 lg:gap-8 relative">
-            <p className="text-center sm:text-left text-[10px] sm:text-[11px] font-semibold leading-snug">
-              Nous sommes dans ces pays
-            </p>
-            <div className="flex items-start justify-center gap-3.5 sm:gap-6 lg:gap-8">
-              {availableCountries.map((country) => (
-                <span key={country.name} className="text-lg sm:text-xl leading-none" role="img" aria-label={country.name}>{country.flag}</span>
-              ))}
-            </div>
-            <button type="button" onClick={dismissAvailability} className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-white/20 text-white/75 hover:text-white hover:border-white/50 hover:bg-white/10 transition" aria-label="Masquer la liste des pays disponibles">
+      {legalNoticeVisible && (
+        <aside className="h-16 sm:h-14 bg-[#090b10] text-white border-b border-white/10" aria-label="Mise à jour des conditions d’utilisation">
+          <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 pr-14 flex items-center justify-center relative">
+            <Link href="/cgu" onClick={closeMenu} className="group inline-flex items-center justify-center gap-2.5 sm:gap-3 text-center text-[11px] sm:text-sm font-semibold leading-snug text-white/90 hover:text-white transition-colors">
+              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber/15 text-amber flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                <i className="fa-solid fa-file-contract text-xs" />
+              </span>
+              <span>
+                Conditions d’utilisation mises à jour
+                <span className="hidden sm:inline text-white/50 font-normal"> — </span>
+                <span className="block sm:inline text-amber underline underline-offset-4 group-hover:text-[#ffd47d]">Consulter la version révisée</span>
+              </span>
+              <i className="fa-solid fa-arrow-right text-[9px] text-amber transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </Link>
+            <button type="button" onClick={dismissLegalNotice} className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-white/20 text-white/75 hover:text-white hover:border-white/50 hover:bg-white/10 transition" aria-label="Masquer l’annonce sur les conditions d’utilisation">
               <i className="fa-solid fa-xmark" aria-hidden="true" />
             </button>
           </div>
@@ -172,7 +167,7 @@ export default function Navbar() {
       )}
       </nav>
     </header>
-    {availabilityVisible && <div className="h-16 sm:h-14" aria-hidden="true" />}
+    {legalNoticeVisible && <div className="h-16 sm:h-14" aria-hidden="true" />}
     </>
   );
 }
