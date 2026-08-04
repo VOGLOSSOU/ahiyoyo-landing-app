@@ -52,16 +52,17 @@ export default function Navbar() {
     <>
     <header ref={navRef} className="fixed top-0 left-0 right-0 z-50">
       {legalNoticeVisible && (
-        <aside className="h-16 sm:h-14 bg-[#090b10] text-white border-b border-white/10" aria-label="Mise à jour des conditions d’utilisation">
+        <aside className="legal-notice-pulse h-20 sm:h-14 bg-[#090b10] text-white border-b border-amber/30" aria-label="Information importante sur les conditions d’utilisation">
           <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 pr-14 flex items-center justify-center relative">
-            <Link href="/cgu" onClick={closeMenu} className="group inline-flex items-center justify-center gap-2.5 sm:gap-3 text-center text-[11px] sm:text-sm font-semibold leading-snug text-white/90 hover:text-white transition-colors">
-              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber/15 text-amber flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                <i className="fa-solid fa-file-contract text-xs" />
+            <Link href="/cgu" onClick={closeMenu} className="group inline-flex items-center justify-center gap-2.5 sm:gap-3 text-center text-[11px] sm:text-sm font-semibold leading-snug text-white hover:text-amber transition-colors">
+              <span className="legal-notice-icon w-8 h-8 rounded-full bg-amber text-[#111827] flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                <i className="fa-solid fa-triangle-exclamation text-xs" />
               </span>
               <span>
-                Conditions d’utilisation mises à jour
-                <span className="hidden sm:inline text-white/50 font-normal"> : </span>
-                <span className="block sm:inline text-amber underline underline-offset-4 group-hover:text-[#ffd47d]">Consulter la version révisée</span>
+                <span className="font-bold text-amber">Information importante :</span>{" "}
+                nos conditions d’utilisation ont été mises à jour.
+                <span className="block sm:inline sm:ml-1 text-white/80 font-normal">Lisez-les pour bien comprendre comment utiliser Ahiyoyo.</span>{" "}
+                <span className="inline-block text-amber font-bold underline underline-offset-4 group-hover:text-[#ffd47d]">Lire les CGU</span>
               </span>
               <i className="fa-solid fa-arrow-right text-[9px] text-amber transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
@@ -167,7 +168,7 @@ export default function Navbar() {
       )}
       </nav>
     </header>
-    {legalNoticeVisible && <div className="h-16 sm:h-14" aria-hidden="true" />}
+    {legalNoticeVisible && <div className="h-20 sm:h-14" aria-hidden="true" />}
     </>
   );
 }
