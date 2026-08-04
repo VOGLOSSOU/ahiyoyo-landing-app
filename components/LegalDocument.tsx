@@ -5,7 +5,7 @@ import Stamp from "./Stamp";
 type LegalDocumentProps = {
   eyebrow: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   description: string;
   version: string;
   pdfUrl: string;
@@ -148,7 +148,7 @@ export default function LegalDocument({ eyebrow, title, subtitle, description, v
           <div className="relative max-w-5xl mx-auto px-5 md:px-6 py-14 md:py-20 text-center">
             <Stamp variant="amber" dot className="mb-6">{eyebrow}</Stamp>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-4">{title}</h1>
-            <p className="font-display font-semibold text-amber mb-5">{subtitle}</p>
+            {subtitle && <p className="font-display font-semibold text-amber mb-5">{subtitle}</p>}
             <p className="text-slate max-w-2xl mx-auto leading-relaxed">{description}</p>
             <p className="font-mono-tag text-[10px] text-slate mt-5">{version}</p>
             <a href={pdfUrl} download className="btn-primary inline-flex items-center bg-amber text-[#111827] rounded-full px-5 py-3 text-sm font-semibold mt-7"><i className="fa-solid fa-download mr-2" />Télécharger la version PDF</a>

@@ -14,7 +14,6 @@ export default function TermsPage() {
     <LegalDocument
       eyebrow="Document contractuel"
       title="Conditions générales d’utilisation et de services"
-      subtitle="Achats — Paiement de fournisseurs — Expéditions terrestres, maritimes et aériennes — Achats avec expédition — Voyages d’affaires"
       description="Version explicite des règles applicables à la plateforme et aux services proposés par Ahiyoyo."
       version="VERSION RÉVISÉE DU 31 JUILLET 2026 — ÉTABLIE À PARTIR DE LA VERSION DU 19 JUILLET 2026"
       pdfUrl={pdfUrl}
