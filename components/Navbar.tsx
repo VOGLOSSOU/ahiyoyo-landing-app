@@ -60,7 +60,7 @@ export default function Navbar() {
               </span>
               <span>
                 Conditions d’utilisation mises à jour
-                <span className="hidden sm:inline text-white/50 font-normal"> — </span>
+                <span className="hidden sm:inline text-white/50 font-normal"> : </span>
                 <span className="block sm:inline text-amber underline underline-offset-4 group-hover:text-[#ffd47d]">Consulter la version révisée</span>
               </span>
               <i className="fa-solid fa-arrow-right text-[9px] text-amber transition-transform group-hover:translate-x-1" aria-hidden="true" />
