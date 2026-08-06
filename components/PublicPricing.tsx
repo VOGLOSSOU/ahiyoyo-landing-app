@@ -143,11 +143,11 @@ export default function PublicPricing() {
     <div className="bg-paper min-h-screen">
       <section className="relative overflow-hidden border-b border-ink/5">
         <div className="grain" />
-        <div className="relative max-w-6xl mx-auto px-5 md:px-6 py-14 md:py-20 text-center">
-          <Stamp variant="amber" dot className="mb-6">Routes publiques Ahiyoyo</Stamp>
-          <div className="flex flex-col items-center gap-7">
+        <div className="relative max-w-6xl mx-auto px-5 md:px-6 py-10 md:py-12 text-center">
+          <Stamp variant="amber" dot className="mb-4">Routes publiques Ahiyoyo</Stamp>
+          <div className="flex flex-col items-center gap-4">
             <div className="max-w-3xl mx-auto">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-5"><i className="fa-solid fa-truck-fast text-amber text-[.75em] mr-3" />Nos adresses &amp; tarifs d’envoi</h1>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-3"><i className="fa-solid fa-truck-fast text-amber text-[.75em] mr-3" />Nos adresses &amp; tarifs d’envoi</h1>
               <p className="text-slate text-base md:text-lg leading-relaxed">Adresses de nos entrepôts, tarifs de transport et instructions d’envoi pour chaque route disponible.</p>
             </div>
             {!loading && !error && lines.length > 0 && <div className="font-mono-tag text-[10px] text-slate border border-ink/10 rounded-full px-4 py-2 w-fit mx-auto">{lines.length} {lines.length > 1 ? "LIGNES DISPONIBLES" : "LIGNE DISPONIBLE"}</div>}
@@ -155,14 +155,14 @@ export default function PublicPricing() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-5 md:px-6 py-10 md:py-14">
+      <section className="max-w-7xl mx-auto px-5 md:px-6 pt-5 pb-10 md:pt-7 md:pb-14">
         {loading && <LoadingState />}
         {!loading && error && <ErrorState message={error} onRetry={retry} />}
         {!loading && !error && lines.length === 0 && <EmptyState />}
 
         {!loading && !error && lines.length > 0 && (
           <>
-            <div className="flex flex-wrap justify-center gap-2.5 pb-3 mb-7 md:mb-9" role="group" aria-label="Filtrer par mode de transport">
+            <div className="flex flex-wrap justify-center gap-2.5 mb-5 md:mb-6" role="group" aria-label="Filtrer par mode de transport">
               {visibleFilters.map((item) => (
                 <button key={item.key} type="button" onClick={() => setFilter(item.key)} aria-pressed={filter === item.key} className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition ${filter === item.key ? "bg-amber text-[#111827] border-amber shadow-sm" : "bg-paperAlt text-slate border-ink/10 hover:border-amber/50 hover:text-ink"}`}>
                   <i className={`fa-solid ${item.icon}`} /><span>{item.label}</span><span className={`min-w-5 h-5 px-1 rounded-full text-[10px] flex items-center justify-center ${filter === item.key ? "bg-[#111827]/10" : "bg-ink/5"}`}>{counts[item.key]}</span>
