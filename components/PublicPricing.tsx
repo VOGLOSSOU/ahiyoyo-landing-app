@@ -145,12 +145,11 @@ export default function PublicPricing() {
         <div className="grain" />
         <div className="relative max-w-6xl mx-auto px-5 md:px-6 py-10 md:py-12 text-center">
           <Stamp variant="amber" dot className="mb-4">Routes publiques Ahiyoyo</Stamp>
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center">
             <div className="max-w-3xl mx-auto">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-3"><i className="fa-solid fa-truck-fast text-amber text-[.75em] mr-3" />Nos adresses &amp; tarifs d’envoi</h1>
               <p className="text-slate text-base md:text-lg leading-relaxed">Adresses de nos entrepôts, tarifs de transport et instructions d’envoi pour chaque route disponible.</p>
             </div>
-            {!loading && !error && lines.length > 0 && <div className="font-mono-tag text-[10px] text-slate border border-ink/10 rounded-full px-4 py-2 w-fit mx-auto">{lines.length} {lines.length > 1 ? "LIGNES DISPONIBLES" : "LIGNE DISPONIBLE"}</div>}
           </div>
         </div>
       </section>
@@ -162,12 +161,15 @@ export default function PublicPricing() {
 
         {!loading && !error && lines.length > 0 && (
           <>
-            <div className="flex flex-wrap justify-center gap-2.5 mb-5 md:mb-6" role="group" aria-label="Filtrer par mode de transport">
-              {visibleFilters.map((item) => (
-                <button key={item.key} type="button" onClick={() => setFilter(item.key)} aria-pressed={filter === item.key} className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition ${filter === item.key ? "bg-amber text-[#111827] border-amber shadow-sm" : "bg-paperAlt text-slate border-ink/10 hover:border-amber/50 hover:text-ink"}`}>
-                  <i className={`fa-solid ${item.icon}`} /><span>{item.label}</span><span className={`min-w-5 h-5 px-1 rounded-full text-[10px] flex items-center justify-center ${filter === item.key ? "bg-[#111827]/10" : "bg-ink/5"}`}>{counts[item.key]}</span>
-                </button>
-              ))}
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4 md:mb-5">
+              <div className="font-mono-tag text-[10px] text-slate border border-ink/10 rounded-full px-4 py-2 w-fit mx-auto lg:mx-0">{lines.length} {lines.length > 1 ? "LIGNES DISPONIBLES" : "LIGNE DISPONIBLE"}</div>
+              <div className="flex flex-wrap justify-center lg:justify-end gap-2.5" role="group" aria-label="Filtrer par mode de transport">
+                {visibleFilters.map((item) => (
+                  <button key={item.key} type="button" onClick={() => setFilter(item.key)} aria-pressed={filter === item.key} className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition ${filter === item.key ? "bg-amber text-[#111827] border-amber shadow-sm" : "bg-paperAlt text-slate border-ink/10 hover:border-amber/50 hover:text-ink"}`}>
+                    <i className={`fa-solid ${item.icon}`} /><span>{item.label}</span><span className={`min-w-5 h-5 px-1 rounded-full text-[10px] flex items-center justify-center ${filter === item.key ? "bg-[#111827]/10" : "bg-ink/5"}`}>{counts[item.key]}</span>
+                  </button>
+                ))}
+              </div>
             </div>
 
             {visibleLines.length > 0
