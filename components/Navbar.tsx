@@ -9,7 +9,6 @@ export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<"start" | "activities" | "legal" | null>(null);
-  const [legalNoticeVisible, setLegalNoticeVisible] = useState(true);
 
   useEffect(() => {
     const closeOnOutsideClick = (event: PointerEvent) => {
@@ -44,32 +43,8 @@ export default function Navbar() {
     setOpenDropdown((current) => current === dropdown ? null : dropdown);
   };
 
-  const dismissLegalNotice = () => {
-    setLegalNoticeVisible(false);
-  };
-
   return (
-    <>
     <header ref={navRef} className="fixed top-0 left-0 right-0 z-50">
-      {legalNoticeVisible && (
-        <aside className="legal-notice-pulse h-14 bg-[#2d2415] text-white border-b border-amber/40" aria-label="Information importante sur les conditions d’utilisation">
-          <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 pr-14 flex items-center justify-center relative">
-            <Link href="/cgu" onClick={closeMenu} className="group inline-flex items-center justify-center gap-2.5 sm:gap-3 text-center text-[11px] sm:text-sm font-semibold leading-snug text-white hover:text-amber transition-colors">
-              <span className="legal-notice-icon w-8 h-8 rounded-full bg-amber text-[#111827] flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                <i className="fa-solid fa-triangle-exclamation text-xs" />
-              </span>
-              <span>
-                Lire les conditions d’utilisation pour être mieux servi
-                <span className="ml-1.5 text-amber font-bold underline underline-offset-4">CGU</span>
-              </span>
-              <i className="fa-solid fa-arrow-right text-[9px] text-amber transition-transform group-hover:translate-x-1" aria-hidden="true" />
-            </Link>
-            <button type="button" onClick={dismissLegalNotice} className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-white/20 text-white/75 hover:text-white hover:border-white/50 hover:bg-white/10 transition" aria-label="Masquer l’annonce sur les conditions d’utilisation">
-              <i className="fa-solid fa-xmark" aria-hidden="true" />
-            </button>
-          </div>
-        </aside>
-      )}
       <nav className="bg-paper/90 backdrop-blur-sm" style={{ boxShadow: "0 1px 0 rgba(20,22,31,.08)" }}>
       <div className="max-w-7xl mx-auto px-5 md:px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center" onClick={closeMenu}>
@@ -166,7 +141,5 @@ export default function Navbar() {
       )}
       </nav>
     </header>
-    {legalNoticeVisible && <div className="h-14" aria-hidden="true" />}
-    </>
   );
 }
