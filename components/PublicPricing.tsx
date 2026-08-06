@@ -221,10 +221,12 @@ function PricingCard({ line }: { line: PricingLine }) {
   return (
     <article className="waybill border border-ink/8 !shadow-[0_16px_45px_-32px_rgba(0,0,0,.45)] flex flex-col h-full">
       <div className="p-5 md:p-6 border-b border-ink/8 bg-paper/60">
-        <div className="flex flex-wrap gap-2 mb-5">
-          <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold ${mode.className}`}><i className={`fa-solid ${mode.icon}`} />{modeLabel}</span>
-          {line.categorie && <span className="inline-flex items-center rounded-full border border-slate/30 bg-slate/15 px-3 py-1.5 text-xs font-semibold text-ink">{line.categorie}</span>}
-          {minimum && <span className="inline-flex items-center gap-1.5 rounded-full border border-amber/45 bg-amber/12 text-ink px-3 py-1.5 text-xs font-bold"><i className="fa-solid fa-weight-scale text-amber" />Minimum {minimum}</span>}
+        <div className="mb-5">
+          <div className="flex items-center gap-2 min-w-0">
+            <span title={modeLabel} className={`min-w-0 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold ${minimum ? "flex-1" : "w-fit"} ${mode.className}`}><i className={`fa-solid ${mode.icon} flex-shrink-0`} /><span className="truncate">{modeLabel}</span></span>
+            {minimum && <span className="flex-shrink-0 inline-flex items-center gap-1.5 rounded-full border border-amber/45 bg-amber/12 text-ink px-2.5 sm:px-3 py-1.5 text-[11px] sm:text-xs font-bold whitespace-nowrap"><i className="fa-solid fa-weight-scale text-amber" />Minimum {minimum}</span>}
+          </div>
+          {line.categorie && <span className="inline-flex items-center rounded-full border border-slate/30 bg-slate/15 px-3 py-1.5 text-xs font-semibold text-ink mt-2">{line.categorie}</span>}
         </div>
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
           <div><p className="font-mono-tag text-[9px] text-slate mb-1">DÉPART</p><h2 className="font-display font-bold leading-tight">{line.paysDepart || "—"}</h2><p className="text-sm text-slate mt-1">{line.villeDepart || "—"}</p></div>
