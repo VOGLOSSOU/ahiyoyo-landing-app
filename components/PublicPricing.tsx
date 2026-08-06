@@ -54,6 +54,13 @@ function formatFCFA(value: string | number | null | undefined) {
   return `${new Intl.NumberFormat("fr-FR").format(amount)} FCFA`;
 }
 
+function minimumForMode(modeTransport: string) {
+  const mode = modeTransport.toLowerCase();
+  if (mode.startsWith("air") || mode.includes("avion") || mode.includes("aérien")) return "1 kg";
+  if (mode.includes("maritime") || mode.includes("bateau") || mode.includes("navire")) return "0,1 CBM";
+  return null;
+}
+
 function fullAddress(line: PricingLine) {
   const contact = [line.contactNom, line.contactTelephone].filter(Boolean).join(" ");
   return [line.adressePhysique, contact].filter(Boolean).join("，");
@@ -188,6 +195,7 @@ function PricingCard({ line }: { line: PricingLine }) {
   const timerRef = useRef<number | null>(null);
   const mode = MODES[line.modeTransport] || { label: line.modeTransport || "Mode non renseigné", icon: "fa-route", className: "bg-ink/5 text-slate border-ink/10" };
   const modeLabel = line.typeService || mode.label;
+  const minimum = minimumForMode(line.modeTransport || "");
   const kgPrice = formatFCFA(line.tarifParKg);
   const cbmPrice = formatFCFA(line.tarifParCbm);
   const delay = line.delaiJours !== null && line.delaiJours !== undefined && Number.isFinite(Number(line.delaiJours)) ? `${line.delaiJours} jour${Number(line.delaiJours) > 1 ? "s" : ""}` : null;
@@ -216,6 +224,7 @@ function PricingCard({ line }: { line: PricingLine }) {
         <div className="flex flex-wrap gap-2 mb-5">
           <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold ${mode.className}`}><i className={`fa-solid ${mode.icon}`} />{modeLabel}</span>
           {line.categorie && <span className="inline-flex items-center rounded-full border border-slate/30 bg-slate/15 px-3 py-1.5 text-xs font-semibold text-ink">{line.categorie}</span>}
+          {minimum && <span className="inline-flex items-center gap-1.5 rounded-full border border-amber/45 bg-amber/12 text-ink px-3 py-1.5 text-xs font-bold"><i className="fa-solid fa-weight-scale text-amber" />Minimum {minimum}</span>}
         </div>
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
           <div><p className="font-mono-tag text-[9px] text-slate mb-1">DÉPART</p><h2 className="font-display font-bold leading-tight">{line.paysDepart || "—"}</h2><p className="text-sm text-slate mt-1">{line.villeDepart || "—"}</p></div>
