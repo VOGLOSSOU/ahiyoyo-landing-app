@@ -2,22 +2,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-ink: #111827;
-  --color-paper: #F9FAFB;
-  --color-paper-alt: #FFFFFF;
-  --color-navy: #171717;
-  --color-amber: #fdc354;
-  --color-amber-deep: #fdc354;
-  --color-postal: #C2410C;
-  --color-slate: #6B7280;
-}
-
-html.dark {
   --color-ink: #F3F4F6;
   --color-paper: #0D1117;
   --color-paper-alt: #151B23;
-  --color-slate: #A8B0BD;
+  --color-navy: #171717;
+  --color-amber: #fdc354;
+  --color-amber-deep: #fdc354;
   --color-postal: #FB923C;
+  --color-slate: #A8B0BD;
 }
 
 @layer base {

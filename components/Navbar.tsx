@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
@@ -94,7 +93,6 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
           <a href="https://app.ahiyoyo.com" aria-label="Mon compte Ahiyoyo" className="btn-primary bg-navy text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 md:px-5 py-2.5 rounded-full whitespace-nowrap">
             <i className="fa-solid fa-user sm:mr-2" /><span className="hidden sm:inline">Mon compte</span>
           </a>
