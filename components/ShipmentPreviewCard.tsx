@@ -9,7 +9,7 @@ const corridors: Corridor[] = [
   { origin: "Chine", originCity: "Guangzhou", destination: "Bénin", destinationCity: "Cotonou" },
   { origin: "Chine", originCity: "Guangzhou", destination: "Togo", destinationCity: "Lomé" },
   { origin: "Chine", originCity: "Guangzhou", destination: "Côte d’Ivoire", destinationCity: "Abidjan" },
-  { origin: "France", originCity: "Paris", destination: "Bénin", destinationCity: "Cotonou" },
+  { origin: "Bénin", originCity: "Cotonou", destination: "France", destinationCity: "Paris" },
 ];
 
 const shipmentSteps = [
@@ -67,7 +67,7 @@ export default function ShipmentPreviewCard() {
 
   return (
     <div className="waybill relative p-6 md:p-8 border border-ink/8">
-      <div className="relative overflow-hidden mb-7">
+      <div className="relative overflow-hidden mb-7 pt-3 -mt-3">
         {previous !== null && (
           <CorridorInfo corridor={corridors[previous]} className="absolute inset-0 shipment-slide-out" />
         )}

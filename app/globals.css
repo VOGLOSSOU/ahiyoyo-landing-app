@@ -129,11 +129,15 @@
 }
 
 @keyframes shipment-slide-out {
-  to { transform: translateX(100%); }
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(50%, -10px); }
+  100% { transform: translate(100%, 0); }
 }
 
 @keyframes shipment-slide-in {
-  from { transform: translateX(-100%); }
+  0% { transform: translate(-100%, 0); }
+  50% { transform: translate(-50%, -10px); }
+  100% { transform: translate(0, 0); }
 }
 
 .shipment-slide-out {
