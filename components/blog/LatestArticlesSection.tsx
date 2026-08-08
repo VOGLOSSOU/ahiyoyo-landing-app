@@ -48,6 +48,7 @@ export default function LatestArticlesSection({ articles }: LatestArticlesSectio
               key={article.id}
               article={article}
               index={index}
+              grayscale
             />
           ))}
         </div>

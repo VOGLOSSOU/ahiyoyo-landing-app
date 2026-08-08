@@ -38,12 +38,12 @@ export default function ArticleContent({ article }: ArticleContentProps) {
       </header>
 
       {article.featured_image_url && (
-        <div className="group relative aspect-video rounded-2xl overflow-hidden mb-10">
+        <div className="relative aspect-video rounded-2xl overflow-hidden mb-10">
           <Image
             src={article.featured_image_url}
             alt={article.title}
             fill
-            className="object-cover grayscale transition-[filter] duration-500 group-hover:grayscale-0"
+            className="object-cover"
             priority
             sizes="(min-width: 768px) 66vw, 100vw"
           />
@@ -74,12 +74,12 @@ export default function ArticleContent({ article }: ArticleContentProps) {
               <BlogMarkdown>{block.content}</BlogMarkdown>
             </div>
             {block.media_url && (
-              <div className="group relative aspect-video rounded-2xl overflow-hidden mt-6">
+              <div className="relative aspect-video rounded-2xl overflow-hidden mt-6">
                 <Image
                   src={block.media_url}
                   alt={block.title || article.title}
                   fill
-                  className="object-cover grayscale transition-[filter] duration-500 group-hover:grayscale-0"
+                  className="object-cover"
                   sizes="(min-width: 768px) 66vw, 100vw"
                 />
               </div>

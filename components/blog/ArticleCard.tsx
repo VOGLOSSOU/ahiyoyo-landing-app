@@ -8,6 +8,7 @@ import remarkGfm from "remark-gfm";
 type ArticleCardProps = {
   article: BlogArticle;
   index?: number;
+  grayscale?: boolean;
 };
 
 function ExcerptMarkdown({ children }: { children: string }) {
@@ -20,7 +21,7 @@ function ExcerptMarkdown({ children }: { children: string }) {
   );
 }
 
-export default function ArticleCard({ article, index = 0 }: ArticleCardProps) {
+export default function ArticleCard({ article, index = 0, grayscale = false }: ArticleCardProps) {
   const date = formatDate(article.published_at);
 
   return (
@@ -33,7 +34,7 @@ export default function ArticleCard({ article, index = 0 }: ArticleCardProps) {
               src={article.featured_image_url}
               alt={article.title}
               fill
-              className="object-cover grayscale transition-[transform,filter] duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
+              className={`object-cover transition-transform duration-500 group-hover:scale-[1.03] ${grayscale ? "grayscale" : ""}`}
               sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
             />
           ) : (
