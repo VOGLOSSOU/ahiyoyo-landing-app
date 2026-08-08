@@ -47,6 +47,7 @@ export default function BlogMarkdown({ children }: BlogMarkdownProps) {
               alt={alt || ""}
               loading="lazy"
               decoding="async"
+              className="grayscale transition-[filter] duration-500 hover:grayscale-0"
               {...props}
             />
           );
