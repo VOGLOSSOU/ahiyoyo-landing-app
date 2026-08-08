@@ -128,6 +128,29 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes shipment-slide-out {
+  to { transform: translateX(100%); }
+}
+
+@keyframes shipment-slide-in {
+  from { transform: translateX(-100%); }
+}
+
+.shipment-slide-out {
+  animation: shipment-slide-out .6s ease-in-out forwards;
+}
+
+.shipment-slide-in {
+  animation: shipment-slide-in .6s ease-in-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shipment-slide-out,
+  .shipment-slide-in {
+    animation: none;
+  }
+}
+
 @keyframes partners-scroll {
   to { transform: translateX(-50%); }
 }
