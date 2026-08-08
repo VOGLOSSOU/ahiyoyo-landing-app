@@ -210,7 +210,6 @@ function Updates({ history, kind, onPreview }: { history: HistoryEntry[]; kind: 
                 <h3 className="font-display font-semibold">{humanizeStatus(entry.statut || null, kind)}</h3>
                 <time className="font-mono-tag text-[10px] text-slate">{formatDate(entry.date || null, true)}</time>
               </div>
-              {entry.adminNom && <p className="text-xs text-slate mt-1">par {entry.adminNom}</p>}
               {entry.commentaire && <p className="text-sm text-slate leading-relaxed mt-3">{entry.commentaire}</p>}
               {url && image && (
                 <button type="button" onClick={() => onPreview(url)} className="mt-4 block w-full sm:w-52 h-32 rounded-xl bg-cover bg-center border border-ink/10" style={{ backgroundImage: `url(${JSON.stringify(url)})` }} aria-label={`Agrandir ${filename}`} />
