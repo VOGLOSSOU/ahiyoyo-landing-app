@@ -302,8 +302,8 @@ function PriceCell({ label, value, highlight = false }: { label: string; value: 
 
 function CopyableSection({ icon, label, copied, onCopy, children }: { icon: string; label: string; copied: boolean; onCopy: () => void; children: React.ReactNode }) {
   return (
-    <div className="relative rounded-xl border border-ink/10 bg-paper p-4 pl-14">
-      <button type="button" onClick={onCopy} title={`Copier : ${label}`} aria-label={`Copier : ${label}`} className="absolute left-3 top-3 w-8 h-8 rounded-full border border-ink/10 bg-paperAlt flex items-center justify-center hover:bg-amber/15 hover:border-amber/40 transition">
+    <div className="relative rounded-xl border border-ink/10 bg-paper p-4 pr-14">
+      <button type="button" onClick={onCopy} title={`Copier : ${label}`} aria-label={`Copier : ${label}`} className="absolute right-3 top-3 w-8 h-8 rounded-full border border-ink/10 bg-paperAlt flex items-center justify-center hover:bg-amber/15 hover:border-amber/40 transition">
         <i className={`fa-solid ${copied ? "fa-check text-emerald-500" : "fa-copy text-amber"} text-xs`} />
       </button>
       <p className="font-mono-tag text-[9px] text-slate mb-2"><i className={`fa-solid ${icon} text-amber mr-2`} />{label.toUpperCase()}</p>
