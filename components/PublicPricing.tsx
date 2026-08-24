@@ -61,9 +61,21 @@ function minimumForMode(modeTransport: string) {
   return null;
 }
 
+function contactText(line: PricingLine) {
+  return [line.contactNom, line.contactTelephone].filter(Boolean).join(" ");
+}
+
 function fullAddress(line: PricingLine) {
-  const contact = [line.contactNom, line.contactTelephone].filter(Boolean).join(" ");
-  return [line.adressePhysique, contact].filter(Boolean).join("，");
+  return [line.adressePhysique, contactText(line)].filter(Boolean).join("，");
+}
+
+function allInfoText(line: PricingLine) {
+  const parts: string[] = [];
+  if (line.adressePhysique) parts.push("ADRESSE DE L’ENTREPÔT", line.adressePhysique, "");
+  const contact = contactText(line);
+  if (contact) parts.push("CONTACT SUR PLACE", contact, "");
+  if (line.instructionsClient) parts.push("INSTRUCTIONS À METTRE SUR LE COLIS", line.instructionsClient);
+  return parts.join("\n").trim();
 }
 
 function whatsappMessage(line: PricingLine, modeLabel: string) {
@@ -189,8 +201,10 @@ export default function PublicPricing() {
   );
 }
 
+type CopyTarget = "address" | "contact" | "instructions" | "all";
+
 function PricingCard({ line }: { line: PricingLine }) {
-  const [copied, setCopied] = useState<"address" | "instructions" | null>(null);
+  const [copied, setCopied] = useState<CopyTarget | null>(null);
   const [copyError, setCopyError] = useState("");
   const timerRef = useRef<number | null>(null);
   const mode = MODES[line.modeTransport] || { label: line.modeTransport || "Mode non renseigné", icon: "fa-route", className: "bg-ink/5 text-slate border-ink/10" };
@@ -199,14 +213,14 @@ function PricingCard({ line }: { line: PricingLine }) {
   const kgPrice = formatFCFA(line.tarifParKg);
   const cbmPrice = formatFCFA(line.tarifParCbm);
   const delay = line.delaiJours !== null && line.delaiJours !== undefined && Number.isFinite(Number(line.delaiJours)) ? `${line.delaiJours} jour${Number(line.delaiJours) > 1 ? "s" : ""}` : null;
-  const address = fullAddress(line);
+  const contact = contactText(line);
   const whatsappUrl = `https://api.whatsapp.com/send/?text=${encodeURIComponent(whatsappMessage(line, modeLabel))}&type=custom_url&app_absent=0`;
 
   useEffect(() => () => {
     if (timerRef.current) window.clearTimeout(timerRef.current);
   }, []);
 
-  const handleCopy = useCallback(async (type: "address" | "instructions", value: string) => {
+  const handleCopy = useCallback(async (type: CopyTarget, value: string) => {
     try {
       await copyText(value);
       setCopied(type);
@@ -238,18 +252,45 @@ function PricingCard({ line }: { line: PricingLine }) {
       <div className="p-5 md:p-6 flex-1 space-y-5">
         {(kgPrice || cbmPrice || delay) && <div className="grid grid-cols-2 gap-2.5">{kgPrice && <PriceCell label="Tarif / kg" value={kgPrice} />}{cbmPrice && <PriceCell label="Tarif / CBM" value={cbmPrice} />}{delay && <PriceCell label="Délai estimé" value={delay} highlight />}</div>}
 
-        {line.adressePhysique && <InfoBlock icon="fa-location-dot" label="Adresse de l’entrepôt"><p className="text-sm leading-relaxed whitespace-pre-wrap break-words select-text">{line.adressePhysique}</p></InfoBlock>}
+        {(line.adressePhysique || contact || line.instructionsClient) && (
+          <div className="rounded-2xl border-2 border-amber/30 overflow-hidden">
+            <div className="flex items-center justify-between gap-3 px-4 py-3 bg-amber/10 border-b border-amber/25">
+              <p className="font-mono-tag text-[9px] text-amber">Informations d’envoi</p>
+              <button type="button" onClick={() => void handleCopy("all", allInfoText(line))} className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber hover:underline">
+                <i className={`fa-solid ${copied === "all" ? "fa-check text-emerald-500" : "fa-copy"}`} />
+                {copied === "all" ? "Copié !" : "Tout copier"}
+              </button>
+            </div>
 
-        {(line.contactNom || line.contactTelephone) && <InfoBlock icon="fa-user" label="Contact sur place"><div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">{line.contactNom && <span className="font-semibold">{line.contactNom}</span>}{line.contactTelephone && <a href={`tel:${line.contactTelephone}`} className="text-amber font-semibold hover:underline"><i className="fa-solid fa-phone mr-1.5" />{line.contactTelephone}</a>}</div></InfoBlock>}
+            <div className="p-4 space-y-3">
+              {line.adressePhysique && (
+                <CopyableSection icon="fa-location-dot" label="Adresse de l’entrepôt" copied={copied === "address"} onCopy={() => void handleCopy("address", line.adressePhysique || "")}>
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap break-words select-text">{line.adressePhysique}</p>
+                </CopyableSection>
+              )}
 
-        {line.instructionsClient && <div className="rounded-xl border border-amber/35 bg-amber/10 p-4"><p className="font-mono-tag text-[9px] text-amber mb-2"><i className="fa-solid fa-circle-info mr-2" />INSTRUCTIONS À METTRE SUR LE COLIS</p><p className="text-sm leading-relaxed whitespace-pre-wrap select-text">{line.instructionsClient}</p></div>}
+              {contact && (
+                <CopyableSection icon="fa-user" label="Contact sur place" copied={copied === "contact"} onCopy={() => void handleCopy("contact", contact)}>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+                    {line.contactNom && <span className="font-semibold">{line.contactNom}</span>}
+                    {line.contactTelephone && <a href={`tel:${line.contactTelephone}`} className="text-amber font-semibold hover:underline"><i className="fa-solid fa-phone mr-1.5" />{line.contactTelephone}</a>}
+                  </div>
+                </CopyableSection>
+              )}
+
+              {line.instructionsClient && (
+                <CopyableSection icon="fa-circle-info" label="Instructions à mettre sur le colis" copied={copied === "instructions"} onCopy={() => void handleCopy("instructions", line.instructionsClient || "")}>
+                  <p className="text-sm leading-relaxed whitespace-pre-wrap select-text">{line.instructionsClient}</p>
+                </CopyableSection>
+              )}
+            </div>
+          </div>
+        )}
         {copyError && <p className="text-xs text-postal" role="alert">{copyError}</p>}
       </div>
 
-      <div className="grid grid-cols-3 border-t border-ink/8 bg-paper/40">
-        <button type="button" onClick={() => void handleCopy("address", address)} disabled={!line.adressePhysique} title={line.adressePhysique ? "Copier l’adresse et le contact" : "Adresse non renseignée"} className="min-h-16 px-2 py-3 text-[10px] sm:text-xs font-semibold border-r border-ink/8 hover:bg-amber/10 disabled:opacity-35 disabled:cursor-not-allowed transition flex flex-col items-center justify-center gap-2"><i className={`fa-solid ${copied === "address" ? "fa-check text-emerald-500" : "fa-copy text-amber"}`} />{copied === "address" ? "Copié !" : "Copier l’adresse"}</button>
-        <button type="button" onClick={() => void handleCopy("instructions", line.instructionsClient || "")} disabled={!line.instructionsClient} title={line.instructionsClient ? "Copier les instructions" : "Instructions non renseignées"} className="min-h-16 px-2 py-3 text-[10px] sm:text-xs font-semibold border-r border-ink/8 hover:bg-amber/10 disabled:opacity-35 disabled:cursor-not-allowed transition flex flex-col items-center justify-center gap-2"><i className={`fa-solid ${copied === "instructions" ? "fa-check text-emerald-500" : "fa-copy text-amber"}`} />{copied === "instructions" ? "Copié !" : "Instructions"}</button>
-        <a href={whatsappUrl} target="_blank" rel="noreferrer" className="min-h-16 px-2 py-3 text-[10px] sm:text-xs font-semibold text-center hover:bg-emerald-500/10 transition flex flex-col items-center justify-center gap-2"><i className="fa-brands fa-whatsapp text-emerald-500" />WhatsApp</a>
+      <div className="border-t border-ink/8 bg-paper/40">
+        <a href={whatsappUrl} target="_blank" rel="noreferrer" className="min-h-14 px-4 py-3 text-sm font-semibold hover:bg-emerald-500/10 transition flex items-center justify-center gap-2"><i className="fa-brands fa-whatsapp text-emerald-500" />Envoyer sur WhatsApp</a>
       </div>
     </article>
   );
@@ -259,8 +300,16 @@ function PriceCell({ label, value, highlight = false }: { label: string; value: 
   return <div className="rounded-xl bg-paper border border-ink/8 p-3"><p className="font-mono-tag text-[8px] text-slate uppercase mb-1.5">{label}</p><p className={`font-display font-bold text-sm ${highlight ? "text-amber" : ""}`}>{value}</p></div>;
 }
 
-function InfoBlock({ icon, label, children }: { icon: string; label: string; children: React.ReactNode }) {
-  return <div><p className="font-mono-tag text-[9px] text-slate mb-2"><i className={`fa-solid ${icon} text-amber mr-2`} />{label.toUpperCase()}</p>{children}</div>;
+function CopyableSection({ icon, label, copied, onCopy, children }: { icon: string; label: string; copied: boolean; onCopy: () => void; children: React.ReactNode }) {
+  return (
+    <div className="relative rounded-xl border border-ink/10 bg-paper p-4 pl-14">
+      <button type="button" onClick={onCopy} title={`Copier : ${label}`} aria-label={`Copier : ${label}`} className="absolute left-3 top-3 w-8 h-8 rounded-full border border-ink/10 bg-paperAlt flex items-center justify-center hover:bg-amber/15 hover:border-amber/40 transition">
+        <i className={`fa-solid ${copied ? "fa-check text-emerald-500" : "fa-copy text-amber"} text-xs`} />
+      </button>
+      <p className="font-mono-tag text-[9px] text-slate mb-2"><i className={`fa-solid ${icon} text-amber mr-2`} />{label.toUpperCase()}</p>
+      {children}
+    </div>
+  );
 }
 
 function LoadingState() {
