@@ -1,11 +1,8 @@
-import Stamp from "./Stamp";
-
 export default function ContactCTA() {
   return (
     <section id="contact" className="py-16 md:py-28 bg-navy text-white relative overflow-hidden">
       <div className="grain" />
       <div className="max-w-4xl mx-auto px-5 md:px-6 text-center relative">
-        <Stamp variant="ghost" className="mb-7">Contact</Stamp>
         <h2 className="text-3xl md:text-5xl font-display font-bold mb-5">Prêt à lancer votre prochaine commande ?</h2>
         <p className="text-white/60 text-base md:text-lg mb-11 max-w-xl mx-auto">
           Envoyez-nous vos besoins, notre équipe vous guide jusqu&apos;à la livraison finale.

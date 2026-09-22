@@ -1,4 +1,3 @@
-import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const audiences = [
@@ -15,7 +14,6 @@ export default function Audiences() {
     <section className="py-16 md:py-24 bg-paperAlt">
       <div className="max-w-6xl mx-auto px-5 md:px-6">
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <Stamp variant="amber" className="mb-6">Pour qui ?</Stamp>
           <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-4">Une plateforme pensée pour ceux qui font circuler des produits.</h2>
           <p className="text-slate leading-relaxed">Que vous commenciez avec un carton ou pilotiez des flux réguliers, Ahiyoyo adapte son accompagnement à votre activité.</p>
         </div>

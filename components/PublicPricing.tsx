@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Stamp from "./Stamp";
 
 type FilterMode = "tous" | "air" | "maritime" | "routier";
 
@@ -163,7 +162,6 @@ export default function PublicPricing() {
       <section className="relative overflow-hidden border-b border-ink/5">
         <div className="grain" />
         <div className="relative max-w-6xl mx-auto px-5 md:px-6 py-10 md:py-12 text-center">
-          <Stamp variant="amber" dot className="mb-4">Routes publiques Ahiyoyo</Stamp>
           <div className="flex flex-col items-center">
             <div className="max-w-3xl mx-auto">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-3"><i className="fa-solid fa-truck-fast text-amber text-[.75em] mr-3" />Nos adresses &amp; tarifs d’envoi</h1>

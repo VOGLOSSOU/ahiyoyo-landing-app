@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const benefits = [
@@ -20,7 +19,6 @@ export default function Pricing() {
             <div className="grain" />
             <div className="absolute -right-24 -bottom-24 w-72 h-72 rounded-full bg-amber/15 blur-3xl" />
             <div className="relative">
-              <Stamp variant="ghost" className="mb-6">TRANSPARENCE DES PRIX</Stamp>
               <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-10">Les tarifs et adresses utiles, accessibles avant d&apos;envoyer.</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 justify-items-center">

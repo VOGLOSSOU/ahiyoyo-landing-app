@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <LegalDocument
-      eyebrow="Protection des données"
       title="Politique de confidentialité"
       subtitle="Plateforme web et mobile Ahiyoyo"
       description="La manière dont Ahiyoyo collecte, utilise, conserve, partage et protège les données personnelles liées à ses services."

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const steps = [
@@ -19,7 +18,6 @@ export default function HowItWorks({ asPage = false }: { asPage?: boolean }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6 relative">
         <div className={`mb-10 sm:mb-14 md:mb-20 ${asPage ? "grid lg:grid-cols-[1fr_auto] lg:items-end gap-7 md:gap-8" : "max-w-2xl"}`}>
           <div className="max-w-3xl">
-            <Stamp variant="amber" dot className="mb-5 sm:mb-6">Comment ça marche</Stamp>
             <Heading className="text-[2rem] sm:text-4xl md:text-5xl font-display font-bold leading-[1.1] mb-4 sm:mb-5">Un parcours clair, de votre besoin jusqu’à la remise.</Heading>
             <p className="text-slate text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">Vous gardez un interlocuteur et une vision claire pendant qu’Ahiyoyo coordonne les fournisseurs, les paiements et la logistique.</p>
           </div>

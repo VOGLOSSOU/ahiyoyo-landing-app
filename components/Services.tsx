@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const journeys = [
@@ -40,7 +39,6 @@ export default function Services() {
     <section id="fonctionnalites" className="py-12 sm:py-16 md:py-24 bg-paper">
       <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6">
         <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
-          <Stamp className="mb-6">Votre objectif</Stamp>
           <h2 className="text-[1.8rem] sm:text-3xl md:text-4xl font-display font-bold leading-tight mb-4">Que voulez-vous faire aujourd’hui ?</h2>
           <p className="text-sm sm:text-base text-slate leading-relaxed">Choisissez votre besoin pour découvrir le parcours Ahiyoyo correspondant.</p>
         </div>

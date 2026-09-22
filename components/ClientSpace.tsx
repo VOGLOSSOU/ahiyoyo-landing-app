@@ -1,4 +1,3 @@
-import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const tools = [
@@ -16,7 +15,6 @@ export default function ClientSpace({ dark = false }: { dark?: boolean }) {
         <div className="grid lg:grid-cols-[.82fr_1.18fr] gap-9 sm:gap-12 lg:gap-20 items-center">
           <Reveal>
             <div>
-              <Stamp variant={dark ? "ghost" : "amber"} className="mb-6">Votre espace Ahiyoyo</Stamp>
               <h2 className="text-[1.8rem] sm:text-3xl md:text-4xl font-display font-bold leading-tight mb-5">Une vue claire sur ce qui compte maintenant.</h2>
               <p className={`text-sm sm:text-base leading-relaxed mb-7 sm:mb-8 ${dark ? "text-white/60" : "text-slate"}`}>L’application Ahiyoyo rassemble les opérations, documents et mises à jour qui concernent votre activité — sans vous obliger à chercher l’information dans plusieurs conversations.</p>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">{tools.map((tool) => <div key={tool.title} className={`flex items-center gap-3 rounded-xl border p-3.5 ${dark ? "border-white/10 bg-white/5" : "border-ink/8 bg-paperAlt"}`}><span className="w-9 h-9 rounded-lg bg-amber/12 text-amber flex items-center justify-center flex-shrink-0"><i className={`fa-solid ${tool.icon} text-sm`} /></span><div><p className="font-display font-semibold text-sm">{tool.title}</p><p className={`text-[10px] mt-0.5 ${dark ? "text-white/50" : "text-slate"}`}>{tool.desc}</p></div></div>)}</div>

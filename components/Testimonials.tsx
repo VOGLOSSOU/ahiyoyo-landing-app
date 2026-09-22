@@ -1,4 +1,3 @@
-import Stamp from "./Stamp";
 import Waybill from "./Waybill";
 import Reveal from "./Reveal";
 
@@ -65,7 +64,6 @@ export default function Testimonials() {
     <section id="temoignages" className="py-16 md:py-28 overflow-hidden">
       <div className="max-w-4xl mx-auto px-5 md:px-6">
         <div className="text-center mb-14 md:mb-20">
-          <Stamp variant="amber" className="mb-6">Ils nous font confiance</Stamp>
           <p className="text-slate text-base md:text-lg">Ce que disent nos clients</p>
         </div>
 

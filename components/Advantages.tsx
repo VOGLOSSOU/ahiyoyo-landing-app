@@ -1,4 +1,3 @@
-import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const advantages = [
@@ -15,7 +14,6 @@ export default function Advantages() {
     <section id="avantages" className="py-16 md:py-24 bg-paperAlt">
       <div className="max-w-5xl mx-auto px-5 md:px-6">
         <div className="text-center mb-14 md:mb-16">
-          <Stamp className="mb-6">Avantages</Stamp>
           <h2 className="text-2xl md:text-3xl font-display font-bold">Pourquoi choisir Ahiyoyo ?</h2>
         </div>
 

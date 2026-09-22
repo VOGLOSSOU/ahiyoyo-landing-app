@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 const questions = [
@@ -14,7 +13,7 @@ export default function FAQPreview() {
   return (
     <section className="py-16 md:py-24 bg-paper">
       <div className="max-w-4xl mx-auto px-5 md:px-6">
-        <div className="text-center mb-11 md:mb-14"><Stamp variant="amber" className="mb-6">Questions fréquentes</Stamp><h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Les réponses utiles avant de commencer.</h2><p className="text-slate">L’essentiel en quelques minutes, sans jargon logistique.</p></div>
+        <div className="text-center mb-11 md:mb-14"><h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Les réponses utiles avant de commencer.</h2><p className="text-slate">L’essentiel en quelques minutes, sans jargon logistique.</p></div>
         <Reveal>
           <div className="waybill divide-y divide-ink/8 border border-ink/8 mb-7">
             {questions.map((item) => <details key={item.q} className="faq-item group"><summary className="flex items-center justify-between gap-4 p-5 md:p-6"><span className="font-display font-semibold text-sm md:text-base">{item.q}</span><i className="fa-solid fa-chevron-down chevron text-amber text-sm flex-shrink-0" /></summary><div className="faq-answer"><div className="faq-answer-inner px-5 md:px-6"><p className="text-slate text-sm leading-relaxed pb-5 md:pb-6">{item.a}</p></div></div></details>)}

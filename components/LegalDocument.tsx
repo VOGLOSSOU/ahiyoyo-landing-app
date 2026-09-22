@@ -1,9 +1,7 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Stamp from "./Stamp";
 
 type LegalDocumentProps = {
-  eyebrow: string;
   title: string;
   subtitle?: string;
   description: string;
@@ -135,7 +133,7 @@ function LegalSection({ block }: { block: LegalBlock }) {
   );
 }
 
-export default function LegalDocument({ eyebrow, title, subtitle, description, version, pdfUrl, content, documentType }: LegalDocumentProps) {
+export default function LegalDocument({ title, subtitle, description, version, pdfUrl, content, documentType }: LegalDocumentProps) {
   const blocks = parseContent(content, documentType);
   const toc = blocks.filter((block) => documentType === "privacy" || !/^Article \d+\s[-–—]/.test(block.title));
 
@@ -146,7 +144,6 @@ export default function LegalDocument({ eyebrow, title, subtitle, description, v
         <section className="relative overflow-hidden border-b border-ink/5">
           <div className="grain" />
           <div className="relative max-w-5xl mx-auto px-5 md:px-6 py-14 md:py-20 text-center">
-            <Stamp variant="amber" dot className="mb-6">{eyebrow}</Stamp>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-4">{title}</h1>
             {subtitle && <p className="font-display font-semibold text-amber mb-5">{subtitle}</p>}
             <p className="text-slate max-w-2xl mx-auto leading-relaxed">{description}</p>

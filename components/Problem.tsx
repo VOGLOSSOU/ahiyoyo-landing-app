@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Stamp from "./Stamp";
 import Reveal from "./Reveal";
 
 export default function Problem() {
@@ -9,7 +8,6 @@ export default function Problem() {
       <div className="max-w-6xl mx-auto px-5 md:px-6 relative">
         <Reveal>
           <div className="text-center max-w-2xl mx-auto">
-            <Stamp variant="ghost" className="mb-7">Une logistique plus lisible</Stamp>
             <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-5"><span className="text-amber">Ahiyoyo</span> remplace plusieurs intermédiaires</h2>
             <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-10">Plus besoin de chercher séparément un fournisseur, un intermédiaire d&apos;achat, un transporteur, un transitaire ou des clients à l&apos;international.<br /><br />Même à distance, vous gardez un œil sur toutes vos activités commerciales avec le reste du monde.</p>
             <Link href="/comment-ca-marche" className="inline-flex items-center gap-2 text-sm font-semibold text-amber hover:underline">Comprendre notre fonctionnement <i className="fa-solid fa-arrow-right text-xs" /></Link>
