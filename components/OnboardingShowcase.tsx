@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Reveal from "./Reveal";
 
@@ -19,37 +22,66 @@ const screens = [
   },
 ];
 
+const ROTATION_INTERVAL_MS = 5000;
+
 export default function OnboardingShowcase() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const interval = window.setInterval(() => {
+      setIndex((current) => (current + 1) % screens.length);
+    }, ROTATION_INTERVAL_MS);
+    return () => window.clearInterval(interval);
+  }, [paused]);
+
+  const screen = screens[index];
+
   return (
     <section className="py-16 md:py-24 bg-paperAlt overflow-hidden">
-      <div className="max-w-7xl mx-auto px-5 md:px-6">
+      <div className="max-w-3xl mx-auto px-5 md:px-6">
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-4">Ce qu’Ahiyoyo fait concrètement pour vous.</h2>
           <p className="text-slate leading-relaxed">Du paiement fournisseur jusqu’à la livraison finale, en passant par le groupage et le suivi de vos envois.</p>
         </div>
-        <Reveal stagger>
-          <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory -mx-5 px-5 pb-2 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible">
-            {screens.map((screen, index) => (
-              <article key={screen.title} className="waybill snap-center flex-shrink-0 w-[80vw] sm:w-[360px] md:w-auto border border-ink/8">
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src={screen.image}
-                    alt={screen.title}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 768px) 33vw, 80vw"
-                    priority={index === 0}
-                  />
-                  <span className="absolute top-4 left-4 font-mono-tag text-xs font-bold text-[#111827] bg-amber rounded-full w-10 h-10 flex items-center justify-center shadow-lg shadow-black/20">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <div className="p-6 md:p-7">
-                  <h3 className="font-display font-bold text-lg md:text-xl leading-snug mb-3">{screen.title}</h3>
-                  <p className="text-slate text-sm leading-relaxed">{screen.text}</p>
-                </div>
-              </article>
-            ))}
+
+        <Reveal>
+          <div
+            className="flex flex-col items-center text-center"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onFocus={() => setPaused(true)}
+            onBlur={() => setPaused(false)}
+          >
+            <div key={index} className="animate-result-in flex flex-col items-center">
+              <div className="waybill relative aspect-[4/5] w-full max-w-md border border-ink/8 mb-8">
+                <Image
+                  src={screen.image}
+                  alt={screen.title}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 768px) 448px, 85vw"
+                  priority={index === 0}
+                />
+              </div>
+              <h3 className="font-display font-bold text-xl md:text-2xl leading-snug mb-3 max-w-md">{screen.title}</h3>
+              <p className="text-slate text-sm md:text-base leading-relaxed max-w-md">{screen.text}</p>
+            </div>
+
+            <div className="flex items-center gap-2 mt-9" role="tablist" aria-label="Écrans de présentation">
+              {screens.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  role="tab"
+                  aria-selected={i === index}
+                  aria-label={`Aller à l’écran ${i + 1}`}
+                  onClick={() => setIndex(i)}
+                  className={`h-2.5 rounded-full transition-all ${i === index ? "w-7 bg-amber" : "w-2.5 bg-ink/15 hover:bg-ink/30"}`}
+                />
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>
