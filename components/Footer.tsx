@@ -41,7 +41,11 @@ export default function Footer() {
             <ul className="space-y-5 text-sm text-white/60">
               {agencies.map((agency) => (
                 <li key={agency.country}>
-                  <p className="font-display font-semibold text-white/85 mb-1 flex items-center gap-2"><img src={`https://flagcdn.com/${agency.flagCode}.svg`} alt="" className="w-5 h-[14px] rounded-[2px] object-cover flex-shrink-0 border border-white/15" />{agency.country}</p>
+                  <p className="font-display font-semibold text-white/85 mb-1 flex items-center gap-2">
+                    {/* eslint-disable-next-line @next/next/no-img-element -- fixed-size decorative flag icon, no need for next/image optimization */}
+                    <img src={`https://flagcdn.com/${agency.flagCode}.svg`} alt="" className="w-5 h-[14px] rounded-[2px] object-cover flex-shrink-0 border border-white/15" />
+                    {agency.country}
+                  </p>
                   <p className="leading-relaxed">{agency.address}</p>
                   <p className="mt-1 font-mono-tag text-xs">{agency.phone}</p>
                 </li>
