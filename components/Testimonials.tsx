@@ -55,8 +55,9 @@ export default function Testimonials() {
   return (
     <section id="temoignages" className="py-16 md:py-28 overflow-hidden">
       <div className="max-w-4xl mx-auto px-5 md:px-6">
-        <div className="text-center mb-14 md:mb-20">
-          <p className="text-slate text-base md:text-lg">Ce que disent nos clients</p>
+        <div className="text-center mb-14 md:mb-20 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-4">Ce que disent nos clients</h2>
+          <p className="text-slate text-base md:text-lg leading-relaxed">Des commerçants, importateurs et exportateurs qui utilisent déjà Ahiyoyo pour simplifier leurs échanges avec le reste du monde.</p>
         </div>
 
       </div>
