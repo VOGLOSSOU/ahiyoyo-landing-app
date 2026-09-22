@@ -6,37 +6,31 @@ const testimonials = [
     quote: "Grâce à Ahiyoyo, j'ai pu lister mes produits sur Jumia et Yango CI sans stress. L'équipe gère la logistique, les paiements et les livraisons — moi je me concentre sur la production !",
     name: "Doris Bide",
     company: "Fondatrice de BISKUITI, Cotonou, Bénin",
-    initials: "DB"
   },
   {
     quote: "Je m'approvisionne depuis la Chine grâce à Ahiyoyo. Les vérifications avant expédition et la logistique abordable ont rendu mes importations beaucoup plus simples et rapides.",
     name: "Faizath Bouanra",
     company: "Gérante de ROYAL SHOP, Cotonou, Bénin",
-    initials: "FB"
   },
   {
     quote: "J’ai pu comparer les options avant de lancer mon achat. Le devis était clair et j’ai su exactement quelles étapes allaient suivre jusqu’à la réception.",
     name: "Cliente Ahiyoyo",
     company: "Commerçante en ligne, Lomé, Togo",
-    initials: "CA"
   },
   {
     quote: "Le suivi avec une seule référence m’évite de relancer plusieurs personnes. Je retrouve le statut, le trajet et les informations utiles au même endroit.",
     name: "Client Ahiyoyo",
     company: "Importateur, Abidjan, Côte d’Ivoire",
-    initials: "CA"
   },
   {
     quote: "L’équipe m’a accompagné pour préparer mon premier envoi international. Les consignes étaient simples et chaque étape m’a été expliquée clairement.",
     name: "Cliente Ahiyoyo",
     company: "Créatrice artisanale, Cotonou, Bénin",
-    initials: "CA"
   },
   {
     quote: "Ahiyoyo nous aide à coordonner nos achats et nos expéditions sans disperser les informations. Nous gagnons du temps dans le suivi de nos opérations.",
     name: "Client Ahiyoyo",
     company: "Responsable de PME, Porto-Novo, Bénin",
-    initials: "CA"
   }
 ];
 
@@ -44,14 +38,12 @@ function TestimonialGroup({ duplicate = false }: { duplicate?: boolean }) {
   return (
     <div className="testimonials-group flex gap-5 pr-5" aria-hidden={duplicate || undefined}>
       {testimonials.map((testimonial, index) => (
-        <Waybill key={`${duplicate ? "duplicate-" : ""}${testimonial.name}-${index}`} className="w-[min(84vw,360px)] sm:w-[380px] min-h-72 p-6 md:p-8 flex flex-col justify-between flex-shrink-0">
-          <div>
-            <i className="fa-solid fa-quote-left text-amber/60 text-xl mb-5" aria-hidden="true" />
-            <p className="text-ink/85 text-sm md:text-base leading-relaxed mb-7">{testimonial.quote}</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-full bg-navy flex items-center justify-center flex-shrink-0 text-amber font-display font-bold text-sm">{testimonial.initials}</div>
-            <div><p className="font-display font-semibold text-sm">{testimonial.name}</p><p className="text-slate text-xs mt-0.5">{testimonial.company}</p></div>
+        <Waybill key={`${duplicate ? "duplicate-" : ""}${testimonial.name}-${index}`} className="w-[min(86vw,380px)] sm:w-[400px] min-h-[19rem] p-7 md:p-9 flex flex-col flex-shrink-0 border border-ink/8">
+          <i className="fa-solid fa-quote-left text-amber text-2xl mb-6" aria-hidden="true" />
+          <p className="text-ink/90 text-sm md:text-base leading-relaxed flex-1">{testimonial.quote}</p>
+          <div className="mt-7 pt-5 border-t border-dashed border-ink/15">
+            <p className="font-display font-semibold text-sm">{testimonial.name}</p>
+            <p className="font-mono-tag text-[10px] text-slate mt-1.5 uppercase">{testimonial.company}</p>
           </div>
         </Waybill>
       ))}
