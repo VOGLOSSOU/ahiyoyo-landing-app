@@ -20,7 +20,7 @@ const shipmentSteps = [
 ];
 
 const ROTATION_INTERVAL_MS = 4500;
-const SLIDE_DURATION_MS = 600;
+const FADE_DURATION_MS = 500;
 
 function CorridorInfo({ corridor, className = "" }: { corridor: Corridor; className?: string }) {
   return (
@@ -61,17 +61,17 @@ export default function ShipmentPreviewCard() {
 
   useEffect(() => {
     if (previous === null) return;
-    const timeout = window.setTimeout(() => setPrevious(null), SLIDE_DURATION_MS);
+    const timeout = window.setTimeout(() => setPrevious(null), FADE_DURATION_MS);
     return () => window.clearTimeout(timeout);
   }, [previous]);
 
   return (
     <div className="waybill relative p-6 md:p-8 border border-ink/8">
-      <div className="relative overflow-hidden mb-7 pt-3 -mt-3">
+      <div className="relative mb-7">
         {previous !== null && (
-          <CorridorInfo corridor={corridors[previous]} className="absolute inset-0 shipment-slide-out" />
+          <CorridorInfo corridor={corridors[previous]} className="absolute inset-0 shipment-fade-out" />
         )}
-        <CorridorInfo corridor={corridors[current]} className={previous !== null ? "shipment-slide-in" : ""} />
+        <CorridorInfo corridor={corridors[current]} className={previous !== null ? "shipment-fade-in" : ""} />
       </div>
 
       <div className="space-y-0">
