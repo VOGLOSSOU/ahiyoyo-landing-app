@@ -12,7 +12,7 @@ export default function ContactCTA() {
           Créez votre compte gratuitement ou contactez-nous pour toute question.
         </p>
         <div className="flex items-center justify-center gap-4 flex-wrap">
-          <a href="https://app.ahiyoyo.com/login" className="btn-primary inline-flex items-center gap-2 bg-amber text-[#111827] font-semibold px-8 py-4 rounded-full text-sm md:text-base shadow-lg shadow-amber/20">
+          <a href="https://app.ahiyoyo.com" className="btn-primary inline-flex items-center gap-2 bg-amber text-[#111827] font-semibold px-8 py-4 rounded-full text-sm md:text-base shadow-lg shadow-amber/20">
             Démarrer
             <i className="fa-solid fa-arrow-right text-xs" />
           </a>
