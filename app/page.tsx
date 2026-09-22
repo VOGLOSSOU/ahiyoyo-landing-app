@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Corridors from "@/components/Corridors";
 import Partners from "@/components/Partners";
 import Problem from "@/components/Problem";
+import OnboardingCarousel from "@/components/OnboardingCarousel";
 import Audiences from "@/components/Audiences";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
@@ -22,6 +23,7 @@ export default async function Home() {
       <Corridors />
       <Partners />
       <Problem />
+      <OnboardingCarousel />
       <Audiences />
       <Pricing />
       <Testimonials />
