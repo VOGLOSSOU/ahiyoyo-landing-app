@@ -4,8 +4,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ArticleContent from "@/components/blog/ArticleContent";
 import { BlogApiError, getPublicBlogArticle } from "@/lib/blog";
-import Reveal from "@/components/Reveal";
-import Stamp from "@/components/Stamp";
 
 interface BlogArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -61,19 +59,6 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
     <>
       <Navbar />
       <main className="min-h-screen pt-16">
-        <section className="relative overflow-hidden border-b border-ink/5">
-          <div className="grain" />
-          <div className="relative max-w-6xl mx-auto px-5 md:px-6 py-14 md:py-20">
-            <Reveal>
-              <div className="text-center">
-                <Stamp variant="amber" dot className="mb-6">
-                  Blog
-                </Stamp>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
         <section className="max-w-6xl mx-auto px-5 md:px-6 py-10 md:py-16">
           <ArticleContent article={article} />
         </section>

@@ -186,10 +186,6 @@ export default function FAQ() {
       <section className="pt-16 overflow-hidden relative">
         <div className="grain" />
         <div className="max-w-4xl mx-auto px-5 md:px-6 py-14 md:py-20 text-center relative">
-          <span className="stamp stamp-amber mb-6">
-            <span className="stamp-dot" />
-            Import • Export • Logistique • Commerce international
-          </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] mb-5">FAQ — Ahiyoyo</h1>
           <p className="text-slate text-base md:text-lg max-w-xl mx-auto">
             Toutes les réponses à vos questions sur nos services, nos tarifs, le suivi et la sécurité de vos expéditions.
@@ -212,10 +208,6 @@ export default function FAQ() {
       {categories.map((cat, idx) => (
         <section key={cat.id} id={cat.id} className={`py-10 md:py-14 ${idx % 2 === 0 ? "" : "bg-paperAlt"} scroll-mt-20`}>
           <div className="max-w-3xl mx-auto px-5 md:px-6">
-            <div className="mb-8">
-              <span className="stamp stamp-amber mb-4">{idx + 1} — {cat.label}</span>
-            </div>
-
             <div className="waybill divide-y divide-ink/5">
               {faqData[cat.id].map((item, i) => (
                 <details key={i} className="faq-item group" style={{ "--i": i } as React.CSSProperties}>
@@ -240,10 +232,9 @@ export default function FAQ() {
       <section className="py-16 md:py-24 bg-navy text-white relative overflow-hidden">
         <div className="grain" />
         <div className="max-w-3xl mx-auto px-5 md:px-6 text-center relative">
-          <span className="stamp stamp-ghost mb-7">Besoin d&apos;aide ?</span>
           <h2 className="text-2xl md:text-4xl font-display font-bold mb-5">Notre équipe répond rapidement et vous guide étape par étape.</h2>
           <div className="flex items-center justify-center gap-4 flex-wrap mt-9">
-            <a href="mailto:support@ahiyoyo.com" className="btn-primary bg-amber text-ink font-semibold px-8 py-4 rounded-full text-sm md:text-base">
+            <a href="mailto:support@ahiyoyo.com" className="btn-primary bg-amber text-[#111827] font-semibold px-8 py-4 rounded-full text-sm md:text-base">
               Nous contacter
             </a>
             <Link href="/suivi" className="btn-ghost border border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 text-sm md:text-base">

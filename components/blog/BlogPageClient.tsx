@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Stamp from "@/components/Stamp";
 import Reveal from "@/components/Reveal";
 import BlogSearch from "./BlogSearch";
 import BlogPagination from "./BlogPagination";
@@ -89,9 +88,6 @@ export default function BlogPageClient({
         <div className="relative max-w-6xl mx-auto px-5 md:px-6 py-14 md:py-20">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto">
-              <Stamp variant="amber" dot className="mb-6">
-                Blog
-              </Stamp>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-5">
                 Conseils import, export et logistique
               </h1>

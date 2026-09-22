@@ -3,7 +3,6 @@
 import Link from "next/link";
 import type { BlogArticle } from "@/lib/blog";
 import Reveal from "@/components/Reveal";
-import Stamp from "@/components/Stamp";
 import ArticleCard from "./ArticleCard";
 
 type LatestArticlesSectionProps = {
@@ -22,9 +21,6 @@ export default function LatestArticlesSection({ articles }: LatestArticlesSectio
         <Reveal>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div className="max-w-2xl">
-              <Stamp variant="amber" dot className="mb-4">
-                Blog
-              </Stamp>
               <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight">
                 Nos derniers conseils pour aller plus loin.
               </h2>
