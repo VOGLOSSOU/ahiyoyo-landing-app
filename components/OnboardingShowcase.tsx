@@ -23,6 +23,10 @@ export default function OnboardingShowcase() {
   return (
     <section className="py-16 md:py-24 bg-paperAlt overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 md:px-6">
+        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-4">Ce qu’Ahiyoyo fait concrètement pour vous.</h2>
+          <p className="text-slate leading-relaxed">Du paiement fournisseur jusqu’à la livraison finale, en passant par le groupage et le suivi de vos envois.</p>
+        </div>
         <Reveal stagger>
           <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory -mx-5 px-5 pb-2 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible">
             {screens.map((screen, index) => (
