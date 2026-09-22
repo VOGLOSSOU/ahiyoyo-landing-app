@@ -1,11 +1,11 @@
 import Reveal from "./Reveal";
 
 const places = [
-  { flag: "🇨🇳", name: "Chine", role: "Sourcing & départ" },
-  { flag: "🇫🇷", name: "France", role: "Corridor international" },
-  { flag: "🇧🇯", name: "Bénin", role: "Agence & distribution" },
-  { flag: "🇹🇬", name: "Togo", role: "Agence & distribution" },
-  { flag: "🇨🇮", name: "Côte d’Ivoire", role: "Agence & distribution" },
+  { flagCode: "cn", name: "Chine", role: "Sourcing & départ" },
+  { flagCode: "fr", name: "France", role: "Corridor international" },
+  { flagCode: "bj", name: "Bénin", role: "Agence & distribution" },
+  { flagCode: "tg", name: "Togo", role: "Agence & distribution" },
+  { flagCode: "ci", name: "Côte d’Ivoire", role: "Agence & distribution" },
 ];
 
 export default function Corridors() {
@@ -21,7 +21,7 @@ export default function Corridors() {
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 flex-1">
               {places.map((place) => (
                 <div key={place.name} className="rounded-xl border border-ink/8 bg-paper px-3 py-3 flex items-center gap-3">
-                  <span className="text-xl">{place.flag}</span>
+                  <img src={`https://flagcdn.com/${place.flagCode}.svg`} alt="" className="w-7 h-5 rounded-[3px] object-cover flex-shrink-0 border border-ink/10" />
                   <div className="min-w-0"><p className="font-display font-semibold text-sm truncate">{place.name}</p><p className="text-[9px] text-slate mt-0.5 truncate">{place.role}</p></div>
                 </div>
               ))}

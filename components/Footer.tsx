@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 const agencies = [
-  { country: "Bénin", flag: "🇧🇯", address: "Gbégamey, avant dernier von avant le carrefour Kossi en prenant le trafic local en quittant l'étoile Rouge, Cotonou", phone: "+229 01 91 08 41 41" },
-  { country: "Togo", flag: "🇹🇬", address: "Zone administrative, Tokouin, Lomé", phone: "+228 71 53 18 42" },
-  { country: "Côte d'Ivoire", flag: "🇨🇮", address: "Gbagba Lot 50, Quartier Savane, Bingerville, Abidjan", phone: "+225 07 13 59 37 75" },
+  { country: "Bénin", flagCode: "bj", address: "Gbégamey, avant dernier von avant le carrefour Kossi en prenant le trafic local en quittant l'étoile Rouge, Cotonou", phone: "+229 01 91 08 41 41" },
+  { country: "Togo", flagCode: "tg", address: "Zone administrative, Tokouin, Lomé", phone: "+228 71 53 18 42" },
+  { country: "Côte d'Ivoire", flagCode: "ci", address: "Gbagba Lot 50, Quartier Savane, Bingerville, Abidjan", phone: "+225 07 13 59 37 75" },
 ];
 
 const usefulLinks = [
@@ -41,7 +41,7 @@ export default function Footer() {
             <ul className="space-y-5 text-sm text-white/60">
               {agencies.map((agency) => (
                 <li key={agency.country}>
-                  <p className="font-display font-semibold text-white/85 mb-1">{agency.flag} {agency.country}</p>
+                  <p className="font-display font-semibold text-white/85 mb-1 flex items-center gap-2"><img src={`https://flagcdn.com/${agency.flagCode}.svg`} alt="" className="w-5 h-[14px] rounded-[2px] object-cover flex-shrink-0 border border-white/15" />{agency.country}</p>
                   <p className="leading-relaxed">{agency.address}</p>
                   <p className="mt-1 font-mono-tag text-xs">{agency.phone}</p>
                 </li>
