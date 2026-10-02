@@ -3,17 +3,17 @@ import Reveal from "./Reveal";
 
 const screens = [
   {
-    image: "/onboarding/au-port.png",
+    image: "/onboarding/1.jpg",
     title: "Achetez, vendez et expédiez à l’international depuis l’Afrique.",
     text: "Gardez un œil sur toutes vos activités commerciales avec le reste du monde : du paiement jusqu’à la livraison, sans les tracas habituels.",
   },
   {
-    image: "/onboarding/groupage.png",
+    image: "/onboarding/2.jpg",
     title: "Des groupages maritimes et aériens que vous pouvez suivre en direct.",
     text: "Profitez de nos groupages collectifs (maritime et aérien) pour payer moins par CBM ou KG partagé.",
   },
   {
-    image: "/onboarding/sourcing.png",
+    image: "/onboarding/3.jpg",
     title: "Trouvez des fournisseurs et clients à l’international.",
     text: "Ahiyoyo vous aide à trouver les meilleurs fournisseurs en Chine, à vous assurer du contrôle de la qualité de vos produits et de leur acheminement jusqu’en Afrique.",
   },
