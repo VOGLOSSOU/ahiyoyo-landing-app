@@ -3,7 +3,8 @@
     "allow": [
       "mcp__claude_ai_Claude_Docs__guide",
       "mcp__claude_ai_Claude_Docs__batch",
-      "mcp__claude_ai_Claude_Docs__update"
+      "mcp__claude_ai_Claude_Docs__update",
+      "Bash(python3 -c ' *)"
     ]
   }
 }

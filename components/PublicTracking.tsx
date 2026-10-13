@@ -414,6 +414,10 @@ function PackageResult({ data, onReset, onPreview }: { data: TrackingRecord; onR
         <div className="waybill p-5 md:p-6 border border-amber/25">
           <p className="font-mono-tag text-[10px] text-slate mb-2"><i className="fa-solid fa-wallet text-amber mr-2" />MONTANT À PAYER</p>
           <p className="font-display text-2xl md:text-3xl font-bold text-amber">{totalAmount}</p>
+          <p className="mt-3 flex items-start gap-2 text-xs leading-relaxed text-slate">
+            <i className="fa-solid fa-circle-info mt-0.5 text-amber" aria-hidden="true" />
+            <span>Assurez-vous d’avoir réglé au moins 50 % du montant avant le départ de votre ou de vos colis.</span>
+          </p>
         </div>
         <div className="waybill p-5 md:p-6 border border-ink/8">
           <p className="font-mono-tag text-[10px] text-slate mb-2"><i className="fa-solid fa-calendar-check text-amber mr-2" />LIVRAISON ESTIMÉE</p>
