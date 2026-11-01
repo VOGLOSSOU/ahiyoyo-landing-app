@@ -100,7 +100,7 @@ function OfferCard({ entry }: { entry: OfferEntry }) {
       timer.current = setTimeout(() => setCopied(null), 2000);
     } catch { setCopyError("Copie impossible. Sélectionnez le texte manuellement."); }
   }, []);
-  const useOffer = async () => {
+  const handleUseOffer = async () => {
     if (pending.current || !canUseOffer(entry)) return;
     pending.current = true; setChecking(true); setOfferError("");
     try {
@@ -146,7 +146,7 @@ function OfferCard({ entry }: { entry: OfferEntry }) {
       </div>
     </div>
     <div className="p-5 md:p-6 pt-0 space-y-3">
-      <button type="button" disabled={checking || !canUseOffer(entry)} onClick={() => void useOffer()} className="w-full rounded-full bg-amber text-[#111827] px-4 py-3 font-bold disabled:opacity-50 disabled:cursor-not-allowed">{checking ? "Vérification..." : canUseOffer(entry) ? "Profiter de l’offre" : "Offre indisponible"}</button>
+      <button type="button" disabled={checking || !canUseOffer(entry)} onClick={() => void handleUseOffer()} className="w-full rounded-full bg-amber text-[#111827] px-4 py-3 font-bold disabled:opacity-50 disabled:cursor-not-allowed">{checking ? "Vérification..." : canUseOffer(entry) ? "Profiter de l’offre" : "Offre indisponible"}</button>
       {offerError && <p role="alert" className="text-sm text-postal">{offerError}</p>}
       <a href={detailUrl(entry)} className="block text-center text-sm font-semibold hover:underline">Voir les détails et les paliers</a>
       <a href={`https://wa.me/?text=${encodeURIComponent(shareOffer(entry))}`} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 py-2 text-sm text-slate hover:text-ink"><i className="fa-brands fa-whatsapp text-emerald-600" aria-hidden="true" />Partager sur WhatsApp</a>
