@@ -34,7 +34,7 @@ export default function Pricing() {
                 <p className="text-sm md:text-base text-amber font-semibold leading-relaxed">{importantNote}</p>
               </div>
 
-              <Link href="/tarifs" className="btn-primary inline-flex items-center justify-center bg-amber text-[#111827] font-semibold px-7 py-4 rounded-full text-sm">Consulter les lignes tarifaires <i className="fa-solid fa-arrow-right ml-2" /></Link>
+              <Link href="/tarifs" className="btn-primary inline-flex items-center justify-center bg-amber text-[#111827] font-semibold px-7 py-4 rounded-full text-sm">Voir les adresses et tarifs des offres <i className="fa-solid fa-arrow-right ml-2" /></Link>
             </div>
           </div>
         </Reveal>

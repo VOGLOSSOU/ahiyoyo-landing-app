@@ -1,323 +1,163 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { APPLICATION_URL, OFFER_ENDPOINTS, canUseOffer, currentPrice, detailUrl, formatOfferDate, readOffers, shareOffer, signupUrl, type OfferEntry, type OfferKind, type PublicOffer } from "@/lib/groupageOffers";
 
-type FilterMode = "tous" | "air" | "maritime" | "routier";
-
-type PricingLine = {
-  id: number | string;
-  villeDepart: string;
-  paysDepart: string;
-  villeDestination: string;
-  paysDestination: string;
-  modeTransport: string;
-  typeService?: string | null;
-  categorie?: string | null;
-  tarifParKg: string | number | null;
-  tarifParCbm: string | number | null;
-  delaiJours?: number | null;
-  adressePhysique?: string | null;
-  contactNom?: string | null;
-  contactTelephone?: string | null;
-  instructionsClient?: string | null;
-  actif?: boolean;
-};
-
+type FilterMode = "tous" | OfferKind;
+type Result = { entries: OfferEntry[]; error: string | null };
 const API_URL = (process.env.NEXT_PUBLIC_API_URL || "https://orchid-jellyfish-551876.hostingersite.com").replace(/\/$/, "");
-
 const FILTERS: Array<{ key: FilterMode; label: string; icon: string }> = [
-  { key: "tous", label: "Tous", icon: "fa-border-all" },
-  { key: "air", label: "Aérien", icon: "fa-plane" },
+  { key: "tous", label: "Toutes", icon: "fa-border-all" },
   { key: "maritime", label: "Maritime", icon: "fa-ship" },
-  { key: "routier", label: "Routier", icon: "fa-truck" },
+  { key: "air", label: "Aérien", icon: "fa-plane" },
 ];
 
-const MODES: Record<string, { label: string; icon: string; className: string }> = {
-  air_standard: { label: "Aérien standard", icon: "fa-plane", className: "bg-blue-500/20 text-blue-800 border-blue-500/35 dark:bg-blue-400/20 dark:text-blue-200 dark:border-blue-400/35" },
-  air_economie: { label: "Aérien économie", icon: "fa-plane", className: "bg-sky-500/20 text-sky-800 border-sky-500/35 dark:bg-sky-400/20 dark:text-sky-200 dark:border-sky-400/35" },
-  air_express: { label: "Aérien express", icon: "fa-plane", className: "bg-violet-500/20 text-violet-800 border-violet-500/35 dark:bg-violet-400/20 dark:text-violet-200 dark:border-violet-400/35" },
-  maritime: { label: "Maritime groupage", icon: "fa-ship", className: "bg-teal-500/20 text-teal-800 border-teal-500/35 dark:bg-teal-400/20 dark:text-teal-200 dark:border-teal-400/35" },
-  routier: { label: "Transport routier", icon: "fa-truck", className: "bg-orange-500/20 text-orange-800 border-orange-500/35 dark:bg-orange-400/20 dark:text-orange-200 dark:border-orange-400/35" },
-};
-
-function matchesFilter(line: PricingLine, filter: FilterMode) {
-  if (filter === "tous") return true;
-  if (filter === "air") return line.modeTransport?.startsWith("air");
-  return line.modeTransport === filter;
-}
-
-function formatFCFA(value: string | number | null | undefined) {
-  if (value === null || value === undefined || value === "") return null;
-  const amount = Number(value);
-  if (!Number.isFinite(amount)) return null;
-  return `${new Intl.NumberFormat("fr-FR").format(amount)} FCFA`;
-}
-
-function minimumForMode(modeTransport: string) {
-  const mode = modeTransport.toLowerCase();
-  if (mode.startsWith("air") || mode.includes("avion") || mode.includes("aérien")) return "1 kg";
-  if (mode.includes("maritime") || mode.includes("bateau") || mode.includes("navire")) return "0,1 CBM";
-  return null;
-}
-
-function contactText(line: PricingLine) {
-  return [line.contactNom, line.contactTelephone].filter(Boolean).join(" ");
-}
-
-function fullAddress(line: PricingLine) {
-  return [line.adressePhysique, contactText(line)].filter(Boolean).join("，");
-}
-
-function allInfoText(line: PricingLine) {
-  const parts: string[] = [];
-  if (line.adressePhysique) parts.push("ADRESSE DE L’ENTREPÔT", line.adressePhysique, "");
-  const contact = contactText(line);
-  if (contact) parts.push("CONTACT SUR PLACE", contact, "");
-  if (line.instructionsClient) parts.push("INSTRUCTIONS À METTRE SUR LE COLIS", line.instructionsClient);
-  return parts.join("\n").trim();
-}
-
-function whatsappMessage(line: PricingLine, modeLabel: string) {
-  const parts: string[] = ["AHIYOYO"];
-  const address = fullAddress(line);
-
-  if (line.adressePhysique) parts.push("", "Adresse de dépôt :", address);
-  if (line.instructionsClient) parts.push("", "À écrire sur le colis :", line.instructionsClient);
-  parts.push("", `Trajet : ${line.paysDepart} (${line.villeDepart}) → ${line.paysDestination} (${line.villeDestination})`);
-  parts.push(`Mode : ${modeLabel}`);
-  if (line.categorie) parts.push(`Service : ${line.categorie}`);
-  return parts.join("\n");
-}
-
 async function copyText(text: string) {
-  if (navigator.clipboard && window.isSecureContext) {
-    await navigator.clipboard.writeText(text);
-    return;
-  }
-
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
   const textarea = document.createElement("textarea");
   textarea.value = text;
   textarea.setAttribute("readonly", "");
   textarea.style.position = "fixed";
   textarea.style.opacity = "0";
   document.body.appendChild(textarea);
-  textarea.select();
-  const copied = document.execCommand("copy");
-  document.body.removeChild(textarea);
-  if (!copied) throw new Error("COPY_FAILED");
+  try {
+    textarea.select();
+    if (!document.execCommand("copy")) throw new Error("COPY_FAILED");
+  } finally { textarea.remove(); }
 }
 
 export default function PublicPricing() {
-  const [lines, setLines] = useState<PricingLine[]>([]);
+  const [results, setResults] = useState<Record<OfferKind, Result>>({ maritime: { entries: [], error: null }, air: { entries: [], error: null } });
   const [filter, setFilter] = useState<FilterMode>("tous");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
   const [retryKey, setRetryKey] = useState(0);
 
   useEffect(() => {
     const controller = new AbortController();
-
-    async function loadPricing() {
+    async function load(kind: OfferKind): Promise<Result> {
       try {
-        const response = await fetch(`${API_URL}/api/tarifs/public`, {
-          headers: { Accept: "application/json" },
-          signal: controller.signal,
-          cache: "no-store",
-        });
-        const payload = await response.json().catch(() => null) as unknown;
+        const response = await fetch(`${API_URL}${OFFER_ENDPOINTS[kind]}`, { headers: { Accept: "application/json" }, signal: controller.signal, cache: "no-store" });
         if (!response.ok) throw new Error("REQUEST_FAILED");
-
-        const normalized = Array.isArray(payload)
-          ? payload
-          : payload && typeof payload === "object" && Array.isArray((payload as { data?: unknown }).data)
-            ? (payload as { data: unknown[] }).data
-            : [];
-
-        setLines((normalized as PricingLine[]).filter((line) => line && line.actif !== false));
-        setError("");
-      } catch (loadError) {
-        if (loadError instanceof Error && loadError.name === "AbortError") return;
-        setError("Impossible de charger les adresses et les tarifs.");
-      } finally {
-        if (!controller.signal.aborted) setLoading(false);
+        return { entries: readOffers(await response.json(), kind), error: null };
+      } catch {
+        return { entries: [], error: `Impossible de charger les offres ${kind === "maritime" ? "maritimes" : "aériennes"}.` };
       }
     }
-
-    void loadPricing();
+    void Promise.all([load("maritime"), load("air")]).then(([maritime, air]) => {
+      if (controller.signal.aborted) return;
+      setResults({ maritime, air });
+      setLoading(false);
+    });
     return () => controller.abort();
   }, [retryKey]);
 
-  const counts = useMemo(() => Object.fromEntries(FILTERS.map((item) => [item.key, lines.filter((line) => matchesFilter(line, item.key)).length])) as Record<FilterMode, number>, [lines]);
-  const visibleFilters = FILTERS.filter((item) => item.key === "tous" || counts[item.key] > 0);
-  const visibleLines = lines.filter((line) => matchesFilter(line, filter));
+  const all: Result = { entries: [...results.maritime.entries, ...results.air.entries], error: [results.maritime.error, results.air.error].filter(Boolean).join(" ") || null };
+  const selected = filter === "tous" ? all : results[filter];
+  const retry = () => { setLoading(true); setRetryKey(key => key + 1); };
 
-  const retry = () => {
-    setLoading(true);
-    setError("");
-    setRetryKey((key) => key + 1);
-  };
-
-  return (
-    <div className="bg-paper min-h-screen">
-      <section className="relative overflow-hidden border-b border-ink/5">
-        <div className="grain" />
-        <div className="relative max-w-6xl mx-auto px-5 md:px-6 py-10 md:py-12 text-center">
-          <div className="flex flex-col items-center">
-            <div className="max-w-3xl mx-auto">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-3"><i className="fa-solid fa-truck-fast text-amber text-[.75em] mr-3" />Nos adresses &amp; tarifs d’envoi</h1>
-              <p className="text-slate text-base md:text-lg leading-relaxed">Adresses de nos entrepôts, tarifs de transport et instructions d’envoi pour chaque route disponible.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-7xl mx-auto px-5 md:px-6 pt-5 pb-10 md:pt-7 md:pb-14">
-        {loading && <LoadingState />}
-        {!loading && error && <ErrorState message={error} onRetry={retry} />}
-        {!loading && !error && lines.length === 0 && <EmptyState />}
-
-        {!loading && !error && lines.length > 0 && (
-          <>
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4 md:mb-5">
-              <div className="font-mono-tag text-[10px] text-slate border border-ink/10 rounded-full px-4 py-2 w-fit mx-auto lg:mx-0">{lines.length} {lines.length > 1 ? "LIGNES DISPONIBLES" : "LIGNE DISPONIBLE"}</div>
-              <div className="flex flex-wrap justify-center lg:justify-end gap-2.5" role="group" aria-label="Filtrer par mode de transport">
-                {visibleFilters.map((item) => (
-                  <button key={item.key} type="button" onClick={() => setFilter(item.key)} aria-pressed={filter === item.key} className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition ${filter === item.key ? "bg-amber text-[#111827] border-amber shadow-sm" : "bg-paperAlt text-slate border-ink/10 hover:border-amber/50 hover:text-ink"}`}>
-                    <i className={`fa-solid ${item.icon}`} /><span>{item.label}</span><span className={`min-w-5 h-5 px-1 rounded-full text-[10px] flex items-center justify-center ${filter === item.key ? "bg-[#111827]/10" : "bg-ink/5"}`}>{counts[item.key]}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {visibleLines.length > 0
-              ? <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3 items-stretch">{visibleLines.map((line) => <PricingCard key={line.id} line={line} />)}</div>
-              : <div className="waybill p-10 text-center"><i className="fa-solid fa-route text-amber text-2xl mb-4" /><p className="font-display font-semibold">Aucune ligne pour ce mode de transport.</p></div>}
-          </>
-        )}
-      </section>
-    </div>
-  );
+  return <div className="bg-paper min-h-screen">
+    <section className="relative overflow-hidden border-b border-ink/5">
+      <div className="grain" />
+      <div className="relative max-w-3xl mx-auto px-5 py-10 md:py-12 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight mb-3">Nos adresses &amp; tarifs d’envoi</h1>
+        <p className="text-slate leading-relaxed">Retrouvez les adresses de dépôt, les tarifs actuels et les dates des offres de groupage ouvertes.</p>
+        <p className="mt-3 text-sm text-slate">Chaque adresse et ses instructions concernent uniquement l’offre indiquée. Vérifiez-les avant tout envoi.</p>
+      </div>
+    </section>
+    <section className="max-w-7xl mx-auto px-5 md:px-6 py-7 md:pb-14">
+      <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2.5 mb-6" role="group" aria-label="Filtrer par mode de transport">
+        {FILTERS.map(item => {
+          const result = item.key === "tous" ? all : results[item.key];
+          return <button key={item.key} type="button" onClick={() => setFilter(item.key)} aria-pressed={filter === item.key} className={`flex items-center justify-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition ${filter === item.key ? "bg-amber text-[#111827] border-amber shadow-sm" : "bg-paperAlt text-slate border-ink/10 hover:border-amber/50 hover:text-ink"}`}>
+            <i className={`fa-solid ${item.icon}`} aria-hidden="true" />{item.label}
+            {!loading && !result.error && <span className="min-w-5 rounded-full bg-ink/5 px-1 text-xs">{result.entries.length}</span>}
+          </button>;
+        })}
+      </div>
+      {loading ? <p className="py-16 text-center text-slate" role="status">Chargement des adresses et tarifs...</p> : <>
+        {selected.error && <div className="waybill p-6 mb-6 text-center" role="alert"><p className="text-postal">{selected.error}</p><button type="button" onClick={retry} className="mt-4 rounded-full bg-amber text-[#111827] px-5 py-2 font-semibold">Réessayer</button></div>}
+        {selected.entries.length > 0 ? <div className={`grid gap-5 items-stretch ${selected.entries.length > 1 ? "md:grid-cols-2 xl:grid-cols-3" : "max-w-3xl mx-auto"}`}>{selected.entries.map(entry => <OfferCard key={`${entry.kind}-${entry.offer.id}`} entry={entry} />)}</div>
+          : !selected.error && <div className="max-w-xl mx-auto waybill p-10 text-center"><h2 className="font-display font-bold text-xl mb-2">{filter === "tous" ? "Aucune offre ouverte pour le moment" : `Aucune offre ${filter === "maritime" ? "maritime" : "aérienne"} ouverte pour le moment`}</h2><p className="text-slate text-sm">Revenez prochainement pour découvrir nos prochaines offres de groupage.</p><a href={APPLICATION_URL} className="inline-block mt-5 text-amber font-semibold hover:underline">Accéder à mon espace client</a></div>}
+      </>}
+    </section>
+  </div>;
 }
 
-type CopyTarget = "address" | "contact" | "instructions" | "all";
-
-function PricingCard({ line }: { line: PricingLine }) {
-  const [copied, setCopied] = useState<CopyTarget | null>(null);
+function OfferCard({ entry }: { entry: OfferEntry }) {
+  const { offer, kind } = entry;
+  const maritime = kind === "maritime";
+  const [copied, setCopied] = useState<string | null>(null);
   const [copyError, setCopyError] = useState("");
-  const timerRef = useRef<number | null>(null);
-  const mode = MODES[line.modeTransport] || { label: line.modeTransport || "Mode non renseigné", icon: "fa-route", className: "bg-ink/5 text-slate border-ink/10" };
-  const modeLabel = line.typeService || mode.label;
-  const minimum = minimumForMode(line.modeTransport || "");
-  const kgPrice = formatFCFA(line.tarifParKg);
-  const cbmPrice = formatFCFA(line.tarifParCbm);
-  const delay = line.delaiJours !== null && line.delaiJours !== undefined && Number.isFinite(Number(line.delaiJours)) ? `${line.delaiJours} jour${Number(line.delaiJours) > 1 ? "s" : ""}` : null;
-  const contact = contactText(line);
-  const whatsappUrl = `https://api.whatsapp.com/send/?text=${encodeURIComponent(whatsappMessage(line, modeLabel))}&type=custom_url&app_absent=0`;
-
-  useEffect(() => () => {
-    if (timerRef.current) window.clearTimeout(timerRef.current);
-  }, []);
-
-  const handleCopy = useCallback(async (type: CopyTarget, value: string) => {
+  const [checking, setChecking] = useState(false);
+  const [offerError, setOfferError] = useState("");
+  const pending = useRef(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
+  const handleCopy = useCallback(async (key: string, text: string) => {
     try {
-      await copyText(value);
-      setCopied(type);
-      setCopyError("");
-      if (timerRef.current) window.clearTimeout(timerRef.current);
-      timerRef.current = window.setTimeout(() => setCopied(null), 2000);
-    } catch {
-      setCopyError("Copie impossible. Sélectionnez le texte manuellement.");
-    }
+      await copyText(text); setCopied(key); setCopyError("");
+      if (timer.current) clearTimeout(timer.current);
+      timer.current = setTimeout(() => setCopied(null), 2000);
+    } catch { setCopyError("Copie impossible. Sélectionnez le texte manuellement."); }
   }, []);
+  const useOffer = async () => {
+    if (pending.current || !canUseOffer(entry)) return;
+    pending.current = true; setChecking(true); setOfferError("");
+    try {
+      const response = await fetch(`${API_URL}${OFFER_ENDPOINTS[kind]}/${encodeURIComponent(offer.id)}`, { headers: { Accept: "application/json" }, cache: "no-store" });
+      if (response.status === 404) { setOfferError("Cette offre n’est plus disponible. Consultez les autres offres."); return; }
+      if (!response.ok) throw new Error("REQUEST_FAILED");
+      const fresh: PublicOffer = await response.json();
+      if (!fresh || fresh.id !== offer.id || !canUseOffer({ kind, offer: fresh })) { setOfferError("Cette offre n’est plus disponible. Consultez les autres offres."); return; }
+      // L’application conserve le chemin et sa query string pendant l’authentification.
+      window.location.assign(signupUrl(entry));
+    } catch { setOfferError("Impossible de vérifier l’offre. Réessayez dans quelques instants."); }
+    finally { pending.current = false; setChecking(false); }
+  };
+  const price = currentPrice(entry);
+  const minimum = maritime ? Number(offer.volumeMinimumCbm) : null;
+  const deadline = formatOfferDate(offer.dateClotureCible);
+  const departure = formatOfferDate(offer.dateDepartEstimee);
+  const corridor = offer.corridor;
+  const address = offer.adresseDepot?.trim();
+  const instructions = offer.instructionsDepot?.trim();
+  const allInfo = [offer.titre, offer.reference, address ? `Adresse de dépôt :\n${address}` : null, instructions ? `Instructions :\n${instructions}` : null].filter(Boolean).join("\n\n");
 
-  return (
-    <article className="waybill border border-ink/8 !shadow-[0_16px_45px_-32px_rgba(0,0,0,.45)] flex flex-col h-full">
-      <div className="p-5 md:p-6 border-b border-ink/8 bg-paper/60">
-        <div className="mb-5">
-          <div className="flex items-start gap-2 min-w-0">
-            <span className={`min-w-0 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold leading-tight ${mode.className}`}><i className={`fa-solid ${mode.icon} flex-shrink-0`} /><span>{modeLabel}</span></span>
-            {minimum && <span className="flex-shrink-0 inline-flex items-center gap-1.5 rounded-full border border-amber/45 bg-amber/12 text-ink px-2.5 sm:px-3 py-1.5 text-[11px] sm:text-xs font-bold whitespace-nowrap"><i className="fa-solid fa-weight-scale text-amber" />Minimum {minimum}</span>}
-          </div>
-          {line.categorie && <span className="inline-flex items-center rounded-full border border-slate/30 bg-slate/15 px-3 py-1.5 text-xs font-semibold text-ink mt-2">{line.categorie}</span>}
-        </div>
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-          <div><p className="font-mono-tag text-[9px] text-slate mb-1">DÉPART</p><h2 className="font-display font-bold leading-tight">{line.paysDepart || "—"}</h2><p className="text-sm text-slate mt-1">{line.villeDepart || "—"}</p></div>
-          <div className="w-9 h-9 rounded-full bg-amber/15 text-amber flex items-center justify-center"><i className="fa-solid fa-arrow-right" /></div>
-          <div className="text-right"><p className="font-mono-tag text-[9px] text-slate mb-1">DESTINATION</p><h2 className="font-display font-bold leading-tight">{line.paysDestination || "—"}</h2><p className="text-sm text-slate mt-1">{line.villeDestination || "—"}</p></div>
-        </div>
+  return <article className="waybill border border-ink/8 flex flex-col min-w-0 h-full">
+    <div className="p-5 md:p-6 border-b border-ink/8 bg-paper/60">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-3"><span className="text-amber text-xs font-bold uppercase"><i className={`fa-solid ${maritime ? "fa-ship" : "fa-plane"} mr-2`} aria-hidden="true" />{maritime ? "Maritime" : "Aérien"}</span><span className="text-xs text-slate break-all">{offer.reference}</span></div>
+      <h2 className="font-display text-xl font-bold break-words mb-4">{offer.titre || "Offre de groupage"}</h2>
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 text-sm">
+        <div className="[overflow-wrap:anywhere]"><p className="text-xs text-slate mb-1">Départ</p><p className="font-bold">{corridor?.villeDepart || "-"}</p><p className="text-slate">{corridor?.paysDepart || "-"}</p></div>
+        <i className="fa-solid fa-arrow-right text-amber" aria-hidden="true" />
+        <div className="text-right [overflow-wrap:anywhere]"><p className="text-xs text-slate mb-1">Destination</p><p className="font-bold">{corridor?.villeDestination || "-"}</p><p className="text-slate">{corridor?.paysDestination || "-"}</p></div>
       </div>
-
-      <div className="p-5 md:p-6 flex-1 space-y-5">
-        {(kgPrice || cbmPrice || delay) && <div className="grid grid-cols-2 gap-2.5">{kgPrice && <PriceCell label="Tarif / kg" value={kgPrice} />}{cbmPrice && <PriceCell label="Tarif / CBM" value={cbmPrice} />}{delay && <PriceCell label="Délai estimé" value={delay} highlight />}</div>}
-
-        {(line.adressePhysique || contact || line.instructionsClient) && (
-          <div className="rounded-2xl border-2 border-amber/30 overflow-hidden">
-            <div className="flex items-center justify-between gap-3 px-4 py-3 bg-amber/10 border-b border-amber/25">
-              <p className="font-mono-tag text-[9px] text-amber">Informations d’envoi</p>
-              <button type="button" onClick={() => void handleCopy("all", allInfoText(line))} className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber hover:underline">
-                <i className={`fa-solid ${copied === "all" ? "fa-check text-emerald-500" : "fa-copy"}`} />
-                {copied === "all" ? "Copié !" : "Tout copier"}
-              </button>
-            </div>
-
-            <div className="p-4 space-y-3">
-              {line.adressePhysique && (
-                <CopyableSection icon="fa-location-dot" label="Adresse de l’entrepôt" copied={copied === "address"} onCopy={() => void handleCopy("address", line.adressePhysique || "")}>
-                  <p className="text-sm leading-relaxed whitespace-pre-wrap break-words select-text">{line.adressePhysique}</p>
-                </CopyableSection>
-              )}
-
-              {contact && (
-                <CopyableSection icon="fa-user" label="Contact sur place" copied={copied === "contact"} onCopy={() => void handleCopy("contact", contact)}>
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-                    {line.contactNom && <span className="font-semibold">{line.contactNom}</span>}
-                    {line.contactTelephone && <a href={`tel:${line.contactTelephone}`} className="text-amber font-semibold hover:underline"><i className="fa-solid fa-phone mr-1.5" />{line.contactTelephone}</a>}
-                  </div>
-                </CopyableSection>
-              )}
-
-              {line.instructionsClient && (
-                <CopyableSection icon="fa-circle-info" label="Instructions à mettre sur le colis" copied={copied === "instructions"} onCopy={() => void handleCopy("instructions", line.instructionsClient || "")}>
-                  <p className="text-sm leading-relaxed whitespace-pre-wrap select-text">{line.instructionsClient}</p>
-                </CopyableSection>
-              )}
-            </div>
-          </div>
-        )}
-        {copyError && <p className="text-xs text-postal" role="alert">{copyError}</p>}
-      </div>
-
-      <div className="border-t border-ink/8 bg-paper/40">
-        <a href={whatsappUrl} target="_blank" rel="noreferrer" className="min-h-14 px-4 py-3 text-sm font-semibold hover:bg-emerald-500/10 transition flex items-center justify-center gap-2"><i className="fa-brands fa-whatsapp text-emerald-500" />Envoyer sur WhatsApp</a>
-      </div>
-    </article>
-  );
-}
-
-function PriceCell({ label, value, highlight = false }: { label: string; value: string; highlight?: boolean }) {
-  return <div className="rounded-xl bg-paper border border-ink/8 p-3"><p className="font-mono-tag text-[8px] text-slate uppercase mb-1.5">{label}</p><p className={`font-display font-bold text-sm ${highlight ? "text-amber" : ""}`}>{value}</p></div>;
-}
-
-function CopyableSection({ icon, label, copied, onCopy, children }: { icon: string; label: string; copied: boolean; onCopy: () => void; children: React.ReactNode }) {
-  return (
-    <div className="relative rounded-xl border border-ink/10 bg-paper p-4 pr-14">
-      <button type="button" onClick={onCopy} title={`Copier : ${label}`} aria-label={`Copier : ${label}`} className="absolute right-3 top-3 w-8 h-8 rounded-full border border-ink/10 bg-paperAlt flex items-center justify-center hover:bg-amber/15 hover:border-amber/40 transition">
-        <i className={`fa-solid ${copied ? "fa-check text-emerald-500" : "fa-copy text-amber"} text-xs`} />
-      </button>
-      <p className="font-mono-tag text-[9px] text-slate mb-2"><i className={`fa-solid ${icon} text-amber mr-2`} />{label.toUpperCase()}</p>
-      {children}
     </div>
-  );
+    <div className="p-5 md:p-6 flex-1 space-y-5">
+      <div><p className="text-xs text-slate mb-1">Tarif actuel de l’offre</p><p className="text-2xl font-display font-bold">{price !== null ? <>{price.toLocaleString("fr-FR")} <span className="text-sm text-slate">FCFA / {maritime ? "CBM" : "KG"}</span></> : "Tarif indisponible"}</p><p className="text-xs text-slate mt-2">Le tarif peut évoluer selon le remplissage. Consultez les paliers dans les détails.</p>
+        {minimum !== null && Number.isFinite(minimum) && minimum > 0 && <p className="text-sm mt-2">Minimum déclaré : {minimum.toLocaleString("fr-FR", { maximumFractionDigits: 3 })} CBM</p>}
+      </div>
+      <div className="text-sm space-y-2"><p className="text-orange-700 dark:text-orange-300"><i className="fa-solid fa-calendar-check mr-2" aria-hidden="true" />{deadline ? `Date limite de réception : ${deadline}` : "Date limite de réception à confirmer"}</p><p className="text-blue-700 dark:text-blue-300"><i className="fa-solid fa-calendar-days mr-2" aria-hidden="true" />{departure ? `Départ estimé : ${departure}` : "Départ à confirmer"}</p>{Number.isFinite(offer.delaiJours) && Number(offer.delaiJours) > 0 && <p className="text-slate text-xs">Délai de transport estimatif : {offer.delaiJours} jours</p>}</div>
+      <div className="space-y-3">
+        {(address || instructions) && <button type="button" onClick={() => void handleCopy("all", allInfo)} className="text-amber text-xs font-semibold hover:underline">{copied === "all" ? "Copié !" : "Copier toutes les informations de dépôt"}</button>}
+        {address ? <CopyableSection label="Adresse de dépôt" copied={copied === "address"} onCopy={() => void handleCopy("address", address)} text={address} /> : <p className="text-sm text-slate">Adresse de dépôt non renseignée. Consultez l’équipe avant tout envoi.</p>}
+        {instructions && <details><summary className="cursor-pointer py-2 text-sm text-amber font-semibold">Voir les instructions de dépôt</summary><CopyableSection label="Instructions de dépôt" copied={copied === "instructions"} onCopy={() => void handleCopy("instructions", instructions)} text={instructions} /></details>}
+        {copyError && <p role="alert" className="text-xs text-postal">{copyError}</p>}
+      </div>
+    </div>
+    <div className="p-5 md:p-6 pt-0 space-y-3">
+      <button type="button" disabled={checking || !canUseOffer(entry)} onClick={() => void useOffer()} className="w-full rounded-full bg-amber text-[#111827] px-4 py-3 font-bold disabled:opacity-50 disabled:cursor-not-allowed">{checking ? "Vérification..." : canUseOffer(entry) ? "Profiter de l’offre" : "Offre indisponible"}</button>
+      {offerError && <p role="alert" className="text-sm text-postal">{offerError}</p>}
+      <a href={detailUrl(entry)} className="block text-center text-sm font-semibold hover:underline">Voir les détails et les paliers</a>
+      <a href={`https://wa.me/?text=${encodeURIComponent(shareOffer(entry))}`} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 py-2 text-sm text-slate hover:text-ink"><i className="fa-brands fa-whatsapp text-emerald-600" aria-hidden="true" />Partager sur WhatsApp</a>
+    </div>
+  </article>;
 }
 
-function LoadingState() {
-  return <div className="py-20 text-center text-slate" role="status"><i className="fa-solid fa-spinner fa-spin text-amber text-3xl mb-4" /><p>Chargement des tarifs…</p></div>;
-}
-
-function ErrorState({ message, onRetry }: { message: string; onRetry: () => void }) {
-  return <div className="max-w-xl mx-auto waybill border border-postal/20 p-8 text-center"><div className="w-12 h-12 rounded-full bg-postal/10 text-postal flex items-center justify-center mx-auto mb-4"><i className="fa-solid fa-triangle-exclamation" /></div><h2 className="font-display font-bold text-xl mb-2">Chargement impossible</h2><p className="text-slate text-sm mb-6">{message}<br />Veuillez réessayer dans quelques instants.</p><button type="button" onClick={onRetry} className="btn-primary bg-amber text-[#111827] rounded-full px-6 py-3 text-sm font-semibold"><i className="fa-solid fa-arrow-rotate-right mr-2" />Réessayer</button></div>;
-}
-
-function EmptyState() {
-  return <div className="max-w-xl mx-auto waybill p-10 text-center"><i className="fa-solid fa-truck text-amber text-3xl mb-5" /><h2 className="font-display font-bold text-xl mb-2">Aucune ligne disponible</h2><p className="text-slate text-sm">Les tarifs seront affichés ici dès leur mise en place.</p></div>;
+function CopyableSection({ label, text, copied, onCopy }: { label: string; text: string; copied: boolean; onCopy: () => void }) {
+  return <div className="relative rounded-xl border border-ink/10 bg-paper p-4 pr-14">
+    <button type="button" onClick={onCopy} aria-label={copied ? "Copié !" : `Copier : ${label}`} className="absolute right-3 top-3 w-8 h-8 rounded-full border border-ink/10 bg-paperAlt hover:bg-amber/15"><i className={`fa-solid ${copied ? "fa-check text-emerald-600" : "fa-copy text-amber"}`} aria-hidden="true" /></button>
+    <p className="text-xs text-slate mb-2">{label}</p><p className="text-sm leading-relaxed whitespace-pre-wrap [overflow-wrap:anywhere] select-text">{text}</p>
+    {copied && <span role="status" className="text-xs text-emerald-600">Copié !</span>}
+  </div>;
 }
